@@ -26,5 +26,17 @@ form > label{
     color: aliceblue;
 }
 
+.content{
+    background-color: #004aad;
+    padding: 25px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 15px;
+    margin-inline: 25%;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+
 
 
