@@ -37,7 +37,7 @@ form > label{
 }
 
 .header{
-    background-image: url(resi3.jpeg);
+    background-image: url(/images/resi3.jpeg);
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: cover;
