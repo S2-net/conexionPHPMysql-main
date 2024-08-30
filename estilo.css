@@ -82,13 +82,13 @@ nav a{
 
 .content{
     background-color: #004aad;
-    padding: 25px;
     display: flex;
-    flex-wrap: nowrap;
     gap: 15px;
     margin-inline: 25%;
+    margin-top: 10px;
     justify-content: center;
     border-radius: 10px;
+    
 }
 
 .header-txt{
