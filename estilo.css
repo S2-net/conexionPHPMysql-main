@@ -11,13 +11,13 @@
     list-style: none;
 }
 
-.container{
+.container{ 
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .header{
-    background-image: url(http://localhost/conexionPHPMysql-main/images/resi4.jpeg);
+    background-image: url(http://localhost/proyecto/images/resi4.jpeg);
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: cover;
@@ -64,7 +64,6 @@
 
 .menu-icono{
     width: 25px;
-
 }
 
 .menu label{
@@ -81,13 +80,18 @@ nav a{
 }
 
 .content{
-    background-color: #004aad;
+    background-color: #004badab;
     display: flex;
     gap: 15px;
-    margin-inline: 25%;
-    margin-top: 10px;
+    margin-inline: 20%;
+    margin-top: 50px;
     justify-content: center;
     border-radius: 10px;
+    padding: 10px;
+}
+
+.content label{
+    color: #FFFDFC;
 }
 
 .header-txt{
@@ -95,12 +99,10 @@ nav a{
 }
 
 .header-txt h1{
-
     font-size: 39px;
     color: #FFFDFC;
     text-transform:uppercase;
     margin-top: 10px;
-    
 }
 
 .header-txt p{
@@ -118,7 +120,6 @@ nav a{
     font-size: 16px;
     text-transform: uppercase;
     font-weight: 600;
-
 }
 
 .btn-1:hover{
@@ -129,10 +130,96 @@ nav a{
 img{
     margin-bottom: 20px;
     width: 170px;
-    filter: drop-shadow(0 0 4px #FFFDFC);
-    
 }
 
 a{
     margin: 10px;
 }
+
+/* From Uiverse.io by Yaya12085 */ 
+.card {
+    max-width: 300px;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    border: 1px solid transparent;    
+  }
+  
+  .card a {
+    text-decoration: none
+  }
+  
+  .contenido {
+    padding: 1.1rem;
+  }
+  
+  .image {
+    object-fit: cover;
+    width: 100%;
+    height: 150px;
+    background-color:#004bad;
+  }
+  
+  .title {
+    color: #111827;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 600;
+  }
+  
+  .desc {
+    margin-top: 0.5rem;
+    color: #6B7280;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+  
+  .action {
+    display: inline-flex;
+    margin-top: 1rem;
+    color: #ffffff;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    align-items: center;
+    gap: 0.25rem;
+    background-color: #2563EB;
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+  
+  .action span {
+    transition: .3s ease;
+  }
+  
+  .action:hover span {
+    transform: translateX(4px);
+  }
+
+  .padre{
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 25px;
+    justify-content: center;
+    margin-top: 20px;
+  } 
+  
+  .nav-link::before{
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffffff;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out 0s;
+  }
+
+  .nav-link:hover:before{
+    visibility: visible;
+    width: 100%;
+  }
+  
+  

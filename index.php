@@ -4,35 +4,77 @@
     <?php require("header.php");
     ?>
 
-    <div class="content">
+<div class="padre">
+<div class="card">
+ <div class="image"></div>
+  <div class="contenido">
+    <a href="#">
+      <span class="title">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      </span>
+    </a>
 
-        <div class="tipo">
-            <label for="universidades">Universidades</label>
-            <select name="universidades" class="form-select form-select-lg mb-3" aria-label="Large select example">
-                <option selected>- Cualquiera -</option>
-                <option value="1">Cenur</option>
-                <option value="2">Udelar</option>
-              </select>
-        </div>
-        
-          <div class="tipo">
-            <label for="departamentos">Departamentos</label>
-            <select name="departamentos" class="form-select form-select-lg mb-3" aria-label="Large select example">
-                <option selected>- Cualquiera -</option>
-                <option value="1">Paysandú</option>
-              </select>
-          </div>
-          
-          <div class="tipo">
-            <label for="tipos">Tipos</label>
-            <select name="tipos" class="form-select form-select-lg mb-3" aria-label="Large select example">
-                <option selected>- Cualquiera -</option>
-                <option value="1">Mixtas</option>
-                <option value="2">Masculinas</option>
-                <option value="3">Femeninas</option>
-              </select>
-          </div>
-    </div>
+    <p class="desc">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
+      dolores, possimus pariatur animi temporibus nesciunt praesentium 
+    </p>
+
+    <a class="action" href="#">
+      Find out more
+      <span aria-hidden="true">
+        →
+      </span>
+    </a>
+  </div>
+</div>
+<div class="card">
+ <div class="image"></div>
+  <div class="contenido">
+    <a href="#">
+      <span class="title">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      </span>
+    </a>
+
+    <p class="desc">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
+      dolores, possimus pariatur animi temporibus nesciunt praesentium 
+    </p>
+
+    <a class="action" href="#">
+      Find out more
+      <span aria-hidden="true">
+        →
+      </span>
+    </a>
+  </div>
+</div>
+<div class="card">
+ <div class="image"></div>
+  <div class="contenido">
+    <a href="#">
+      <span class="title">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      </span>
+    </a>
+
+    <p class="desc">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
+      dolores, possimus pariatur animi temporibus nesciunt praesentium 
+    </p>
+
+    <a class="action" href="#">
+      Find out more
+      <span aria-hidden="true">
+        →
+      </span>
+    </a>
+  </div>
+</div>
+
+</div>
+
+
 
 
 

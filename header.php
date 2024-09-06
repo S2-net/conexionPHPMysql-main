@@ -22,10 +22,18 @@
         </label>
     
     <nav class="navbar">
+        
         <ul>
-            <li><a href="#">Iniciar Sesion</a></li>
-            <li><a href="#">Menu</a></li>
-            <li><a href="#">Inicio</a></li>
+            <li class="nav-link">
+                <a href="#">Iniciar Sesion</a>
+                
+            </li>
+            <li class="nav-link">
+                <a href="#">Menu</a>
+        </li>
+            <li class="nav-link">
+                <a href="#">Inicio</a>
+        </li>
         </ul>
     </nav>
 </div>
@@ -34,15 +42,37 @@
 
             <div class="header-txt">
                 <h1>Encuentra tu residencia ideal para el exito academico</h1>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                     Iusto expedita atque tenetur rerum, eum alias ipsam laborum
-                     labore at neque deserunt magnam eos voluptate incidunt iure
-                      nam eveniet est aspernatur.
-                </p>
-                <a href="#" class="btn-1">Informacion</a>
+             
             </div>
+            <div class="content">
 
+<div class="tipo">
+    <label for="universidades">Universidades</label>
+    <select name="universidades" class="form-select form-select-lg mb-3" aria-label="Large select example">
+        <option selected>- Cualquiera -</option>
+        <option value="1">Cenur</option>
+        <option value="2">Udelar</option>
+      </select>
+</div>
+
+  <div class="tipo">
+    <label for="departamentos">Departamentos</label>
+    <select name="departamentos" class="form-select form-select-lg mb-3" aria-label="Large select example">
+        <option selected>- Cualquiera -</option>
+        <option value="1">Paysandú</option>
+      </select>
+  </div>
+  
+  <div class="tipo">
+    <label for="tipos">Tipos</label>
+    <select name="tipos" class="form-select form-select-lg mb-3" aria-label="Large select example">
+        <option selected>- Cualquiera -</option>
+        <option value="1">Mixtas</option>
+        <option value="2">Masculinas</option>
+        <option value="3">Femeninas</option>
+      </select>
+  </div>
+</div>
         
     </div>
    </header> 
