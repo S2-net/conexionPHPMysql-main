@@ -22,7 +22,7 @@ try {
                 echo json_encode(['success' => true, 'message' => 'Login exitoso']);
                 
                 // Redirigir solo si el login es exitoso
-                header('Location: /index.php');
+                header('Location: index.php');
                 exit();
             } else {
                 echo json_encode(['success' => false, 'message' => 'Correo o contraseña incorrectos']);

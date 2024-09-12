@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 *{   
     font-size: 16px;
-    color: #333;
+  
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -232,6 +233,11 @@ a{
     height: 100vh;
 }
 
+.fuente{
+  font-family: 'Montserrat', sans-serif;
+
+}
+
 .containerIR{
   background-color: #004aad;
   border-radius: 30px;
@@ -241,6 +247,7 @@ a{
   width: 768px;
   max-width: 100%;
   min-height: 480px;
+  
 }
 
 .h1iniregi{
@@ -249,6 +256,8 @@ a{
 
 .containerIR h1{
   margin-bottom: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 32px;
 }
 
 
@@ -257,10 +266,14 @@ a{
   line-height: 20px;
   letter-spacing: 0.3px;
   margin: 20px 0;
+  font-family: 'Montserrat', sans-serif;
+
 }
 
 .containerIR span{
   font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+
 }
 
 .containerIR a{
@@ -268,6 +281,8 @@ a{
   font-size: 13px;
   text-decoration: none;
   margin: 15px 0 10px;
+  font-family: 'Montserrat', sans-serif;
+
 }
 
 .containerIR button{
@@ -282,12 +297,16 @@ a{
   text-transform: uppercase;
   margin-top: 10px;
   cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+
 }
 
 .containerIR button.hidden{
   background-color: transparent;
   border-color: #004aad;
   color: #004aad;
+  font-family: 'Montserrat', sans-serif;
+
 }
 
 .containerIR form{
@@ -298,6 +317,8 @@ a{
   flex-direction: column;
   padding: 0 40px;
   height: 100%;
+  font-family: 'Montserrat', sans-serif;
+
 }
 
 .containerIR input{
@@ -309,6 +330,8 @@ a{
   border-radius: 8px;
   width: 100%;
   outline: none;
+  font-family: 'Montserrat', sans-serif;
+
 }
 
 .containerIR select{
@@ -320,6 +343,8 @@ a{
   border-radius: 8px;
   width: 100%;
   outline: none;
+  font-family: 'Montserrat', sans-serif;
+
 }
 
 .form-containerIR{
@@ -327,16 +352,22 @@ a{
   top: 0;
   height: 100%;
   transition: all 0.6s ease-in-out;
+  font-family: 'Montserrat', sans-serif;
+
 }
 
 .sign-in{
   left: 0;
   width: 50%;
   z-index: 2;
+  font-family: 'Montserrat', sans-serif;
+
 }
 
 .containerIR.active .sign-in{
   transform: translateX(100%);
+  font-family: 'Montserrat', sans-serif;
+
 }
 
 .sign-up{
@@ -377,6 +408,8 @@ a{
   margin: 0 3px;
   width: 40px;
   height: 40px;
+  font-family: 'Montserrat', sans-serif;
+
 }
 
 .toggle-containerIR{
@@ -389,6 +422,8 @@ a{
   transition: all 0.6s ease-in-out;
   border-radius: 150px 0 0 100px;
   z-index: 1000;
+  font-family: 'Montserrat', sans-serif;
+
 }
 
 .toggle-containerIR img{
@@ -416,6 +451,8 @@ border-radius: 10%;
   width: 200%;
   transform: translateX(0);
   transition: all 0.6s ease-in-out;
+  font-family: 'Montserrat', sans-serif;
+
 }
 
 .containerIR.active .toggle{
@@ -435,6 +472,8 @@ border-radius: 10%;
   top: 0;
   transform: translateX(0);
   transition: all 0.6s ease-in-out;
+  font-family: 'Montserrat', sans-serif;
+
 }
 
 .toggle-left{

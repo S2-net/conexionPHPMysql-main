@@ -32,6 +32,8 @@ if (isset($_POST['register'])) {
 
         // Verificar si la consulta fue exitosa:no funciona arreglelo isma
         if ($resultado) {
+            header('Location: index.php');
+                exit();
             echo '<h3 class="ok">¡Te has inscrito correctamente!</h3>';
         } else {
             // Mostrar el error de MySQL si falla la consulta:no funciona arreglalo isma ahre

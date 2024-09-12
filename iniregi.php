@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="estilo.css">
     <title>Inicio de sesion | Registro</title>
 </head>
-
+<div class="fuente">
 <body class="iniregibody">
 
     <div class="containerIR" id="containerIR">
@@ -37,12 +37,13 @@
             <?php
 
           include("registrar.php")
+        
 
              ?>
           
         </div>
         <div class="form-containerIR sign-in">
-        <form method="post" action="iniciosesion.php">
+        <form method="post" action="http://localhost/conexionPHPMysql-main/">
     <div class="h1iniregi">
         <h1>Iniciar Sesión</h1>
     </div>
@@ -77,6 +78,7 @@
     </div>
 
     <script src="iniregi.js"></script>
+    
 </body>
-
+</div>
 </html>
