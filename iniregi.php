@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="http://localhost/pruebasrepay/images/ICONO.png" type="icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="iniregi.css">
+    <link rel="stylesheet" href="estilo.css">
     <title>Inicio de sesion | Registro</title>
 </head>
 
@@ -56,7 +56,7 @@
             <div class="toggle">
                 <div class="toggle-panel toggle-left">
 
-                    <img src="http://localhost/pruebasrepay/images/logosinfondohd1.png" alt="">
+                    <img src="http://localhost/conexionPHPMysql-main/images/logosinfondohd1.png" alt="">
 
                     <h1>Bienvenido!</h1>
                     <p>Ingrese sus datos personales para utilizar todas las funciones del sitio
@@ -65,9 +65,9 @@
                 </div>
                 <div class="toggle-panel toggle-right">
 
-                    <img src="http://localhost/pruebasrepay/images/logosinfondohd1.png" alt="">
+                    <img src="http://localhost/conexionPHPMysql-main/images/logosinfondohd1.png" alt="">
 
-                    <h1>Hola, amigo!</h1>
+                    <h1>Bienvenido!</h1>
                     <p>Regístrese con sus datos personales para utilizar todas las funciones del sitio
                     </p>
                     <button class="hidden" id="register">Registrate</button>

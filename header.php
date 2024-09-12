@@ -25,7 +25,7 @@
         
         <ul>
             <li class="nav-link">
-                <a href="#">Iniciar Sesion</a>
+                <a href="iniregi.php">Iniciar Sesion</a>
                 
             </li>
             <li class="nav-link">
