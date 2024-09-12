@@ -17,7 +17,7 @@
 }
 
 .header{
-    background-image: url(http://localhost/proyecto/images/resi4.jpeg);
+    background-image: url(http://localhost/conexionPHPMysql-main/images/resi4.jpeg);
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: cover;
@@ -136,7 +136,7 @@ a{
     margin: 10px;
 }
 
-/* From Uiverse.io by Yaya12085 */ 
+
 .card {
     max-width: 300px;
     border-radius: 0.5rem;
