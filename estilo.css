@@ -493,3 +493,9 @@ border-radius: 10%;
   transform: translateX(200%);
 }
 
+footer{
+  position: relative;
+  width: 100%;
+  background: #3586ff;
+  min-height: 100px;
+}
