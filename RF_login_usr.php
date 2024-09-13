@@ -31,7 +31,7 @@ function logear($con, $email, $pass) {
             
             //si todo es correcto inicio la sesion y redirijo a la pagina del usuario logueado
             $_SESSION["email"] = $email;
-            header("Location: home_usuario.php");
+            header("index.php");
             exit();
         } else {
             echo "Contraseña incorrecta";

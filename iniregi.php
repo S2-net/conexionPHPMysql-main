@@ -14,11 +14,11 @@
 
     <div class="containerIR" id="containerIR">
         <div class="form-containerIR sign-up">
-        <form method="post" action="">
+        <form method="post" action="registrar.php">
     <div class="h1iniregi">
         <h1>Crear Cuenta</h1>
     </div>
-    
+
     <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
     <input type="text" id="apellido" name="apellido" placeholder="Apellido" required>
     <input type="email" id="gmail" name="gmail" placeholder="Correo Electrónico" required>
@@ -26,9 +26,9 @@
     <input type="date" id="edad" name="edad" required>
     
     <select name="genero" id="genero">
-        <option value="male">Masculino</option>
-        <option value="female">Femenino</option>
-        <option value="other">Otro</option>
+        <option value="1">Masculino</option>
+        <option value="2">Femenino</option>
+        <option value="0">Otro</option>
     </select>
     
     <button type="submit" name="register">Crear Cuenta</button>
@@ -51,6 +51,12 @@
     <input type="password" name="contrasena" placeholder="Contraseña" required>
     <a href="#">Olvidaste tu contraseña?</a>
     <button type="submit" name="login">Iniciar Sesión</button>
+    <?php
+
+include("conexion.php")
+
+
+   ?>
 </form>
         </div>
         <div class="toggle-containerIR">
