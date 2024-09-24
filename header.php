@@ -45,6 +45,17 @@
         </li>
         </ul>
     </nav>
+
+    <nav id="sidebar">
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Noticias</a></li>
+            <li><a href="#">Contacto</a></li>
+            <li><a href="#">Diseños</a></li>
+            <li><a href="#para">Para que se usa</a></li>
+            <li><a href="#">Saber más</a></li>
+        </ul>
+
 </div>
 
     <div class="header-content container">
