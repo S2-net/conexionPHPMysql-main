@@ -12,6 +12,9 @@ if (isset($_POST['login'])) {
     // Obtener datos del formulario
     $correo = $_POST['correo'];
     $contrasenia = $_POST['contrasenia'];
+  
+
+
 
     // Consulta a la base de datos para verificar el usuario
     $query = "SELECT * FROM usuario WHERE correo = ? AND contrasenia = ?";
@@ -33,6 +36,7 @@ if (isset($_POST['login'])) {
         }
     } else {
         echo "<script>alert('Usuario o contraseña incorrectos');</script>";
+  
     }
     }
 
