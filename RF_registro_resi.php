@@ -7,26 +7,28 @@ $con = conectar_bd();
 // Comprobar que se envió un formulario por POST desde carga_datos
 if (isset($_POST["envio"])) {
 
-    $nombre =  $_POST["nro-habitaciones"];
-    $apellido = $_POST["apellido"];
-    $email = $_POST["email"];
-    $contrasenia = $_POST["pass"];
+    $nombreresi = $_POST["nombreresi"];
+    $nrohabitaciones =  $_POST["nro-habitaciones"];
+    $tiporesidencia = $_POST["tipo-residencia"];
+    $descripcion = $_POST["descripcion"];
+    $normas = $_POST["normas"];
+    $baños = $_POST["baños"];
    
     // Consultar si el usuario ya existe
-    $existe_usr = consultar_existe_usr($con, $email);
+    $existe_resi = consultar_existe_usr($con, $email);
 
     // Insertar datos si el usuario no existe
     insertar_datos($con, $nombre, $apellido, $email, $contrasenia, $existe_usr);
 
 }
 
-function consultar_existe_usr($con, $email) {
+function consultar_existe_usr($con, $nombreresi) {
 
-    $email = mysqli_real_escape_string($con, $email); // Escapar los campos para evitar inyección SQL
-    $consulta_existe_usr = "SELECT email FROM usuarios WHERE email = '$email'";
-    $resultado_existe_usr = mysqli_query($con, $consulta_existe_usr);
+    $nombreresi = mysqli_real_escape_string($con, $nombreresi); // Escapar los campos para evitar inyección SQL
+    $consulta_existe_resi = "SELECT nombreresi FROM residencia WHERE nombreresi = '$nombreresi'";
+    $resultado_existe_resi = mysqli_query($con, $consulta_existe_resi);
 
-    if (mysqli_num_rows($resultado_existe_usr) > 0) {
+    if (mysqli_num_rows($resultado_existe_resi) > 0) {
         return true;
     } else {
         return false;
