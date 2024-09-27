@@ -15,14 +15,14 @@ if (isset($_POST["envio"])) {
     $baños = $_POST["baños"];
    
     // Consultar si el usuario ya existe
-    $existe_resi = consultar_existe_usr($con, $email);
+    $existe_resi = consultar_existe_resi($con, $nombreresi);
 
     // Insertar datos si el usuario no existe
-    insertar_datos($con, $nombre, $apellido, $email, $contrasenia, $existe_usr);
+    insertar_datos($con, $nombreresi, $nrohabitaciones, $email, $contrasenia, $existe_usr);
 
 }
 
-function consultar_existe_usr($con, $nombreresi) {
+function consultar_existe_resi($con, $nombreresi) {
 
     $nombreresi = mysqli_real_escape_string($con, $nombreresi); // Escapar los campos para evitar inyección SQL
     $consulta_existe_resi = "SELECT nombreresi FROM residencia WHERE nombreresi = '$nombreresi'";
