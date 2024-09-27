@@ -619,9 +619,9 @@ footer .wave#wave4{
           background-color: #f8f9fa;
       }
 
-      .container {
+      .containerrr {
           max-width: 600px;
-          background-color: #ffffff;
+          background-color: #004aad;
           border-radius: 10px;
           box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
           padding: 30px;
@@ -632,17 +632,22 @@ footer .wave#wave4{
       }
 
       .btn-primary {
-          background-color: #007bff;
-          border-color: #007bff;
+        color: black;
+          background-color: white;
+          border-color: white;
           transition: background-color 0.3s ease;
       }
 
       .btn-primary:hover {
-          background-color: #0056b3;
-          border-color: #0056b3;
+          background-color: gray;
+          border-color: gray;
       }
 
       .form-label {
           font-weight: bold;
       }
-  
+
+      .padrino{
+        display: flex;
+        flex-direction: column;
+      }
