@@ -1,47 +1,3 @@
-<?php
-
-session_start();
-include("conexion.php"); // Asegúrate de que la ruta sea correcta
-
-// Verificar si la conexión fue exitosa
-if (!$con) {
-    die("Error en la conexión a la base de datos.");
-}
-
-if (isset($_POST['login'])) {
-    // Obtener datos del formulario
-    $correo = $_POST['correo'];
-    $contrasenia = $_POST['contrasenia'];
-  
-
-
-
-    // Consulta a la base de datos para verificar el usuario
-    $query = "SELECT * FROM usuario WHERE correo = ? AND contrasenia = ?";
-    $stmt = $con->prepare($query);
-    $stmt->bind_param("ss", $correo, $contrasenia);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    // Comprobar si se encontró el usuario
-    if ($result->num_rows > 0) {
-        $user = $result->fetch_assoc();
-        // Verificar la contraseña
-        if (password_verify($contrasenia, $user['contrasenia'])) {
-            // Contraseña correcta, redirigir
-            header('Location: index.php');
-            exit();
-        } else {
-            echo "<script>alert('Usuario o contraseña incorrectos');</script>";
-        }
-    } else {
-        echo "<script>alert('Usuario o contraseña incorrectos');</script>";
-  
-    }
-    }
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,7 +11,7 @@ if (isset($_POST['login'])) {
 <body class="iniregibody">
     <div class="containerIR" id="containerIR">
         <div class="form-containerIR sign-up">
-            <form method="post" action="registrar.php">
+        <form action="RF_registro_usr.php" method="POST">
                 <div class="h1iniregi">
                     <h1>Crear Cuenta</h1>
                 </div>
@@ -71,11 +27,12 @@ if (isset($_POST['login'])) {
                 </select>
                 <button type="submit" name="register">Crear Cuenta</button>
             </form>
-            <?php include("registrar.php"); ?>
+          
         </div>
 
         <div class="form-containerIR sign-in">
-            <form method="post" action="iniregi.php">
+        <form action="RF_login_usr.php" method="POST">
+
                 <div class="h1iniregi">
                     <h1>Iniciar Sesión</h1>
                 </div>
@@ -83,8 +40,12 @@ if (isset($_POST['login'])) {
                 <input type="password" name="contrasenia" placeholder="Contraseña" required>
                 <a href="#">Olvidaste tu contraseña?</a>
                 <button type="submit" name="login">Iniciar Sesión</button>
+                
             </form>
+           
         </div>
+    
+        
 
         <div class="toggle-containerIR">
             <div class="toggle">
@@ -105,5 +66,7 @@ if (isset($_POST['login'])) {
     </div>
 
     <script src="iniregi.js"></script>
+    <script src="app.js"></script>
+
 </body>
 </html>

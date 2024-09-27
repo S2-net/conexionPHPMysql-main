@@ -1,4 +1,4 @@
-<?php
+<!-- php 
 session_start();
 include("conexion.php"); // Incluir la conexión
 require 'iniregi.php'; // Asegúrate de que config.php contenga los detalles de conexión a tu base de datos

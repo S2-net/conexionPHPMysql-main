@@ -7,26 +7,27 @@ function conectar_bd(){
 $servidor = "localhost";
 $bd = "repay";
 $usuario = "root";
-$pass = "";
+$contrasenia = "";
 
 //definir la conexion usando las variables.
 
-$conn = mysqli_connect($servidor, $usuario, $pass, $bd);
+$conn = mysqli_connect($servidor, $usuario, $contrasenia, $bd);
 
 
-// Comprobar la conexión
+/// Comprobar la conexión
 if (!$conn) {
-    header('Location: index.php');
-            exit();
-        } else {
-            echo "<script>alert('Usuario o contraseña incorrectos');</script>";
-        }
+    die("Error de conexion " . mysqli_connect_error());
+}
 
-//devuelvo la conexion  
+else {
+    echo"conexion establecida";
+}
+    
+
 return $conn;
- 
 }
 
 
-$con= conectar_bd();
+
+$con = conectar_bd();
 
