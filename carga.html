@@ -11,9 +11,11 @@
 </head>
 <body>
     <div class="padrino">
+        <form action="RF_registro_usr.php" method="POST" id="registro_form">
+
         <div>
-            <label for="nombre" class="form-label">Nombre de la residencia</label>
-            <input type="text" name="nombre" id="nombre">
+            <label for="nombreresi" class="form-label">Nombre de la residencia</label>
+            <input type="text" name="nombreresi" id="nombreresi">
         </div>
         <div>
             <label for="tipo-residencia" class="form-label">Tipo de residencia</label>
@@ -59,6 +61,13 @@
             <input type="file" name="imagen" id="imagen" class="form-control" accept="image/*" required="">
         </div>
 
+        <input type="submit" value="Cargar" name="envio">
+        <input type="reset" value="Cancelar">
+        
+        
+        <script src="app.js"></script>
+        </form>
     </div>
+
 </body>
 </html>
