@@ -19,9 +19,7 @@ if (!$conn) {
     die("Error de conexion " . mysqli_connect_error());
 }
 
-else {
-    echo"conexion establecida";
-}
+
     
 
 return $conn;

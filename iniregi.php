@@ -19,7 +19,7 @@
                 <input type="text" id="apellido" name="apellido" placeholder="Apellido" required>
                 <input type="email" id="correo" name="correo" placeholder="Correo Electrónico" required>
                 <input type="password" id="contrasenia" name="contrasenia" placeholder="Contraseña" required minlength="8" maxlength="12">
-                <input type="date" id="edad" name="edad" required>
+                <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
                 <select name="genero" id="genero">
                     <option value="1">Masculino</option>
                     <option value="2">Femenino</option>
