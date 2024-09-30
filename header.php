@@ -34,14 +34,18 @@
         
         <ul>
             <li class="nav-link">
-                <a href="iniregi.php">Iniciar Sesion</a>
+                <a href="#">Inicio</a>
                 
             </li>
             <li class="nav-link">
                 <a href="#">Menu</a>
         </li>
             <li class="nav-link">
-                <a href="#">Inicio</a>
+                <a href="iniregi.php">Iniciar Sesión</a>
+        </li>
+        </li>
+            <li class="nav-link">
+                <a href="#">Ver perfil</a>
         </li>
         </ul>
     </nav>

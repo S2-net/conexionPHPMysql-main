@@ -14,11 +14,11 @@ if (isset($_POST["envio"])) {
     $normas = $_POST["normas"];
     $baños = $_POST["baños"];
    
-    // Consultar si el usuario ya existe
+    // Consultar si la residencia ya existe
     $existe_resi = consultar_existe_resi($con, $nombreresi);
 
-    // Insertar datos si el usuario no existe
-    insertar_datos($con, $nombreresi, $nrohabitaciones, $email, $contrasenia, $existe_usr);
+    // Insertar datos si la residencia no existe
+    insertar_datos($con, $nombreresi, $nrohabitaciones, $tiporesidencia, $descripcion, $normas, $datos, $existe_usr);
 
 }
 
@@ -35,7 +35,7 @@ function consultar_existe_resi($con, $nombreresi) {
     }
 }
 
-function insertar_datos($con, $nombre, $apellido, $email, $contrasenia, $existe_usr) {
+function insertar_datos($con, $nombreresi, $nrohabitaciones, $tiporesidencia, $descripcion, $normas, $datos, $existe_usr) {
 
     if ($existe_usr == false) {
         $nombreCompleto = $nombre . ' ' . $apellido;
