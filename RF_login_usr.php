@@ -2,7 +2,7 @@
 
 $con = conectar_bd();
 
-if (isset($_POST["envio"])) {
+if (isset($_POST["login"])) {
 
     $correo = $_POST["correo"];
     $contrasenia = $_POST["contrasenia"];
