@@ -39,10 +39,14 @@
             </li>
             <li class="nav-link">
                 <a href="#">Menu</a>
-            </li>
+        </li>
+        </li>
             <li class="nav-link">
-                <a href="iniregi.php">Iniciar Sesión</a>
-            </li>
+                <a href="perfil.php">Ver perfil</a>
+        </li>
+        </li>
+            <li class="nav-link">
+        </li>
         </ul>
     </nav>
     

@@ -1,0 +1,34 @@
+function consultar_existe_resi($con, $nombreresi) {
+
+    $nombreresi = mysqli_real_escape_string($con, $nombreresi); // Escapar los campos para evitar inyección SQL
+    $consulta_existe_resi = "SELECT nombreresi FROM residencia WHERE nombreresi = '$nombreresi'";
+    $resultado_existe_resi = mysqli_query($con, $consulta_existe_resi);
+
+    if (mysqli_num_rows($resultado_existe_resi) > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+$nrohabitaciones =  $_POST["disponibilidad"];
+
+function consultar_datos($con) {
+    $consulta = "SELECT * FROM residencia";
+    $resultado = mysqli_query($con, $consulta);
+
+    // Inicializo una variable para guardar los resultados
+    $salida = "";
+
+    // Si se encuentra algún registro de la consulta
+    if (mysqli_num_rows($resultado) > 0) {
+        // Mientras haya registros
+        while ($fila = mysqli_fetch_assoc($resultado)) {
+            $salida .= "id: " . $fila["id_user"] . " - Nombre: " . $fila["nombrecompleto"] . " - Email: " . $fila["email"] . "<br> <hr>";
+        }
+    } else {
+        $salida = "Sin datos";
+    }
+
+    return $salida;
+}
