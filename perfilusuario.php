@@ -25,7 +25,6 @@ $genero = htmlspecialchars($_SESSION['genero']);
                 <div class="avatar-perfil">
                     <img src="http://localhost/conexionPHPMysql-main/images/user.png" alt="">
                 </div>
-                
             </div>
         </div>
     </section>
@@ -59,11 +58,11 @@ $genero = htmlspecialchars($_SESSION['genero']);
   <h2>Eliminar Cuenta</h2>
 
   <form action="eliminar_regi.php" method="POST">
-  <input type="email" name="correo" placeholder="Introduce tu correo" required>
-  <input type="password" name="contrasenia" placeholder="Introduce tu contraseña" required>
-  <button type="submit">Eliminar cuenta</button>
-</form>
+    <input type="email" name="correo" placeholder="Introduce tu correo" required>
+    <input type="password" name="contrasenia" placeholder="Introduce tu contraseña" required>
+    <button type="submit">Eliminar cuenta</button>
+  </form>
 </div>
-    
+
 <script src="modal_borrar_cuenta.js"></script>
 </html>
