@@ -9,12 +9,13 @@ if (isset($_POST["envio"])) {
 
     $nombreresi = $_POST["nombreresi"];
     $normas = $_POST["normas"];
+    $precio = $_POST["precio"];
    
     // Consultar si la residencia ya existe
     $existe_resi = consultar_existe_resi($con, $nombreresi);
 
     // Insertar datos si la residencia no existe
-    insertar_datos($con, $nombreresi, $normas, $existe_resi);
+    insertar_datos($con, $precio, $nombreresi, $normas, $existe_resi);
 
 }
 
@@ -38,7 +39,7 @@ function consultar_datos($con) {
     if (mysqli_num_rows($resultado) > 0) {
         // Mientras haya registros
         while ($fila = mysqli_fetch_assoc($resultado)) {
-            $salida .= "id: " . $fila["id_residencia"] . " - Nombre: " . $fila["nombreresi"] . " - Normas: " . $fila["normas"] . "<br> <hr>";
+            $salida .= "id: " . $fila["id_residencia"] . " - Nombre: " . $fila["nombreresi"] . " - Normas: " . $fila["normas"] . " - Precio: " . $fila["precio"] . "<br> <hr>";
         }
     } else {
         $salida = "Sin datos";
@@ -47,11 +48,11 @@ function consultar_datos($con) {
     return $salida;
 }
 
-function insertar_datos($con, $nombreresi, $normas, $existe_resi) {
+function insertar_datos($con, $precio, $nombreresi, $normas, $existe_resi) {
 
     if ($existe_resi == false) {
 
-        $consulta_insertar = "INSERT INTO residencia (normas, nombreresi) VALUES ('$normas', '$nombreresi')";
+        $consulta_insertar = "INSERT INTO residencia (precio, normas, nombreresi) VALUES ('$precio', '$normas', '$nombreresi')";
 
         if (mysqli_query($con, $consulta_insertar)) {
             $salida = consultar_datos($con);

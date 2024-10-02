@@ -34,6 +34,10 @@
             <input type="text" id="normas" name="normas">
         </div>
         <div >
+            <label for="precio" class="form-label">Precio</label>
+            <input type="number" min="0" max="100000" step="1" id="precio" name="precio">
+        </div>
+        <div >
             <label for="nro-habitaciones" class="form-label">Número de habitaciones</label>
             <select name="nro-habitaciones" id="nro-habitaciones">
                 <option value="1">1</option>
