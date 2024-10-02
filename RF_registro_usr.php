@@ -50,7 +50,7 @@
             $consulta_insertar = "INSERT INTO usuario (nombre, apellido, correo, contrasenia, fecha_nacimiento, genero) VALUES ('$nombre', '$apellido', '$correo', '$contrasenia', '$fecha_nacimiento', '$genero')";
 
             if (mysqli_query($con, $consulta_insertar)) {
-                header("Location: index.php");
+                header("Location: iniregi.php");
                 exit();
             } else {
                 echo "Error: " . $consulta_insertar . "<br>" . mysqli_error($con);

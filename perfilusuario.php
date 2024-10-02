@@ -9,9 +9,9 @@
 <body>
     <section class="perfil-usuario">
         <div class="contendor-perfil">
-            <div class="portada-perfil" style=" background-image: url(/images/resi4.jpeg);" >
+            <div class="portada-perfil" style=" background-image: url(http://localhost/conexionPHPMysql-main/images/resi4.jpeg);" >
                 <div class="avatar-perfil">
-                    <img src="/images/user.png" alt="">
+                    <img src="http://localhost/conexionPHPMysql-main/images/user.png" alt="">
                 </div>
                 <div class="datos-perfil">
             
