@@ -42,7 +42,7 @@
         </li>
         </li>
             <li class="nav-link">
-                <a href="perfil-propietario.php">Ver perfil</a>
+                <a href="perfilusuario.php">Ver perfil</a>
         </li>
         </li>
             <li class="nav-link">
