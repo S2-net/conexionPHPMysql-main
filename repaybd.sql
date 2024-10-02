@@ -148,9 +148,9 @@ CREATE TABLE usuario (
   id_usuario int(11) NOT NULL,
   nombre varchar(30) DEFAULT NULL,
   apellido varchar(30) DEFAULT NULL,
-  contrasenia varchar(40) DEFAULT NULL,
+  contrasenia varchar(255) DEFAULT NULL,
   num_telefono int(11) DEFAULT NULL,
-  correo varchar(40) DEFAULT NULL,
+  correo varchar(255) DEFAULT NULL,
   genero enum('Hombre','Mujer','Otro') DEFAULT NULL,
   fecha_nacimiento date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
