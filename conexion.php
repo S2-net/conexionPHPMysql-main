@@ -6,7 +6,7 @@
 function conectar_bd(){
 
 $servidor = "localhost";
-$bd = "publicaciones";
+$bd = "repay";
 $usuario = "root";
 $pass = "";
 
