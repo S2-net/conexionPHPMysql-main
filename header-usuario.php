@@ -46,6 +46,7 @@
         </li>
         </li>
             <li class="nav-link">
+                <a href="index.php">Cerrar sesion</a>
         </li>
         </ul>
     </nav>

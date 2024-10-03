@@ -39,26 +39,13 @@
         </div>
         <div >
             <label for="disponibilidad" class="form-label">Número de habitaciones</label>
-            <select name="disponibilidad" id="disponibilidad">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="1">4</option>
-                <option value="2">5</option>
-                <option value="3">6</option>
-                <option value="3">7</option>
-                <option value="1">8</option>
-                <option value="2">9</option>
-                <option value="3">10</option>
-            </select>
+            <input type="number" id="disponibilidad" name="disponibilidad">
         </div>
         <div >
-            <label for="baños" class="form-label">Baños</label>
-            <select name="baños" id="baños">
-                <option value="1">Individual</option>
-                <option value="2">Compartido</option>
-                <option value="3">Separado Hombre/Mujeres</option>
-            </select>
+            <label for="banios" class="form-label">Baños</label>
+            <input type="number" min="0" max="50" step="1" id="banios" name="banios">
+            <label for="detalles" class="form-label">Detalle</label>
+            <input type="text" id="detalles" name="detalles">
         </div>
         <div>
             <label for="imagen" class="form-label">Cargar Imagenes</label>
