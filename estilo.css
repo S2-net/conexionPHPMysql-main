@@ -647,20 +647,6 @@ footer .wave#wave4{
           font-weight: bold;
       }
 
-      .padrino{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        background:  url(http://localhost/conexionPHPMysql-main/images/resi.jpg);
-        background-size:cover;
-        background-repeat: no-repeat;
-
-      }
-
-      
-
       .perfil-usuario .contenedor-perfil{
         display: block;
         position: relative;
@@ -698,16 +684,6 @@ footer .wave#wave4{
         box-shadow: 0 0 12px 2px rgba(0, 0, 0, .2);
       }
 
-      .nombreusu{
-        margin: 90px;
-        margin-top: 50px;
-      
-      }
-
-      .nombreusu h1{
-        font-size: 20px;
-      }
-
       .perfil-usuario img{
         width: 100%;
         height: 100%;
@@ -725,12 +701,14 @@ footer .wave#wave4{
   width: 150px;
   height: 40px;
   cursor: pointer;
-  display: flex;
   align-items: center;
   border: 1px solid #cc0000;
   background-color: #e50000;
   overflow: hidden;
-  margin: 90px;
+  margin: 0 auto; /* Centrar horizontalmente */  
+  justify-content: center;
+  display: flex;
+  flex-direction: column; 
   
 }
 
@@ -746,6 +724,7 @@ footer .wave#wave4{
   transform: translateX(1px);
   color: #fff;
   font-weight: 600;
+  
 }
 
 .button .button__icon {
@@ -811,7 +790,8 @@ footer .wave#wave4{
     margin-top: 50px;
     padding: 25px;
     border-radius: 10px;
-    box-shadow: 5px 5px 5px 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.85);
+
     gap: 15px;
 }
 
@@ -822,9 +802,33 @@ footer .wave#wave4{
 .datosresi{
   width: 20%;
   border-radius: 10px;
-  box-shadow: 5px 5px 5px 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.85);
   padding: 10px;
   text-align: left;
+  background-color: #004aad;
+  color: #FFF;
+  display: flex;
+  flex-direction: column; 
+}
+.boton_info{
+  margin-top: auto; /* Empuja el botón hacia la parte inferior */
+  justify-content: center;
+  display: flex;
+  flex-direction: column; 
+  transition: border-color 0.3s;
+}
+
+.boton_info button{
+ background-color: #ffffff;
+ border-radius: 3px;
+ border-color: white;
+ box-shadow: 0 5px 15px rgba(0, 0, 0, 0.85);
+ transition: border-color 0.3s;
+}
+.boton_info button:hover{
+  background-color:#033b85;
+  border-color: white;
+  color: #fff;
 }
 
 .card_resi{
@@ -832,13 +836,161 @@ footer .wave#wave4{
   border-radius: 10px;
   padding: 30px;
 background-color:#004aad ; 
-margin-top: 80px;
-margin-bottom: 89px;
+  
+
  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 input{
-  border-radius: 5px;
-  
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+  border-color:#04295a;
 }
 
+.padrino{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#004aad, transparent);
+  padding: 200px;
+}
+
+.card_alerta {
+  width: 250px;
+  display: flex;
+  padding: 16px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background-color: #1f1f1f;
+  border: 2px solid #1f1f1f;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+}
+
+.icon_alerta {
+  width: 48px;
+  height: 48px;
+  fill: #ff4757;
+  display: flex; /* Agregar esto */
+  justify-content: center; /* Asegurarse de que el contenido esté centrado */
+  align-items: center; /* Asegurarse de que el contenido esté centrado */
+  margin: auto; /* Asegura que el ícono esté centrado en el contenedor */
+
+}
+
+.card_alerta:hover .icon_alerta {
+  animation: bounce 0.5s;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.title_alerta {
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding: 16px 0;
+  color: #e0e0e0; /* Color del título */
+  text-align: center;
+  justify-content: center;
+}
+
+.message_alerta {
+  font-weight: bold;
+  font-size: 0.875rem;
+  color: #a0a0a0; /* Color del mensaje */
+  padding: 0 8px;
+}
+
+.buttons_alerta {
+  padding: 8px;
+  margin-top: 8px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cancel-button,
+.confirm-button {
+  padding: 8px 20px;
+  font-size: 0.875rem;
+  font-weight: medium;
+  border-radius: 9999px; /* Full rounding */
+  transition: all 0.3s;
+}
+
+.cancel-button {
+  background-color: #4a5568; /* Color de fondo del botón Cancelar */
+  color: #e2e8f0; /* Color del texto */
+  border: 2px solid #718096; /* Color del borde */
+  margin-bottom: 8px;
+  height: 40px;
+}
+
+.confirm-button {
+  background-color: #ff4757; /* Color de fondo del botón Confirmar */
+  color: white;
+  border: 2px solid #ff4757;
+  margin-left: 16px;
+  height: 40px;
+}
+
+.cancel-button:hover {
+  border-color: #4a5568;
+  background-color: #2d3748; /* Hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.confirm-button:hover {
+  background-color: transparent;
+  color: #ff4757;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.datosresi1{
+  margin: 75px;
+  width: 20%;
+  height: 65%;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.85);
+  padding: 10px;
+  background-color: #004aad;
+  color: #FFF;
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-between; /* Cambia a space-between */
+}
+
+.nombreusu{
+  margin: px;
+  margin-top: 50px;
+
+}
+
+.nombreusu h1{
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.datosresi1 button{
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}

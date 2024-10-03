@@ -46,8 +46,15 @@
 
     <div class="datosresi">
         <p>Nombre de la residencia: <?php echo $nombreresi; ?> </p>
-        <p>Numero de baños</p>
+        <p>Numero de baños:</p>
+        <p>Cantidad de Dormitorios:</p>
+        <p>Tipo:</p>
+        <p>Descripción:</p>
+        <div class="boton_info">
+      <button>Info Completa</button>
     </div>
+    </div>
+   
 
 
 

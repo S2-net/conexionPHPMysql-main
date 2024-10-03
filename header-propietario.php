@@ -37,9 +37,7 @@
                 <a href="index-propietario.php">Inicio</a>
                 
             </li>
-            <li class="nav-link">
-                <a href="#">Menu</a>
-        </li>
+          >
         </li>
             <li class="nav-link">
                 <a href="perfilusuario.php">Ver perfil</a>

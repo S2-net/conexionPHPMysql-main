@@ -28,7 +28,7 @@ $genero = htmlspecialchars($_SESSION['genero']);
             </div>
         </div>
     </section>
-    
+    <div class="datosresi1">
     <div class="nombreusu">
         <h1>Nombre de usuario: <?php echo $nombre; ?></h1>
         <br>
@@ -51,7 +51,7 @@ $genero = htmlspecialchars($_SESSION['genero']);
             </svg>
         </span>
     </button>
-    
+    </div>
 </body>
 <div id="modal1" class="modal">
   <span class="close" onclick="cerrarModal(1)">&times;</span>
