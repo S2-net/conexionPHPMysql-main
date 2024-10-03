@@ -21,7 +21,7 @@
       dolores, possimus pariatur animi temporibus nesciunt praesentium 
     </p>
 
-    <a class="action" href="#">
+    <a class="action" href="residencia.php">
       Find out more
       <span aria-hidden="true">
         →
@@ -43,7 +43,7 @@
       dolores, possimus pariatur animi temporibus nesciunt praesentium 
     </p>
 
-    <a class="action" href="#">
+    <a class="action" href="residencia.php">
       Find out more
       <span aria-hidden="true">
         →
@@ -65,7 +65,7 @@
       dolores, possimus pariatur animi temporibus nesciunt praesentium 
     </p>
 
-    <a class="action" href="#">
+    <a class="action" href="residencia.php">
       Find out more
       <span aria-hidden="true">
         →
