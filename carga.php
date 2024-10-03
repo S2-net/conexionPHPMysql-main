@@ -12,7 +12,7 @@
 <body>
     <div class="padrino">
         <form action="RF_registro_resi.php" method="POST" id="envio">
-
+        <div class="card_resi">
         <div>
             <label for="nombreresi" class="form-label">Nombre de la residencia</label>
             <input type="text" name="nombreresi" id="nombreresi">
@@ -44,6 +44,7 @@
         <div >
             <label for="banios" class="form-label">Baños</label>
             <input type="number" min="0" max="50" step="1" id="banios" name="banios">
+            <div>
             <label for="detalles" class="form-label">Detalle</label>
             <input type="text" id="detalles" name="detalles">
         </div>
@@ -51,7 +52,7 @@
             <label for="imagen" class="form-label">Cargar Imagenes</label>
             <input type="file" name="imagen" id="imagen" class="form-control" accept="image/*" >
         </div>
-
+        
         <input type="submit" value="Cargar" name="envio" id=envio>
         <input type="reset" value="Cancelar">
         </form>
@@ -59,6 +60,6 @@
         <script src="app.js"></script>
         
     </div>
-
+    </div>
 </body>
 </html>
