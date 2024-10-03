@@ -34,7 +34,7 @@
         
         <ul>
             <li class="nav-link">
-                <a href="#">Inicio</a>
+                <a href="index-usuario.php">Inicio</a>
                 
             </li>
             <li class="nav-link">
