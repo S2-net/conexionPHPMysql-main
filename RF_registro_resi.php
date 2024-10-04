@@ -10,6 +10,7 @@
         $nombreresi = $_POST["nombreresi"];
         $normas = $_POST["normas"];
         $precio = $_POST["precio"];
+        $descripcion =$_POST["descripcion"];
         $disponibilidad = $_POST["disponibilidad"];
         $banios = $_POST ["banios"];
         $detalles = $_POST["detalles"];
@@ -18,7 +19,7 @@
         $existe_resi = consultar_existe_resi($con, $nombreresi);
 
         // Insertar datos si la residencia no existe
-        insertar_datos($con, $precio, $nombreresi, $normas, $disponibilidad, $banios, $detalles, $existe_resi);
+        insertar_datos($con, $precio, $nombreresi, $normas, $descripcion, $disponibilidad, $banios, $detalles, $existe_resi);
 
     }
 
@@ -48,7 +49,7 @@
     
         if (mysqli_num_rows($resultado_residencia) > 0) {
             while (($fila = mysqli_fetch_assoc($resultado_residencia)) && ($filaa = mysqli_fetch_assoc($resultado_habitaciones))) {
-                $salida .= "id: " . $fila["id_residencia"] . " - Nombre: " . $fila["nombreresi"] . " - Normas: " . $fila["normas"] . " - Precio: " . $fila["precio"] . " - Numero de habitaciones: " . $filaa["disponibilidad"] . " - Cantidad de Baños: " . $filaa["banios"] . " - Detalle: " . $filaa["detalles"] ."<br> <hr>";
+                $salida .= "id: " . $fila["id_residencia"] . " - Nombre: " . $fila["nombreresi"] . " - Normas: " . $fila["normas"] . " - Precio: " . $fila["precio"] . " - Descripcion: " . $fila["descripcion"] . " - Numero de habitaciones: " . $filaa["disponibilidad"] . " - Cantidad de Baños: " . $filaa["banios"] . " - Detalle: " . $filaa["detalles"] ."<br> <hr>";
             }
         } else {
             $salida = "Sin datos";
@@ -62,7 +63,7 @@
     function insertar_datos($con, $precio, $nombreresi, $normas, $disponibilidad, $banios, $detalles, $existe_resi) {
         if ($existe_resi == false) {
             
-            $insertar_residencia = "INSERT INTO residencia (precio, normas, nombreresi) VALUES ('$precio', '$normas', '$nombreresi')";
+            $insertar_residencia = "INSERT INTO residencia (precio, normas, nombreresi, descripcion) VALUES ('$precio', '$normas', '$nombreresi', 'descripcion')";
             $insertar_habitaciones = "INSERT INTO habitaciones(disponibilidad, banios, detalles) VALUES ('$disponibilidad', '$banios', '$detalles')";
     
             if (mysqli_query($con, $insertar_habitaciones) && mysqli_query($con, $insertar_residencia)) {

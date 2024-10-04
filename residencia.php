@@ -3,11 +3,10 @@
     <?php 
     
     require("header-propietario.php");
+    require("conexion.php");
+    $con = conectar_bd();
 
-    session_start();
-
-    // Los datos del usuario están en la sesión
-    $nombreresi = htmlspecialchars($_SESSION['nombreresi']);;
+    
     ?>
      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
@@ -44,8 +43,15 @@
     </div>
 
 
+    <?php 
+		$sql="SELECT * from residencia";
+		$result=mysqli_query($con,$sql);
+
+		while($mostrar=mysqli_fetch_array($result)){
+		 ?>
+
     <div class="datosresi">
-        <p>Nombre de la residencia: <?php echo $nombreresi; ?> </p>
+        <p>Nombre de la residencia: <?php echo $mostrar['nombreresi'] ?> </p>
         <p>Numero de baños:</p>
         <p>Cantidad de Dormitorios:</p>
         <p>Tipo:</p>
@@ -54,8 +60,10 @@
       <button>Info Completa</button>
     </div>
     </div>
-   
 
+    <?php 
+	}
+	 ?>
 
 
 </div>

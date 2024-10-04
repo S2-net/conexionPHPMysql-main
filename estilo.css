@@ -785,22 +785,17 @@ footer .wave#wave4{
 
 .residencia{
     display: flex;
-    flex-wrap: nowrap;
-    margin-inline: 10%;
+    flex-direction: column;
+    margin-inline: 15%;
     margin-top: 50px;
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.85);
-
+    text-align: center;
     gap: 15px;
 }
 
-.tamanio{
-  width: 80%;
-}
-
 .datosresi{
-  width: 20%;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.85);
   padding: 10px;
