@@ -767,12 +767,20 @@ footer .wave#wave4{
   display: none; /* Oculta el modal por defecto */
   position: fixed;
   z-index: 1;
-  left: 0;
+margin-right: auto;
+margin-left: auto;
   top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
   background-color: rgba(0,0,0,0.4); /* Fondo semitransparente */
+  
+}
+.body_modal{
+  display: flex;
+  justify-content: center;
+  
+
 }
 
 .modal-content {
@@ -781,6 +789,8 @@ footer .wave#wave4{
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Ajusta según tus necesidades */
+  display: flex;
+  justify-content: center;
 }
 
 .residencia{
@@ -854,17 +864,17 @@ input{
 }
 
 .card_alerta {
-  width: 250px;
-  display: flex;
-  padding: 16px;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  background-color: #1f1f1f;
-  border: 2px solid #1f1f1f;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  border-radius: 12px;
+  width: 250px; /* Ancho fijo del div */
+    display: flex; /* Habilita Flexbox para el contenido interno */
+    padding: 16px; /* Espaciado interno */
+    align-items: center; /* Centra el contenido interno horizontalmente */
+    justify-content: center; /* Centra el contenido interno verticalmente */
+    background-color: #1f1f1f; /* Color de fondo del div */
+    border: 2px solid #1f1f1f; /* Borde del div */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra del div */
+    border-radius: 12px; /* Bordes redondeados */
 }
+
 
 .icon_alerta {
   width: 48px;

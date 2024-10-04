@@ -17,7 +17,10 @@ $genero = htmlspecialchars($_SESSION['genero']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de Usuario</title>
     <link rel="stylesheet" href="estilo.css">
-</head>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    </head>
 <body>
     <section class="perfil-usuario">
         <div class="contendor-perfil">
@@ -37,8 +40,8 @@ $genero = htmlspecialchars($_SESSION['genero']);
         <p>Género: <?php echo $genero; ?></p>
     </div>
 
-    <button class="button" type="button" onclick="abrirModal(1)">
-        <span class="button__text">Borrar Cuenta</span>
+    <button class="button" type="button" onclick="borrarCuenta()">
+        <span class="button__text" >Borrar Cuenta</span>
         <span class="button__icon">
             <svg class="svg" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg">
                 <title></title>
@@ -52,17 +55,9 @@ $genero = htmlspecialchars($_SESSION['genero']);
         </span>
     </button>
     </div>
+    <script src="alerta_cuenta.js"></script>
+
 </body>
-<div id="modal1" class="modal">
-  <span class="close" onclick="cerrarModal(1)">&times;</span>
-  <h2>Eliminar Cuenta</h2>
 
-  <form action="eliminar_regi.php" method="POST">
-    <input type="email" name="correo" placeholder="Introduce tu correo" required>
-    <input type="password" name="contrasenia" placeholder="Introduce tu contraseña" required>
-    <button type="submit">Eliminar cuenta</button>
-  </form>
-</div>
 
-<script src="modal_borrar_cuenta.js"></script>
 </html>
