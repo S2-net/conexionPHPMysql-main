@@ -22,13 +22,21 @@
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 100vh;
+    min-height: 70vh;
     align-items: center;
     justify-content: center;
     display: flex;
-   
-   
 }
+.header2{
+  background-image: url(http://localhost/conexionPHPMysql-main/images/resi4.jpeg);
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
 
 .menu{
     position: absolute;
@@ -509,7 +517,7 @@ border-radius: 10%;
 }
 
 .footer1{
-  margin-top: 30px;
+  margin-top: 200px;
   position: relative;
   width: 100%;
   background: #004aad;
@@ -855,15 +863,27 @@ margin-left: auto;
   padding: 30px;
 background-color:#004aad ; 
   justify-content: center;
- 
+ margin-top: 50px;
  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 input{
-  border-radius: 8px;
+  border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  border-style: none;
+  margin: 3px;
 
-  border-color:#04295a;
+}
+.card_resi h1{
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  color: #ffffff;
+  
+}
+select{
+  margin: 7px;
 }
 
 .padrino{

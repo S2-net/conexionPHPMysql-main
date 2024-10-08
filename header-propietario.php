@@ -37,21 +37,20 @@
                 <a href="index-propietario.php">Inicio</a>
                 
             </li>
-          >
+          
         </li>
             <li class="nav-link">
                 <a href="perfilusuario.php">Ver perfil</a>
         </li>
         </li>
             <li class="nav-link">
-                <a href="carga.php">Cargar Residencia</a>
+                <a href="body-carga.php">Cargar Residencia</a>
         </li>
         <li class="nav-link">
                 <a href="index.php">Cerrar Sesion</a>
         </li>
         </ul>
     </nav>
-    
  
 </div>
 
