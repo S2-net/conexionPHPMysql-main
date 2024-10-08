@@ -12,46 +12,52 @@
 </head>
 
 <body>
-   <header class="header">
+<header class="header">
 
-    <div class="menu container">
-        <img src="http://localhost/conexionPHPMysql-main/images/logoblahd.png" alt="">
-     
-        <input type="checkbox" id="menu">
-        <label for="menu">
-            <img src="resi.jpg" class="menu-icono">
+<div class="menu container">
+    <img src="http://localhost/conexionPHPMysql-main/images/logoblahd.png" alt="">
+ 
+    <input type="checkbox" id="menu">
+    <label for="menu">
+        <img src="resi.jpg" class="menu-icono">
+    </label>
+    <div class="wrapper">
+        <input type="checkbox" id="btn" hidden>
+        <label for="btn" class="menu-btn">
+        <i class="fas fa-bars"></i>
+        <i class="fas fa-times"></i>
+
         </label>
-        <div class="wrapper">
-            <input type="checkbox" id="btn" hidden>
-            <label for="btn" class="menu-btn">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-times"></i>
-
-            </label>
-        </div>
-    
-    <nav class="navbar">
-        
-        <ul>
-            <li class="nav-link">
-                <a href="#">Inicio</a>
-                
-            </li>
-            <li class="nav-link">
-                <a href="#">Menu</a>
-            </li>
-            <li class="nav-link">
-                <a href="iniregi.php">Iniciar Sesión</a>
-            </li>
-        </ul>
-    </nav> 
-   
     </div>
 
+<nav class="navbar">
+    
+    <ul>
+        <li class="nav-link">
+            <a href="index-propietario.php">Inicio</a>
+            
+        </li>
+      >
+    </li>
+        <li class="nav-link">
+            <a href="perfilusuario.php">Ver perfil</a>
+    </li>
+    </li>
+        <li class="nav-link">
+            <a href="carga.php">Cargar Residencia</a>
+    </li>
+    <li class="nav-link">
+            <a href="index.php">Cerrar Sesion</a>
+    </li>
+    </ul>
+</nav>
+
+
+</div>
+</header>
     
     
 </body>
 
  
-</div>
-</header>
+
