@@ -94,6 +94,13 @@ nav a{
     padding: 10px;
 }
 
+@media(max-width:1050px){
+
+  .content{
+     flex-direction: column;
+  }
+}
+
 .content label{
     color: #FFFDFC;
 }
