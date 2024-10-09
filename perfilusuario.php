@@ -19,10 +19,7 @@ require("datos_perfil.php");
             <div class="portada-perfil" style="background-image: url(http://localhost/conexionPHPMysql-main/images/resi4.jpeg);">
                 <div class="avatar-perfil">
                     <img src="http://localhost/conexionPHPMysql-main/images/user.png" alt="">
-                    <a href="#"class="cambiar-foto">
-                        <i class="icono-perfil fas fa-camera"></i>
-                        <span>Cambiar foto</span>
-                    </a>
+                 
                 </div>
             </div>
         </div>
