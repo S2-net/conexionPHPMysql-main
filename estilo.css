@@ -156,7 +156,6 @@ img{
 }
 
 a{
-    margin: 10px;
    
 }
 
@@ -714,7 +713,6 @@ footer .wave#wave4{
       .perfil-usuario .avatar-perfil{
         display: block;
         width: 200px;
-        height: 200px;
         background-color: #d4d5db;
         position: absolute;
         bottom: -50px;
@@ -733,6 +731,7 @@ footer .wave#wave4{
       .perfil-usuario{
         width: 100%;
         background: linear-gradient(#004aad, transparent);
+        position: relative;
       }
 
       /* From Uiverse.io by sihamjardi */ 
@@ -1047,6 +1046,30 @@ select{
 .nombreusu h1{
   font-size: 20px;
   margin-top: 10px;
+}
+.perfil-usuario .cambiar-foto{
+  position: absolute;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, .5);
+  height: 57%;
+  bottom: 0;
+  left: 0;
+  color: #FFF;
+  text-decoration: none;
+  transform: translateY(0);
+  opacity: 0;
+  transition: all ease-in-out 200ms;
+}
+.perfil-usuario .cambiar-foto i{
+
+}
+.perfil-usuario .avatar-perfil:hover .cambiar-foto{
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .datosresi1 button{
