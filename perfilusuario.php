@@ -29,7 +29,11 @@ require("datos_perfil.php");
         <br>
         <p>Correo: <?php echo $correo; ?></p>
         <br>
+        <p>Contraseña: <button type="button" onclick="abrirModal()">Cambiar Contraseña</button></p>
+        <br>
         <p>Género: <?php echo $genero; ?></p>
+        <br>
+        <p>Fecha de Nacimiento: <?php echo $fecha_nacimiento; ?></p>
     </div>
 
     <button class="button" type="button" onclick="borrarCuenta()">
@@ -47,7 +51,32 @@ require("datos_perfil.php");
         </span>
     </button>
     </div>
-    <script src="alerta_cuenta.js"></script>
+
+    <section class="cambiar-contrasena" >
+       <!-- Modal para cambiar la contraseña -->
+<div id="contrasenaModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarModal(1)">&times;</span>
+        <h1>Cambiar Contraseña</h1>
+        <form action="cambiar_contrasena.php" method="POST">
+            <label for="contrasena_actual">Contraseña Actual:</label>
+            <input type="password" id="contrasena_actual" name="contrasena_actual" required>
+            <br>
+            <label for="nueva_contrasena">Nueva Contraseña:</label>
+            <input type="password" id="nueva_contrasena" name="nueva_contrasena" required minlength="8">
+            <br>
+            <label for="confirmar_contrasena">Confirmar Nueva Contraseña:</label>
+            <input type="password" id="confirmar_contrasena" name="confirmar_contrasena" required minlength="8">
+            <br>
+            <button type="submit" name="cambiar_contrasena">Cambiar Contraseña</button>
+        </form>
+    </div>
+</div>
+    </section>
+
+<script src="alerta_cuenta.js"></script>
+<script src="modal_cambiar_contrasena.js"></script>
+
 
 </body>
 
