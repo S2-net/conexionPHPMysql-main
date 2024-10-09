@@ -1,13 +1,5 @@
 <?php
-session_start();
-
-// Verificar que el usuario ha iniciado sesión
-
-
-// Los datos del usuario están en la sesión
-$nombre = htmlspecialchars($_SESSION['nombre']);
-$correo = htmlspecialchars($_SESSION['correo']);
-$genero = htmlspecialchars($_SESSION['genero']);
+require("datos_perfil.php"); 
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +25,7 @@ $genero = htmlspecialchars($_SESSION['genero']);
     </section>
     <div class="datosresi1">
     <div class="nombreusu">
-        <h1>Nombre de usuario: <?php echo $nombre; ?></h1>
+        <h1>Nombre de usuario: <?php echo $nombre . ' ' . $apellido; ?></h1>
         <br>
         <p>Correo: <?php echo $correo; ?></p>
         <br>
