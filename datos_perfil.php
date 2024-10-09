@@ -6,7 +6,7 @@ include 'conexion.php';
 
 // Verificar si el usuario ha iniciado sesión
 if (!isset($_SESSION['correo'])) {
-    header("Location: login.php");
+    header("Location: iniregi.php");
     exit();
 }
 
@@ -16,8 +16,8 @@ $con = conectar_bd();
 // Obtener el correo del usuario desde la sesión
 $correo = $_SESSION['correo'];
 
-// Consulta para obtener el nombre, apellido y género en base al correo
-$sql = "SELECT nombre, apellido, genero FROM usuario WHERE correo = ?";
+// Consulta para obtener nombre, apellido, género y fecha de nacimiento en base al correo
+$sql = "SELECT nombre, apellido, genero, fecha_nacimiento FROM usuario WHERE correo = ?";
 $stmt = $con->prepare($sql);
 $stmt->bind_param("s", $correo);
 $stmt->execute();
@@ -29,6 +29,7 @@ if ($resultado->num_rows > 0) {
     $nombre = htmlspecialchars($fila['nombre']);
     $apellido = htmlspecialchars($fila['apellido']);
     $genero = htmlspecialchars($fila['genero']);
+    $fecha_nacimiento = htmlspecialchars($fila['fecha_nacimiento']);
 } else {
     echo "No se encontraron datos para el usuario.";
 }
