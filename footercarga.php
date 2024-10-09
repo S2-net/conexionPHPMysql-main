@@ -11,7 +11,7 @@
 
     </head>
     <body>
-    <footer class="footer1">
+    <footer class="footer2">
         <div class="waves">
             <div class="wave" id="wave1"></div>
             <div class="wave" id="wave2"></div>
@@ -19,21 +19,21 @@
             <div class="wave" id="wave4"></div>
         </div>
         <ul class="social-icon">
-            <li><a href="#" style="font-size: 20px;"><ion-icon name="logo-instagram"></ion-icon>repay.uy</a></li>
+        <li><a href="#" style="font-size: 20px;"><ion-icon name="logo-instagram"></ion-icon>repay.uy</a></li>
          
             
 
-        </ul>
-        <ul class="menu2">
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">|</a></li>
-            <li><a href="#">Acerca de</a></li>
-            <li><a href="#">|</a></li>
-            <li><a href="#">Residencias</a></li>
-            <li><a href="#">|</a></li>
-            <li><a href="#">Contacto</a></li>
-            
-        </ul>
+         </ul>
+         <ul class="menu2">
+             <li><a href="#">Inicio</a></li>
+             <li><a href="#">|</a></li>
+             <li><a href="#">Acerca de</a></li>
+             <li><a href="#">|</a></li>
+             <li><a href="#">Residencias</a></li>
+             <li><a href="#">|</a></li>
+             <li><a href="#">Contacto</a></li>
+             
+         </ul>
         <p>©2024 Residencias Estudiantiles | Todos los derechos reservados</p>
     </footer>
 
