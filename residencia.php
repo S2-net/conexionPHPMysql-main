@@ -42,38 +42,58 @@
 </div>
     </div>
 
-
     <?php 
-		$sql="SELECT * from residencia";
-		$result=mysqli_query($con,$sql);
+        // Función para consultar y mostrar los datos de residencia y habitaciones
+        function consultar_datos($con) {
+          $consulta_residencia = "SELECT * FROM residencia";
+          $consulta_habitaciones = "SELECT * FROM habitaciones";
+          
+          $resultado_residencia = mysqli_query($con, $consulta_residencia);
+          $resultado_habitaciones = mysqli_query($con, $consulta_habitaciones);
 
-		while($mostrar=mysqli_fetch_array($result)){
-		 ?>
+            // Verificar que la consulta fue exitosa
+            if ($resultado_residencia === false) {
+              echo "Error en la consulta: " . mysqli_error($con);
+              return;
+          }
 
-    <div class="datosresi">
-        <p>Nombre de la residencia: <?php echo $mostrar['nombreresi'] ?> </p>
-        <p>Numero de baños:</p>
-        <p>Cantidad de Dormitorios:</p>
-        <p>Tipo:</p>
-        <p>Descripción:</p>
-        <div class="boton_info">
-      <button>Info Completa</button>
+            // Verificar si hay registros
+            if (mysqli_num_rows($resultado_residencia) && (mysqli_num_rows($resultado_habitaciones)) > 0) {
+              while (($resultado = mysqli_fetch_assoc($resultado_residencia)) && ($resultadoo = mysqli_fetch_assoc($resultado_habitaciones))) {
+        ?>
+
+<h1 class="precio">$<?php echo $resultado['precio']; ?></h1>
+
+                    <div class="datosresi">
+                        <p>Nombre de la residencia: <?php echo $resultado['nombreresi']; ?> </p>
+                        <p>Numero de baños: <?php echo $resultadoo['banios']; ?></p>
+                        <p>Cantidad de Dormitorios: <?php echo $resultadoo['disponibilidad']; ?></p>
+                        <p>Tipo: <?php echo $resultadoo['detalles']; ?></p>
+                        <p>Descripción: <?php echo $resultado['descripcion']; ?></p>
+                        <div class="boton_info">
+                            <button>Info Completa</button>
+                        </div>
+                    </div>
+        <?php
+                }
+            } else {
+                echo "No se encontraron datos de residencia.";
+            }
+        }
+
+        // Llamada a la función para mostrar los datos
+        consultar_datos($con);
+
+        // Cerrar la conexión
+        mysqli_close($con);
+        ?>
     </div>
-    </div>
 
-    <?php 
-	}
-	 ?>
-
-
-</div>
-
-
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
-  <?php
+<?php
     require("footer.php");
-   ?>
+?>
 </html>

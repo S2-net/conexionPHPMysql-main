@@ -47,7 +47,7 @@
     
         $salida = "";
     
-        if (mysqli_num_rows($resultado_residencia) > 0) {
+        if (mysqli_num_rows($resultado_residencia) && (mysqli_num_rows($resultado_habitaciones)) > 0) {
             while (($fila = mysqli_fetch_assoc($resultado_residencia)) && ($filaa = mysqli_fetch_assoc($resultado_habitaciones))) {
                 $salida .= "id: " . $fila["id_residencia"] . " - Nombre: " . $fila["nombreresi"] . " - Normas: " . $fila["normas"] . " - Precio: " . $fila["precio"] . " - Descripcion: " . $fila["descripcion"] . " - Numero de habitaciones: " . $filaa["disponibilidad"] . " - Cantidad de Baños: " . $filaa["banios"] . " - Detalle: " . $filaa["detalles"] ."<br> <hr>";
             }
@@ -60,10 +60,10 @@
     
         
 
-    function insertar_datos($con, $precio, $nombreresi, $normas, $disponibilidad, $banios, $detalles, $existe_resi) {
+    function insertar_datos($con, $precio, $nombreresi, $normas, $descripcion, $disponibilidad, $banios, $detalles, $existe_resi) {
         if ($existe_resi == false) {
             
-            $insertar_residencia = "INSERT INTO residencia (precio, normas, nombreresi, descripcion) VALUES ('$precio', '$normas', '$nombreresi', 'descripcion')";
+            $insertar_residencia = "INSERT INTO residencia (precio, normas, nombreresi, descripcion) VALUES ('$precio', '$normas', '$nombreresi', '$descripcion')";
             $insertar_habitaciones = "INSERT INTO habitaciones(disponibilidad, banios, detalles) VALUES ('$disponibilidad', '$banios', '$detalles')";
     
             if (mysqli_query($con, $insertar_habitaciones) && mysqli_query($con, $insertar_residencia)) {
