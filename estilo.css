@@ -126,6 +126,13 @@ nav a{
     margin-top: 10px;
 }
 
+@media(max-width:1050px){
+
+  .header-txt h1{
+     font-size: 25px;
+  }
+}
+
 .header-txt p{
     color: #BEBEBE;
     font-size: 16px;

@@ -68,6 +68,7 @@
                         <p>Nombre de la residencia: <?php echo $resultado['nombreresi']; ?> </p>
                         <p>Numero de baños: <?php echo $resultadoo['banios']; ?></p>
                         <p>Cantidad de Dormitorios: <?php echo $resultadoo['disponibilidad']; ?></p>
+                        <p>Normas de convivencia: <?php echo $resultado['normas']; ?> </p>
                         <p>Tipo: <?php echo $resultadoo['detalles']; ?></p>
                         <p>Descripción: <?php echo $resultado['descripcion']; ?></p>
                         <div class="boton_info">
