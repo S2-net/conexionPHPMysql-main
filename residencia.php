@@ -47,6 +47,16 @@
         function consultar_datos($con) {
           $consulta_residencia = "SELECT * FROM residencia";
           $consulta_habitaciones = "SELECT * FROM habitaciones";
+
+          function consultar_id_residencia($con){
+
+            $consulta= "SELECT id_habitacion 
+                        FROM residencia R , habitacion H
+                        WHERE H.id_residencia= R.id_residencia ";
+        }    
+
+
+$codigo_residencia= consultar_id_residencia();
           
           $resultado_residencia = mysqli_query($con, $consulta_residencia);
           $resultado_habitaciones = mysqli_query($con, $consulta_habitaciones);

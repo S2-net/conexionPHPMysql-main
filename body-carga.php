@@ -9,7 +9,8 @@
 <?php require("header-carga.php");
     ?>
 
-   
+   <br>
+   <br>
         <form action="RF_registro_resi.php" method="POST" id="envio">
 
         <div class="card_resi">
