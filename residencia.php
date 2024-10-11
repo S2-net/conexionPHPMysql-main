@@ -45,8 +45,7 @@
     <?php 
         // Función para consultar y mostrar los datos de residencia y habitaciones
         function consultar_datos($con) {
-          $consulta_residencia = "SELECT * FROM residencia";
-          $consulta_habitaciones = "SELECT * FROM habitaciones";
+          $consulta_residencia = "SELECT * FROM residencia R , habitacion H WHERE H.id_residencia= R.id_residencia";
 
           function consultar_id_residencia($con){
 
@@ -56,30 +55,28 @@
         }    
 
 
-$codigo_residencia= consultar_id_residencia();
+        $codigo_residencia= consultar_id_residencia();
           
-          $resultado_residencia = mysqli_query($con, $consulta_residencia);
-          $resultado_habitaciones = mysqli_query($con, $consulta_habitaciones);
-
+          $resultado = mysqli_query($con, $consulta_residencia);
             // Verificar que la consulta fue exitosa
-            if ($resultado_residencia === false) {
+            if ($resultado === false) {
               echo "Error en la consulta: " . mysqli_error($con);
               return;
           }
 
             // Verificar si hay registros
-            if (mysqli_num_rows($resultado_residencia) && (mysqli_num_rows($resultado_habitaciones)) > 0) {
-              while (($resultado = mysqli_fetch_assoc($resultado_residencia)) && ($resultadoo = mysqli_fetch_assoc($resultado_habitaciones))) {
+            if (mysqli_num_rows($resultado)  > 0) {
+              while (($resultado = mysqli_fetch_assoc($resultado)))  {
         ?>
 
 <h1 class="precio">$<?php echo $resultado['precio']; ?></h1>
 
                     <div class="datosresi">
                         <p>Nombre de la residencia: <?php echo $resultado['nombreresi']; ?> </p>
-                        <p>Numero de baños: <?php echo $resultadoo['banios']; ?></p>
-                        <p>Cantidad de Dormitorios: <?php echo $resultadoo['disponibilidad']; ?></p>
+                        <p>Numero de baños: <?php echo $resultado['banios']; ?></p>
+                        <p>Cantidad de Dormitorios: <?php echo $resultado['disponibilidad']; ?></p>
                         <p>Normas de convivencia: <?php echo $resultado['normas']; ?> </p>
-                        <p>Tipo: <?php echo $resultadoo['detalles']; ?></p>
+                        <p>Tipo: <?php echo $resultado['detalles']; ?></p>
                         <p>Descripción: <?php echo $resultado['descripcion']; ?></p>
                         <div class="boton_info">
                             <button>Info Completa</button>

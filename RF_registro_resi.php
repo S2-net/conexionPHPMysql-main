@@ -32,7 +32,6 @@
     }
 
     
-        
 
     function insertar_residencia($con, $precio, $nombreresi, $normas, $descripcion, $existe_resi) {
         if ($existe_resi == false) {
