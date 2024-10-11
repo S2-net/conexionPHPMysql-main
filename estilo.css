@@ -41,23 +41,16 @@
 
 
 .menu{
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 1000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
 }
 
-.logo{
-    color:#FFFDFC ;
-    font-size: 25px;
-    font-weight: 800;
-    text-decoration: none;
-    justify-content: start;
-}
 
 .menu .navbar ul li{
     position: relative;
@@ -66,18 +59,8 @@
 
 .menu .navbar ul li{
     font-size: 18px;
-    padding: 20px;
-    color: #FFFDFC;
-    display: block;
-    font-weight: 600;
-}
-
-#menu{
-    display: none;
-}
-
-.menu-icono{
-    width: 25px;
+    padding: 20px 50px;
+    
 }
 
 .menu label{
@@ -85,12 +68,19 @@
     display: none;
 }
 
+nav{
+  height: 160px;
+  width: 100%;
+}
+
+nav ul{
+  float: right;
+  margin: 0px;
+}
+
 nav a{
     text-decoration: none;
     color: #FFFDFC;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
 }
 
 .content{
