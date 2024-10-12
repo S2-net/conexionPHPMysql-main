@@ -42,32 +42,7 @@
 </div>
     </div>
 
-    <?php 
-        // Función para consultar y mostrar los datos de residencia y habitaciones
-        function consultar_datos($con) {
-          $consulta_residencia = "SELECT * FROM residencia R , habitacion H WHERE H.id_residencia= R.id_residencia";
-
-          function consultar_id_residencia($con){
-
-            $consulta= "SELECT id_habitacion 
-                        FROM residencia R , habitacion H
-                        WHERE H.id_residencia= R.id_residencia ";
-        }    
-
-
-        $codigo_residencia= consultar_id_residencia();
-          
-          $resultado = mysqli_query($con, $consulta_residencia);
-            // Verificar que la consulta fue exitosa
-            if ($resultado === false) {
-              echo "Error en la consulta: " . mysqli_error($con);
-              return;
-          }
-
-            // Verificar si hay registros
-            if (mysqli_num_rows($resultado)  > 0) {
-              while (($resultado = mysqli_fetch_assoc($resultado)))  {
-        ?>
+   
 
 <h1 class="precio">$<?php echo $resultado['precio']; ?></h1>
 
@@ -82,19 +57,7 @@
                             <button>Info Completa</button>
                         </div>
                     </div>
-        <?php
-                }
-            } else {
-                echo "No se encontraron datos de residencia.";
-            }
-        }
-
-        // Llamada a la función para mostrar los datos
-        consultar_datos($con);
-
-        // Cerrar la conexión
-        mysqli_close($con);
-        ?>
+      
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
