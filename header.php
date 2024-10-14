@@ -14,18 +14,16 @@
 <body>
    <header class="header">
 
-    <div class="menu">
-    
-        <nav class="navbar">
-
-        <input type="checkbox" id="check">
-        <label for="check" class="checkbtn">
-            <i class="fa-solid fa-list-ul"></i>
-        </label>
-
-        <a href="#">
+    <div class="menu container">
+    <a href="#">
             <img src="http://localhost/conexionPHPMysql-main/images/logoblahd.png" alt="" class="logo">
         </a>
+        <input type="checkbox" id="menu">
+        <label for="menu">
+      <img src="http://localhost/conexionPHPMysql-main/images/menu.png" class="menu-icono" alt="">
+        </label>
+        <nav class="navbar">
+       
 
             <ul>
               <li class="nav-link">
@@ -39,7 +37,6 @@
               </li>
             </ul>
         </nav>  
-        <section></section>
  
     </div>
 
