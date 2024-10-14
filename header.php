@@ -35,6 +35,9 @@
               <li class="nav-link">
                 <a href="iniregi.php">Iniciar Sesión</a>
               </li>
+              <li class="nav-link">
+                <a href="contacto.php">Contactanos</a>
+              </li>
             </ul>
         </nav>  
  

@@ -232,14 +232,18 @@ gap: 15px;
 }
 
 nav{
- 
-  height: 220px;
+
+}
+.navbar{
+  display: flex;
+  height: 300px;
+
 }
 
 nav ul{
   float: left;
   margin: 0px;
-  margin-bottom: 90px;
+  margin-bottom: 180px;
 }
 
 nav a{
@@ -248,6 +252,13 @@ nav a{
 }
 
 @media(max-width:991px){
+
+  .header{
+    display: flex;
+      justify-content: center;
+      margin-bottom: 50px;
+  }
+
   .menu {
     padding: 30px;
   }
@@ -260,7 +271,7 @@ nav a{
   }
   .menu .navbar{
     position: absolute;
-    top: 100%;
+    top: 75%;
     left: 0;
     right: 0;
     background-color: #1B293A;
@@ -276,7 +287,7 @@ nav a{
   }
 
   .header{
-    min-height: 0vh;
+  
 
   }
   .header-content{
@@ -291,6 +302,13 @@ nav a{
   .header-txt p{
     padding: 0;
   }
+  .content{
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 100px;
+ }
+
+ 
 }
 
 
@@ -307,9 +325,7 @@ nav a{
 
 @media(max-width:1050px){
 
-  .content{
-     flex-direction: column;
-  }
+ 
 }
 
 .content label{

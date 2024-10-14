@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -30,10 +30,13 @@
                 <a href="#">Inicio</a>   
               </li>
               <li class="nav-link">
-                <a href="#">Menu</a>
+                <a href="perfil-propietario.php">Ver perfil</a>   
               </li>
               <li class="nav-link">
-                <a href="iniregi.php">Cerrar Sesión</a>
+                <a href="index.php">Cerrar Sesión</a>
+              </li>
+              <li class="nav-link">
+                <a href="contacto.php">Contactanos</a>   
               </li>
             </ul>
         </nav>  
