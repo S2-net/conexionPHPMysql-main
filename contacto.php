@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="estilo.css">
+    <script src="https://kit.fontawesome.com/b408879b64.js" crossorigin="anonymous"></script>
+
 </head>
 <body class="body2">
     <div class="container2">
@@ -37,7 +39,7 @@
             <div class="input-box">
                 <textarea cols="30" rows="10" placeholder="Escribe tu mensaje"></textarea>
             </div>
-                <button type="submit">Envir mensaje</button>
+                <button type="submit">Enviar mensaje</button>
         </form>
     </div>
 
