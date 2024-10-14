@@ -27,7 +27,7 @@
          <ul class="menu2">
              <li><a href="#">Inicio</a></li>
              <li><a href="#">|</a></li>
-             <li><a href="#">Acerca de</a></li>
+             <li><a href="contacto.php">Acerca de</a></li>
              <li><a href="#">|</a></li>
              <li><a href="#">Residencias</a></li>
              <li><a href="#">|</a></li>
