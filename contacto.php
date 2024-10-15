@@ -11,7 +11,7 @@
 <body class="body2">
     <div class="container2">
         <div class="box-info">
-            <h1>CARGA TU RESIDENCIA</h1>
+            <h1>CONTACTANOS</h1>
             <div class="data">
                 <p><i class="fa-solid fa-phone"></i>+598 96 626 103</p>
                 <p><i class="fa-solid fa-envelope"></i>repayailea2024@gmail.com</p>

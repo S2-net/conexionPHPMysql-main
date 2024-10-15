@@ -31,7 +31,7 @@
             <li><a href="#">|</a></li>
             <li><a href="#">Residencias</a></li>
             <li><a href="#">|</a></li>
-            <li><a href="#">Contacto</a></li>
+            <li><a href="contacto.php">Contacto</a></li>
             
         </ul>
         <p>©2024 Residencias Estudiantiles | Todos los derechos reservados</p>
