@@ -385,6 +385,7 @@ a{
 
 
 
+
   
   .card a {
     text-decoration: none
@@ -417,16 +418,21 @@ a{
   
   .action {
     display: inline-flex;
-    margin-top: 1rem;
+    margin-top: 6rem;
+  
     color: #ffffff;
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 500;
     align-items: center;
-    gap: 0.25rem;
+    gap: 7rem;
     background-color: #2563EB;
-    padding: 4px 8px;
-    border-radius: 4px;
+    padding: 5px 8px;
+    border-radius: 20px;
+  }
+  .action a{
+    text-align: center;
+    margin: 10px;
   }
   
   .action span {
@@ -1101,8 +1107,7 @@ margin-left: auto;
   padding: 30px;
 background-color:#004aad ; 
   justify-content: center;
- 
- box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 .nombre_carga{
   margin: 2px;

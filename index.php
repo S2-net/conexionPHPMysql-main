@@ -7,21 +7,48 @@
     <link rel="stylesheet" href="path/to/your/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <style>
-        .carousel-inner {
-            display: flex;
-        }
 
-        .carousel-item {
-            display: flex;
-            justify-content: space-between; /* Espacio entre las tarjetas */
-        }
+.carousel-control-prev {
+    left: 10px; /* Ajusta la distancia desde la izquierda */
+}
 
-        .card {
-            flex: 0 0 25%; /* Ancho de cada tarjeta (30% de contenedor) */
-            margin: 30px; /* Espacio entre las tarjetas */
-            margin-top: 70px; /* Ajusta este valor para bajar las tarjetas más */
+.carousel-control-next {
+    right: 10px; /* Ajusta la distancia desde la derecha */
+}
 
-        }
+.card .action {
+    position: relative;
+    z-index: 20; /* Asegúrate de que este valor sea mayor que el de las flechas */
+}
+
+.carousel-item {
+    padding: 0 50px; /* Espacio adicional para las tarjetas */
+}
+
+.carousel-control-next, .carousel-control-prev {
+    position: absolute;
+    top: 65%;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    background: 0 0;
+    border: 0;
+    opacity: .5;
+    transition: opacity .15s ease;
+    
+}
+.card{
+    margin-top: 70px;
+    flex: 0 0 24%;
+}
+
+
     </style>
 </head>
 <body>
