@@ -30,18 +30,28 @@
                 <a href="#">Inicio</a>   
               </li>
               <li class="nav-link">
-                <a href="perfil-propietario.php">Ver perfil</a>   
+                <a href="perfil-propietario.php">Ver Perfil</a>   
               </li>
               <li class="nav-link">
-                <a href="body-carga.php">Cargar residencia</a>
+                <a href="body-carga.php">Cargar Residencia</a>
               </li>
               <li class="nav-link">
-                <a href="index.php">Cerrar Sesión</a>   
+                <a href="contacto.php">Contactanos</a>
+              </li>
+              <li class="nav-link">
+                <a href="index.php">Cerrar Sesion</a>
               </li>
             </ul>
         </nav>  
  
     </div>
+
+    <div class="header-content container">
+
+            <div class="header-txt">
+                <h1>Encuentra tu residencia ideal para el exito academico</h1>
+             
+            </div>
             <div class="content">
 
 <div class="tipo">

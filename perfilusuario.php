@@ -26,6 +26,8 @@ require("datos_perfil.php");
             </div>
         </div>
     </section>
+
+    <div class="tony">
     <div class="datosresi1">
     <div class="nombreusu">
         <h1>Nombre de usuario: <?php echo $nombre . ' ' . $apellido; ?></h1>
@@ -55,6 +57,9 @@ require("datos_perfil.php");
     </button>
     </div>
 
+    </div>
+    
+
     <section class="cambiar-contrasena" >
        <!-- Modal para cambiar la contraseña -->
 <div id="contrasenaModal" class="modal">
@@ -76,6 +81,8 @@ require("datos_perfil.php");
     </div>
 </div>
     </section>
+
+    
 
 <script src="alerta_cuenta.js"></script>
 <script src="modal_cambiar_contrasena.js"></script>
