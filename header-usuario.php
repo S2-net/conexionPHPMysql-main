@@ -30,7 +30,7 @@
                 <a href="#">Inicio</a>   
               </li>
               <li class="nav-link">
-                <a href="perfil-propietario.php">Ver Perfil</a>   
+                <a href="perfilusuario.php">Ver Perfil</a>   
               </li>
               <li class="nav-link">
                 <a href="contacto.php">Contactanos</a>

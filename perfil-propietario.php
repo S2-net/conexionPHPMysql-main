@@ -1,5 +1,5 @@
 <?php
-require("datos_perfil_propietario.php"); 
+require("datos_perfil.php"); 
 ?>
 
 <!DOCTYPE html>
@@ -26,8 +26,8 @@ require("datos_perfil_propietario.php");
     </section>
 
     <div class="tony">
-    <div class="datosresi1">
-    <div class="nombreusu">
+     <div class="datosresi1">
+     <div class="nombreusu">
         <h1>Nombre de usuario: <?php echo $nombre . ' ' . $apellido; ?></h1>
         <br>
         <p>Correo: <?php echo $correo; ?></p>
@@ -37,9 +37,9 @@ require("datos_perfil_propietario.php");
         <p>Género: <?php echo $genero; ?></p>
         <br>
         <p>Fecha de Nacimiento: <?php echo $fecha_nacimiento; ?></p>
-    </div>
+     </div>
 
-    <button class="button" type="button" onclick="borrarCuenta()">
+     <button class="button" type="button" onclick="borrarCuenta()">
         <span class="button__text" >Borrar Cuenta</span>
         <span class="button__icon">
             <svg class="svg" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg">
@@ -52,20 +52,16 @@ require("datos_perfil_propietario.php");
                 <line style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" x1="328" x2="320" y1="176" y2="400"></line>
             </svg>
         </span>
-    </button>
-    </div>
+     </button>
+     </div>
 
-    <div class="datosresi1">
-        
-    </div>
+     </div>
+     
 
-    </div>
-    
-
-    <section class="cambiar-contrasena" >
+     <section class="cambiar-contrasena" >
        <!-- Modal para cambiar la contraseña -->
-<div id="contrasenaModal" class="modal">
-    <div class="modal-content">
+     <div id="contrasenaModal" class="modal">
+     <div class="modal-content">
         <span class="close" onclick="cerrarModal(1)">&times;</span>
         <h1>Cambiar Contraseña</h1>
         <form action="cambiar_contrasena.php" method="POST">
@@ -80,9 +76,14 @@ require("datos_perfil_propietario.php");
             <br>
             <button type="submit" name="cambiar_contrasena">Cambiar Contraseña</button>
         </form>
-    </div>
+      </div>
+     </section>
+
+     <div class="datosresi1">
+
 </div>
-    </section>
+
+</div>
 
     
 
