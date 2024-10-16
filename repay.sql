@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-10-2024 a las 19:17:17
+-- Tiempo de generación: 16-10-2024 a las 23:40:01
 -- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.0.30
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -166,10 +166,7 @@ CREATE TABLE `residencia` (
 INSERT INTO `residencia` (`id_residencia`, `calle`, `numero`, `precio`, `normas`, `nombreresi`, `descripcion`, `id_habitacion`, `id_usuario`) VALUES
 (30, NULL, NULL, 12000, 'No pelearse', 'La tacoma', 'muy buena', 30, 3),
 (32, NULL, NULL, 12333, 'adsasd', 'asdasd', 'asdasd', 0, 1),
-(33, NULL, NULL, 12333, 'adsasd', 'asdasd', 'asdasd', 0, 5),
-(38, NULL, NULL, 2333, 'sss', 'asdasd', 'sss', NULL, 9),
-(39, NULL, NULL, 1222, 'asdasda', 'asdasd', 'asdad', NULL, 8),
-(40, NULL, NULL, 1222, 'asdasd', 'abcde', 'asdasd', 40, 7);
+(33, NULL, NULL, 12333, 'adsasd', 'asdasd', 'asdasd', 0, 5);
 
 -- --------------------------------------------------------
 
@@ -229,9 +226,9 @@ INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `contrasenia`, `num_t
 (1, 'Ismael', 'Vazquez', 'ismarepay123prueba@', 923347772, 'prueba1@gmail.com', 'Hombre', '2000-03-07', 1, 32),
 (3, 'Augusto', 'de los Santos', '$2y$10$H12sOolmG0qOeuFsv038CO7Q9b4OzNAlznSLNC3IP/QPSgTw9Z63e', NULL, 'augustodlsr@gmail.com', 'Hombre', '2007-01-30', 2, 30),
 (5, 'pepito', 'papa', '$2y$10$6SSsh.1tr20fgkIuf9/T/OO/JD8Ij07p.WTLxkWuZf0mTUOe1NLvW', NULL, '123@gmail.com', 'Hombre', '2024-10-04', 1, 33),
-(7, 'prueba', 'registro', '$2y$10$s1UC7LBf6S3BflB5TX9u5OVpaLSFt0GwXcV2YNkEjMOApUgQQ0RES', NULL, '1@gmail.com', 'Hombre', '2024-10-08', 2, 40),
-(8, 'pepito', 'de los santos', '$2y$10$ekBwUTEN7HXD/KIBhYDqh.lFpAopLI4X96k9fDK0j5Wn3f9xwg0Wq', NULL, '2@gmail.com', 'Hombre', '2024-10-23', 2, 39),
-(9, 'a', 'a', '$2y$10$YuhIq2gVh9kdzZx77QBZLeQd4.1ObHbu0fOV14KCqZI6BVYNrfPY2', NULL, '3@gmail.com', 'Hombre', '2024-10-16', 2, 38);
+(7, 'prueba', 'registro', '$2y$10$s1UC7LBf6S3BflB5TX9u5OVpaLSFt0GwXcV2YNkEjMOApUgQQ0RES', NULL, '1@gmail.com', 'Hombre', '2024-10-08', 2, NULL),
+(8, 'pepito', 'de los santos', '$2y$10$ekBwUTEN7HXD/KIBhYDqh.lFpAopLI4X96k9fDK0j5Wn3f9xwg0Wq', NULL, '2@gmail.com', 'Hombre', '2024-10-23', 2, NULL),
+(9, 'a', 'a', '$2y$10$YuhIq2gVh9kdzZx77QBZLeQd4.1ObHbu0fOV14KCqZI6BVYNrfPY2', NULL, '3@gmail.com', 'Hombre', '2024-10-16', 2, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -369,7 +366,7 @@ ALTER TABLE `espacios_comunes`
 -- Filtros para la tabla `estudiante`
 --
 ALTER TABLE `estudiante`
-  ADD CONSTRAINT `estudiante_ibfk_1` FOREIGN KEY (`id_estudiante`) REFERENCES `usuario` (`id_usuario`);
+  ADD CONSTRAINT `estudiante_ibfk_1` FOREIGN KEY (`id_estudiante`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `hace`
@@ -397,7 +394,7 @@ ALTER TABLE `reside`
 -- Filtros para la tabla `residencia`
 --
 ALTER TABLE `residencia`
-  ADD CONSTRAINT `residencia_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
+  ADD CONSTRAINT `residencia_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `tiene`
@@ -410,8 +407,8 @@ ALTER TABLE `tiene`
 -- Filtros para la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`),
-  ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`id_residencia`) REFERENCES `residencia` (`id_residencia`);
+  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`id_residencia`) REFERENCES `residencia` (`id_residencia`) ON DELETE SET NULL ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
