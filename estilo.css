@@ -1339,3 +1339,20 @@ select{
   display: flex;
   flex-wrap: nowrap;
 }
+
+.datosresi2{
+  margin: 75px;
+  width: 50%;
+  height: 65%;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.85);
+  padding: 10px;
+  background-color: #004aad;
+  color: #FFF;
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-between; /* Cambia a space-between */
+}
+.datosresi2 h1{
+  font-size: 20px;
+}

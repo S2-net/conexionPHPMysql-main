@@ -16,8 +16,8 @@ $con = conectar_bd();
 // Obtener el correo del usuario desde la sesión
 $correo = $_SESSION['correo'];
 
-// Consulta para obtener nombre, apellido, género y fecha de nacimiento en base al correo
-$sql = "SELECT nombre, apellido, genero, fecha_nacimiento FROM usuario WHERE correo = ?";
+// Consulta para obtener nombre, apellido, género, fecha de nacimiento e id de la residencia
+$sql = "SELECT nombre, apellido, genero, fecha_nacimiento, id_residencia FROM usuario WHERE correo = ?";
 $stmt = $con->prepare($sql);
 $stmt->bind_param("s", $correo);
 $stmt->execute();
@@ -30,7 +30,38 @@ if ($resultado->num_rows > 0) {
     $apellido = htmlspecialchars($fila['apellido']);
     $genero = htmlspecialchars($fila['genero']);
     $fecha_nacimiento = htmlspecialchars($fila['fecha_nacimiento']);
-    
+    $id_residencia = htmlspecialchars($fila['id_residencia']);
+
+    // Verificar si el usuario tiene una residencia asociada
+    if ($id_residencia) {
+        // Consulta para obtener los datos de la residencia
+        $sql_residencia = "SELECT residencia.*, habitaciones.*
+                           FROM residencia
+                           JOIN habitaciones ON residencia.id_residencia = habitaciones.id_residencia
+                           WHERE residencia.id_residencia = ?";
+        $stmt_residencia = $con->prepare($sql_residencia);
+        $stmt_residencia->bind_param("i", $id_residencia);
+        $stmt_residencia->execute();
+        $resultado_residencia = $stmt_residencia->get_result();
+
+        if ($resultado_residencia->num_rows > 0) {
+            // Obtener los datos de la residencia
+            $residencia = $resultado_residencia->fetch_assoc();
+            $nombreresi = htmlspecialchars($residencia['nombreresi']);
+            $banios = htmlspecialchars($residencia['banios']);
+            $disponibilidad = htmlspecialchars($residencia['disponibilidad']);
+            $normas = htmlspecialchars($residencia['normas']);
+            $detalles = htmlspecialchars($residencia['detalles']);
+            $descripcion = htmlspecialchars($residencia['descripcion']);
+            
+        } else {
+            echo "No se encontraron datos de la residencia.";
+        }
+
+        $stmt_residencia->close();
+    } else {
+        echo "Este usuario no tiene una residencia asociada.";
+    }
 } else {
     echo "No se encontraron datos para el usuario.";
 }

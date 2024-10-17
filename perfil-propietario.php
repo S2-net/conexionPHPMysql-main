@@ -1,5 +1,5 @@
 <?php
-require("datos_perfil.php"); 
+require("datos_perfil_propietario.php"); 
 ?>
 
 <!DOCTYPE html>
@@ -40,6 +40,8 @@ require("datos_perfil.php");
         <p>Género: <?php echo $genero; ?></p>
         <br>
         <p>Fecha de Nacimiento: <?php echo $fecha_nacimiento; ?></p>
+        <p>ID Residencia: <?php echo $id_residencia; ?></p>
+
      </div>
 
      <button class="button" type="button" onclick="borrarCuenta()">
@@ -57,10 +59,7 @@ require("datos_perfil.php");
         </span>
      </button>
      </div>
-
-     </div>
      
-
      <section class="cambiar-contrasena" >
        <!-- Modal para cambiar la contraseña -->
      <div id="contrasenaModal" class="modal">
@@ -80,11 +79,18 @@ require("datos_perfil.php");
             <button type="submit" name="cambiar_contrasena">Cambiar Contraseña</button>
         </form>
       </div>
+      </div>
      </section>
 
-     <div class="datosresi1">
-
-</div>
+     <div class="datosresi2">
+     <h1>Nombre de la residencia: <?php echo $nombreresi; ?></h1>
+        <br>
+             <p>Numero de baños: <?php echo $banios; ?></p>
+             <p>Cantidad de Dormitorios: <?php echo $disponibilidad; ?></p>
+             <p>Normas de convivencia: <?php echo $normas; ?> </p>
+             <p>Tipo: <?php echo $detalles; ?></p>
+             <p>Descripción: <?php echo $descripcion; ?></p>
+     </div>
 
 </div>
 
