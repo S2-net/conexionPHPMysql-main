@@ -58,55 +58,44 @@
 
     <div id="residenciasCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <?php 
-                // Función para consultar y mostrar los datos de residencia y habitaciones
-                function consultar_datos($con) {
-                    $consulta_residencia = "SELECT residencia.*, habitaciones.*
-                                            FROM residencia
-                                            JOIN habitaciones ON residencia.id_residencia = habitaciones.id_residencia";
-                    $resultado_residencia = mysqli_query($con, $consulta_residencia);
-    
-                    // Verificar que la consulta fue exitosa
-                    if ($resultado_residencia === false) {
-                        echo "Error en la consulta: " . mysqli_error($con);
-                        return;
-                    }
-    
-                    // Verificar si hay registros
-                    if (mysqli_num_rows($resultado_residencia) > 0) {
-                        $isFirst = true; // Para el primer elemento
-                        while ($resultado = mysqli_fetch_assoc($resultado_residencia)) {
-                            // Contador para las tarjetas
-                            $cardCount = 0;
-                            echo '<div class="carousel-item ' . ($isFirst ? 'active' : '') . '">';
-                            echo '<div class="d-flex justify-content-around">'; // Ajusta la alineación
+        <?php 
+    function consultar_datos($con) {
+        $consulta_residencia = "SELECT residencia.*, habitaciones.*
+                                FROM residencia
+                                JOIN habitaciones ON residencia.id_residencia = habitaciones.id_residencia";
+        $resultado_residencia = mysqli_query($con, $consulta_residencia);
 
-                            do {
-                                echo '<div class="card">';
-                                echo '<div class="image"></div>'; // Aquí puedes agregar la imagen
-                                echo '<div class="contenido">';
-                                echo '<a href="#"><span class="title">' . $resultado['nombreresi'] . '</span></a>';
-                                echo '<p class="desc">Descripción: ' . $resultado['descripcion'] . '</p>';
-                                echo '<p class="desc">Precio: $' . $resultado['precio'] . '</p>';
-                                echo '<a class="action" href="residencia.php">Acceder<span aria-hidden="true">→</span></a>';
-                                echo '</div></div>';
-                                $cardCount++;
-                            } while ($cardCount < 3 && ($resultado = mysqli_fetch_assoc($resultado_residencia))); // Muestra hasta 3 tarjetas
-                            
-                            echo '</div></div>'; // Cierra d-flex y carousel-item
-                            $isFirst = false; // Cambia a falso después del primer elemento
-                        }
-                    } else {
-                        echo "No se encontraron datos de residencia.";
-                    }
-                }
+        if (mysqli_num_rows($resultado_residencia) > 0) {
+            $isFirst = true;
+            while ($resultado = mysqli_fetch_assoc($resultado_residencia)) {
+                $cardCount = 0;
+                echo '<div class="carousel-item ' . ($isFirst ? 'active' : '') . '">';
+                echo '<div class="d-flex justify-content-around">';
 
-                // Llamada a la función para mostrar los datos
-                consultar_datos($con);
+                do {
+                    echo '<div class="card">';
+                    echo '<div class="image"></div>';
+                    echo '<div class="contenido">';
+                    echo '<a href="#"><span class="title">' . $resultado['nombreresi'] . '</span></a>';
+                    echo '<p class="desc">Descripción: ' . $resultado['descripcion'] . '</p>';
+                    echo '<p class="desc">Precio: $' . $resultado['precio'] . '</p>';
+                    // Aquí modificamos el enlace para incluir el ID de la residencia
+                    echo '<a class="action" href="residencia.php?id_residencia=' . $resultado['id_residencia'] . '">Acceder<span aria-hidden="true">→</span></a>';
+                    echo '</div></div>';
+                    $cardCount++;
+                } while ($cardCount < 3 && ($resultado = mysqli_fetch_assoc($resultado_residencia)));
 
-                // Cerrar la conexión
-                mysqli_close($con);
-            ?>
+                echo '</div></div>';
+                $isFirst = false;
+            }
+        } else {
+            echo "No se encontraron datos de residencia.";
+        }
+    }
+
+    consultar_datos($con);
+?>
+
         </div> <!-- Fin de carousel-inner -->
 
         <button class="carousel-control-prev" type="button" data-bs-target="#residenciasCarousel" data-bs-slide="prev">
