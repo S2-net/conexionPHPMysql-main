@@ -55,12 +55,12 @@ if ($resultado->num_rows > 0) {
             $descripcion = htmlspecialchars($residencia['descripcion']);
             
         } else {
-            echo "No se encontraron datos de la residencia.";
+            $mensaje = "Aún no se cargó una residencia.";
         }
 
         $stmt_residencia->close();
     } else {
-        echo "Este usuario no tiene una residencia asociada.";
+        $mensaje = "Aún no se cargó una residencia.";
     }
 } else {
     echo "No se encontraron datos para el usuario.";

@@ -1,4 +1,4 @@
-function borrarCuenta() { 
+function borrarResidencia(id_residencia) {
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
             confirmButton: "btn btn-success",
@@ -18,15 +18,14 @@ function borrarCuenta() {
     }).then((result) => {
         if (result.isConfirmed) {
             // Realiza la solicitud para eliminar la cuenta
-            fetch('eliminar_regi.php', {
+            fetch('eliminar_residencia.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
-                }
+                },
+                body: JSON.stringify({ id_residencia: id_residencia })
             })
-            .then(response => {
-                return response.text(); // Cambiar a text() para ver el contenido
-            })
+            .then(response => response.text()) // Cambiar a text() para ver el contenido
             .then(data => {
                 console.log(data); // Mostrar el contenido en la consola
                 try {
@@ -39,10 +38,9 @@ function borrarCuenta() {
                             icon: "success"
                         }).then(() => {
                             // Redirigir a index.php después de que se cierre la alerta
-                            window.location.href = 'index.php';
+                            window.location.href = 'perfil-propietario.php';
                         });
-                        }
-
+                    }
                 } catch (e) {
                     console.error('Error al parsear JSON:', e);
                     swalWithBootstrapButtons.fire({
@@ -60,9 +58,7 @@ function borrarCuenta() {
                     icon: "error"
                 });
             });
-        } else if (
-            result.dismiss === Swal.DismissReason.cancel
-        ) {
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
             swalWithBootstrapButtons.fire({
                 title: "Cancelado",
                 text: "Tu cuenta permanece segura :)",
@@ -71,4 +67,3 @@ function borrarCuenta() {
         }
     });
 }
-

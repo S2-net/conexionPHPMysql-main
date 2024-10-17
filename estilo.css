@@ -13,6 +13,7 @@
 }
 
 .container{ 
+  max-height: 100px;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -236,7 +237,7 @@ nav{
 }
 .navbar{
   display: flex;
-  height: 300px;
+  height: 100px;
 
 }
 
@@ -1116,6 +1117,8 @@ margin-left: auto;
 
 
 .card_resi{
+  margin-top: 120px;
+  margin-bottom: 100px;
   color: #e8e7e7;
   border-radius: 10px;
   padding: 30px;
@@ -1282,7 +1285,7 @@ select{
 
 .nombreusu h1{
   font-size: 20px;
-  margin-top: 10px;
+  
 }
 .perfil-usuario .cambiar-foto{
   position: absolute;

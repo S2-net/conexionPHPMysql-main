@@ -83,6 +83,11 @@ require("datos_perfil_propietario.php");
      </section>
 
      <div class="datosresi2">
+
+    <?php if (isset($mensaje)) : ?>
+        <p><?php echo $mensaje; ?></p>
+    <?php else : ?>
+
      <h1>Nombre de la residencia: <?php echo $nombreresi; ?></h1>
         <br>
              <p>Numero de baños: <?php echo $banios; ?></p>
@@ -90,6 +95,9 @@ require("datos_perfil_propietario.php");
              <p>Normas de convivencia: <?php echo $normas; ?> </p>
              <p>Tipo: <?php echo $detalles; ?></p>
              <p>Descripción: <?php echo $descripcion; ?></p>
+             <button onclick="borrarResidencia(<?php echo $id_residencia; ?>)" class="btn btn-danger">Eliminar Residencia</button>
+
+    <?php endif; ?>
      </div>
 
 </div>
@@ -97,6 +105,7 @@ require("datos_perfil_propietario.php");
     
 
 <script src="alerta_cuenta.js"></script>
+<script src="borrar_residencia.js"></script>
 <script src="modal_cambiar_contrasena.js"></script>
 
 

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-10-2024 a las 23:40:01
+-- Tiempo de generación: 17-10-2024 a las 22:25:47
 -- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Versión de PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -46,26 +46,6 @@ CREATE TABLE `espacios_comunes` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `estudiante`
---
-
-CREATE TABLE `estudiante` (
-  `id_estudiante` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `estudiante`
---
-
-INSERT INTO `estudiante` (`id_estudiante`) VALUES
-(5),
-(7),
-(8),
-(9);
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `habitaciones`
 --
 
@@ -101,7 +81,6 @@ INSERT INTO `habitaciones` (`id_habitacion`, `id_residencia`, `disponibilidad`, 
 --
 
 CREATE TABLE `hace` (
-  `id_estudiante` int(11) DEFAULT NULL,
   `id_resenia` int(11) DEFAULT NULL,
   `fecha` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -137,7 +116,6 @@ CREATE TABLE `resenia` (
 --
 
 CREATE TABLE `reside` (
-  `id_estudiante` int(11) DEFAULT NULL,
   `id_residencia` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -166,7 +144,8 @@ CREATE TABLE `residencia` (
 INSERT INTO `residencia` (`id_residencia`, `calle`, `numero`, `precio`, `normas`, `nombreresi`, `descripcion`, `id_habitacion`, `id_usuario`) VALUES
 (30, NULL, NULL, 12000, 'No pelearse', 'La tacoma', 'muy buena', 30, 3),
 (32, NULL, NULL, 12333, 'adsasd', 'asdasd', 'asdasd', 0, 1),
-(33, NULL, NULL, 12333, 'adsasd', 'asdasd', 'asdasd', 0, 5);
+(33, NULL, NULL, 12333, 'adsasd', 'asdasd', 'asdasd', 0, 5),
+(39, NULL, NULL, 1222, 'asdasda', 'asdasd', 'asdad', NULL, 8);
 
 -- --------------------------------------------------------
 
@@ -226,8 +205,7 @@ INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `contrasenia`, `num_t
 (1, 'Ismael', 'Vazquez', 'ismarepay123prueba@', 923347772, 'prueba1@gmail.com', 'Hombre', '2000-03-07', 1, 32),
 (3, 'Augusto', 'de los Santos', '$2y$10$H12sOolmG0qOeuFsv038CO7Q9b4OzNAlznSLNC3IP/QPSgTw9Z63e', NULL, 'augustodlsr@gmail.com', 'Hombre', '2007-01-30', 2, 30),
 (5, 'pepito', 'papa', '$2y$10$6SSsh.1tr20fgkIuf9/T/OO/JD8Ij07p.WTLxkWuZf0mTUOe1NLvW', NULL, '123@gmail.com', 'Hombre', '2024-10-04', 1, 33),
-(7, 'prueba', 'registro', '$2y$10$s1UC7LBf6S3BflB5TX9u5OVpaLSFt0GwXcV2YNkEjMOApUgQQ0RES', NULL, '1@gmail.com', 'Hombre', '2024-10-08', 2, NULL),
-(8, 'pepito', 'de los santos', '$2y$10$ekBwUTEN7HXD/KIBhYDqh.lFpAopLI4X96k9fDK0j5Wn3f9xwg0Wq', NULL, '2@gmail.com', 'Hombre', '2024-10-23', 2, NULL),
+(8, 'pepito', 'de los santos', '$2y$10$ekBwUTEN7HXD/KIBhYDqh.lFpAopLI4X96k9fDK0j5Wn3f9xwg0Wq', NULL, '2@gmail.com', 'Hombre', '2024-10-23', 2, 39),
 (9, 'a', 'a', '$2y$10$YuhIq2gVh9kdzZx77QBZLeQd4.1ObHbu0fOV14KCqZI6BVYNrfPY2', NULL, '3@gmail.com', 'Hombre', '2024-10-16', 2, NULL);
 
 --
@@ -258,7 +236,6 @@ ALTER TABLE `habitaciones`
 -- Indices de la tabla `hace`
 --
 ALTER TABLE `hace`
-  ADD KEY `id_estudiante` (`id_estudiante`),
   ADD KEY `id_resenia` (`id_resenia`);
 
 --
@@ -279,7 +256,6 @@ ALTER TABLE `resenia`
 -- Indices de la tabla `reside`
 --
 ALTER TABLE `reside`
-  ADD KEY `id_estudiante` (`id_estudiante`),
   ADD KEY `id_residencia` (`id_residencia`);
 
 --
@@ -363,16 +339,9 @@ ALTER TABLE `espacios_comunes`
   ADD CONSTRAINT `espacios_comunes_ibfk_1` FOREIGN KEY (`id_residencia`) REFERENCES `residencia` (`id_residencia`);
 
 --
--- Filtros para la tabla `estudiante`
---
-ALTER TABLE `estudiante`
-  ADD CONSTRAINT `estudiante_ibfk_1` FOREIGN KEY (`id_estudiante`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Filtros para la tabla `hace`
 --
 ALTER TABLE `hace`
-  ADD CONSTRAINT `hace_ibfk_1` FOREIGN KEY (`id_estudiante`) REFERENCES `estudiante` (`id_estudiante`),
   ADD CONSTRAINT `hace_ibfk_2` FOREIGN KEY (`id_resenia`) REFERENCES `resenia` (`id_resenia`);
 
 --
@@ -387,7 +356,6 @@ ALTER TABLE `propietario`
 -- Filtros para la tabla `reside`
 --
 ALTER TABLE `reside`
-  ADD CONSTRAINT `reside_ibfk_1` FOREIGN KEY (`id_estudiante`) REFERENCES `estudiante` (`id_estudiante`),
   ADD CONSTRAINT `reside_ibfk_2` FOREIGN KEY (`id_residencia`) REFERENCES `residencia` (`id_residencia`);
 
 --
@@ -408,7 +376,7 @@ ALTER TABLE `tiene`
 --
 ALTER TABLE `usuario`
   ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`id_residencia`) REFERENCES `residencia` (`id_residencia`) ON DELETE SET NULL ON UPDATE CASCADE;
+  ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`id_residencia`) REFERENCES `residencia` (`id_residencia`) ON DELETE SET NULL;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
