@@ -20,7 +20,7 @@ require("datos_perfil.php");
         <div class="contendor-perfil">
             <div class="portada-perfil" style="background-image: url(http://localhost/conexionPHPMysql-main/images/resi4.jpeg);">
             <a href="index-usuario.php" class="botonperfil">
-    <i class="fas fa-arrow-left"></i> Inicio
+    <i class="fas fa-home"></i> Inicio
 </a>
                 <div class="avatar-perfil">
                     <img src="http://localhost/conexionPHPMysql-main/images/user.png" alt="">
