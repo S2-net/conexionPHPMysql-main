@@ -24,15 +24,11 @@ function consultar_existe_usr($con, $correo) {
     $consulta_existe_usr = "SELECT correo FROM usuario WHERE correo = '$correo'";
     $resultado_existe_usr = mysqli_query($con, $consulta_existe_usr);
 
-    if (mysqli_num_rows($resultado_existe_usr) > 0) {
-        return true;
-    } else {
-        return false;
-    }
+    return mysqli_num_rows($resultado_existe_usr) > 0;
 }
 
 function insertar_datos($con, $nombre, $apellido, $correo, $contrasenia, $fecha_nacimiento, $genero, $existe_usr) {
-    if ($existe_usr == false) {
+    if (!$existe_usr) {
         $correo = mysqli_real_escape_string($con, $correo);
         
         // Encripto la contraseña usando la función password_hash
@@ -40,15 +36,9 @@ function insertar_datos($con, $nombre, $apellido, $correo, $contrasenia, $fecha_
 
         $consulta_insertar = "INSERT INTO usuario (nombre, apellido, correo, contrasenia, fecha_nacimiento, genero) 
                               VALUES ('$nombre', '$apellido', '$correo', '$contrasenia', '$fecha_nacimiento', '$genero')";
-
+        
+        // Ejecutar la consulta de inserción
         if (mysqli_query($con, $consulta_insertar)) {
-            // Obtener el último ID insertado para asociar el nuevo usuario
-            $id_usuario = mysqli_insert_id($con);
-
-            // Insertar automáticamente como estudiante
-            $insert_estudiante = "INSERT INTO estudiante (id_estudiante) VALUES ('$id_usuario')";
-            mysqli_query($con, $insert_estudiante);
-            
             header("Location: iniregi.php");
             exit();
         } else {
