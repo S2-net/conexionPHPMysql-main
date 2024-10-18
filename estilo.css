@@ -18,6 +18,63 @@
     margin: 0 auto;
 }
 
+.portada-perfil button{
+ 
+}
+
+.botonperfil {
+  background-color: transparent; /* Sin fondo */
+  border: 2px solid white; /* Borde blanco */
+  margin: 10px;
+  margin-top: 10px;
+  color: #fff; /* Color del texto */
+  font-size: 16px; /* Tamaño de la fuente */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  padding: 10px; /* Espaciado interno */
+  text-align: center; /* Centrar el texto */
+  border-radius: 12px; /* Esquinas redondeadas */
+  align-items: center; /* Centrar verticalmente */
+  gap: 5px; /* Espacio entre el icono y el texto */
+  text-decoration: none; /* Sin subrayado */
+  transition: color 0.3s, border-color 0.3s; /* Transición suave */
+}
+
+.botonperfil:hover{
+background-color: #004aad;
+color: #FFF;
+text-decoration: none;
+}
+.botonperfil i{
+  margin-right: 5px;
+  margin-top: 25px;
+}
+.botones-container {
+  display: flex;
+  justify-content: space-between; /* Espacio entre los botones */
+  margin-top: 20px; /* Margen superior para separar los botones del contenido */
+  gap: 30px;
+}
+
+.btn {
+  background-color: transparent; /* Sin fondo */
+  border: 2px solid red; /* Borde rojo */
+  color: red; /* Color del texto */
+  font-size: 16px; /* Tamaño de la fuente */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  padding: 10px 20px; /* Espaciado interno */
+  border-radius: 5px; /* Esquinas redondeadas */
+  transition: color 0.3s, border-color 0.3s; /* Transición suave */
+ 
+}
+
+
+
+.btn:hover {
+  color: white; /* Cambiar el color al pasar el mouse */
+  background-color: red; /* Fondo rojo al pasar el mouse */
+  border-color: red; /* Borde rojo al pasar el mouse */
+}
+
 .body2{
   background-image: url(http://localhost/conexionPHPMysql-main/images/resi5.jpeg);
   display: flex;

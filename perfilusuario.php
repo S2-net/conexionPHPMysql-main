@@ -11,12 +11,17 @@ require("datos_perfil.php");
     <link rel="stylesheet" href="estilo.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 
     </head>
 <body>
     <section class="perfil-usuario">
         <div class="contendor-perfil">
             <div class="portada-perfil" style="background-image: url(http://localhost/conexionPHPMysql-main/images/resi4.jpeg);">
+            <a href="index-usuario.php" class="botonperfil">
+    <i class="fas fa-arrow-left"></i> Inicio
+</a>
                 <div class="avatar-perfil">
                     <img src="http://localhost/conexionPHPMysql-main/images/user.png" alt="">
                     <a href="#" class="cambiar-foto">
