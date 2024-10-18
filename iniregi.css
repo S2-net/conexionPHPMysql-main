@@ -17,15 +17,18 @@
     height: 100vh;
 }
 
-.containerIR{
+.containerIR {
     background-color: #004aad;
     border-radius: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
     position: relative;
     overflow: hidden;
-    width: 768px;
-    max-width: 100%;
+    width: 90%;
+    max-width: 768px; 
     min-height: 480px;
+    margin: 0 auto; 
+    padding: 20px; 
+    box-sizing: border-box; 
 }
 
 .h1iniregi{
@@ -67,12 +70,15 @@
     text-transform: uppercase;
     margin-top: 10px;
     cursor: pointer;
+    width: flex;
+    
 }
 
 .containerIR button.hidden{
     background-color: transparent;
     border-color: #004aad;
     color: #004aad;
+    width: flex;
 }
 
 .containerIR form{
@@ -112,6 +118,8 @@
     top: 0;
     height: 100%;
     transition: all 0.6s ease-in-out;
+    display: flex;
+    flex-direction: column;
 }
 
 .sign-in{
@@ -174,6 +182,8 @@
     transition: all 0.6s ease-in-out;
     border-radius: 150px 0 0 100px;
     z-index: 1000;
+    display: flex;
+   flex-direction: column;
 }
 
 .toggle-containerIR img{
