@@ -19,8 +19,24 @@ if (isset($_GET['id_residencia'])) {
 
     if ($resultado_residencia->num_rows > 0) {
         while ($resultado = $resultado_residencia->fetch_assoc()) {
-?>
+            ?>
             <div class="residencia">
+                <div id="carouselExampleFade" class="carousel slide carousel-fade">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <?php echo '<img src="'.$resultado['foto'].'" class="d-block w-100" alt="...">'; ?>
+                        </div>
+                       
+                </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
                 <h1 class="precio">$<?php echo $resultado['precio']; ?></h1>
                 <div class="datosresi">
                     <p>Nombre de la residencia: <?php echo $resultado['nombreresi']; ?> </p>
@@ -31,7 +47,7 @@ if (isset($_GET['id_residencia'])) {
                     <p>Descripción: <?php echo $resultado['descripcion']; ?></p>
                 </div>
             </div>
-<?php
+            <?php
         }
     } else {
         echo "No se encontraron datos para la residencia seleccionada.";
