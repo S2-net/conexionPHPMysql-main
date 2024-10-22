@@ -11,7 +11,7 @@
 
    <br>
    <br>
-        <form action="RF_registro_resi.php" method="POST" id="envio">
+        <form action="RF_registro_resi.php" method="POST" enctype="multipart/form-data"  id="envio">
 
         <div class="card_resi">
             <h1>INGRESA LOS DATOS DE TU RESIDENCIA</h1>
@@ -56,7 +56,7 @@
         </div>
         <div class="cargardatos">
             <label for="imagen" class="form-label">Cargar Imagenes</label>
-            <input type="file" name="imagen" id="imagen" class="form-control" accept="image/*" >
+            <input type="file" name="fotos[]" id="fotos" multiple>
         
         
         <input type="submit" value="Cargar" name="envio" id=envio>

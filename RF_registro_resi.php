@@ -14,7 +14,7 @@ $con = conectar_bd();
 // Comprobar que se envió un formulario por POST desde carga_datos
 if (isset($_POST["envio"])) {
     // Obtener el id_usuario de la sesión
-    $id_usuario = $_SESSION['id_usuario']; // Asegúrate de que este valor esté definido
+    $id_usuario = $_SESSION['id_usuario']; 
 
     // DATOS DE LA RESIDENCIA
     $nombreresi = $_POST["nombreresi"];
@@ -22,52 +22,71 @@ if (isset($_POST["envio"])) {
     $precio = $_POST["precio"];
     $normas = $_POST["normas"];
 
-    // DATOS DE LA HABITACION DE RESIDENCIA
-    $detalles = $_POST["detalles"];
-    $disponibilidad = $_POST["disponibilidad"];
-    $banios = $_POST["banios"];
-
-    insertar_datos($con, $nombreresi, $descripcion, $precio, $normas, $detalles, $disponibilidad, $banios, $id_usuario);
-}
-
-function insertar_datos($con, $nombreresi, $descripcion, $precio, $normas, $detalles, $disponibilidad, $banios, $id_usuario) {
-    // Insertar en la tabla Residencia
+    // Inserción de la residencia en la base de datos (sin foto)
     $consulta_insertar_residencia = "INSERT INTO residencia (nombreresi, descripcion, precio, normas, id_usuario) 
                                      VALUES ('$nombreresi', '$descripcion', '$precio', '$normas', '$id_usuario')";
-
+    
     if (mysqli_query($con, $consulta_insertar_residencia)) {
-
-        // Traer el último id insertado de residencia
+        // Obtener el último id_residencia insertado
         $id_residencia = mysqli_insert_id($con);
 
+        echo "Residencia insertada correctamente.<br>";
+
+        // Actualizar el id_residencia en la tabla de usuarios
+        $consulta_actualizar_usuario = "UPDATE usuario SET id_residencia = '$id_residencia' WHERE id_usuario = '$id_usuario'";
+        
+        if (mysqli_query($con, $consulta_actualizar_usuario)) {
+            echo "ID de residencia actualizado en el perfil del usuario.<br>";
+        } else {
+            echo "Error al actualizar el ID de residencia en el perfil del usuario: " . mysqli_error($con);
+        }
+
+        // Manejar las fotos
+        if (isset($_FILES["fotos"])) {
+            $files = $_FILES["fotos"];
+            $cantidad_fotos = count($files["name"]);
+
+            for ($i = 0; $i < $cantidad_fotos; $i++) {
+                $nombre = $files["name"][$i];
+                $tipo = $files["type"][$i];
+                $ruta_provisional = $files["tmp_name"][$i];
+                $size = $files["size"][$i];
+                $carpeta = "fotos/";
+
+                // Verifica que el archivo sea una imagen y el tamaño
+                if (($tipo == 'image/jpg' || $tipo == 'image/jpeg' || $tipo == 'image/png') && $size <= 3*1024*1024) {
+                    $src = $carpeta.$nombre;
+                    if (move_uploaded_file($ruta_provisional, $src)) {
+                        // Insertar la ruta de la imagen en la base de datos
+                        $consulta_insertar_foto = "INSERT INTO fotos_residencia (id_residencia, ruta_foto) 
+                                                   VALUES ('$id_residencia', '$src')";
+                        mysqli_query($con, $consulta_insertar_foto);
+                    }
+                }
+            }
+        }
+
         // Insertar la habitación asociada a esa residencia
+        $detalles = $_POST["detalles"];
+        $disponibilidad = $_POST["disponibilidad"];
+        $banios = $_POST["banios"];
+        
         $consulta_insertar_habitacion = "INSERT INTO habitaciones (id_residencia, detalles, disponibilidad, banios) 
                                          VALUES ('$id_residencia', '$detalles', '$disponibilidad', '$banios')";
-
+        
         if (mysqli_query($con, $consulta_insertar_habitacion)) {
+            echo "Habitación insertada correctamente.<br>";
             
-            // Traer el id de la habitación insertada
-            $id_habitacion = mysqli_insert_id($con);
-
-            // Actualizar la residencia con el id de la habitación
-            $actualizar_residencia = "UPDATE residencia SET id_habitacion = '$id_habitacion' WHERE id_residencia = '$id_residencia'";
-
-            // Actualizar el id_residencia en la tabla usuario
-            $actualizar_usuario = "UPDATE usuario SET id_residencia = '$id_residencia' WHERE id_usuario = '$id_usuario'";
-
-            // Ejecutar las actualizaciones
-            if (mysqli_query($con, $actualizar_residencia) && mysqli_query($con, $actualizar_usuario)) {
-                header("Location: perfil-propietario.php");
-            } else {
-                echo "Error al actualizar la residencia o el usuario: " . mysqli_error($con);
-            }
-
+            // Redirigir a otra página o mostrar mensaje de éxito
+            header("Location: perfil-propietario.php");
         } else {
             echo "Error al insertar la habitación: " . mysqli_error($con);
         }
 
-    } else { 
+    } else {
         echo "Error al insertar la residencia: " . mysqli_error($con);
     }
 }
+
+mysqli_close($con);
 ?>
