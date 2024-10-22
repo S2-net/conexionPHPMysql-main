@@ -15,74 +15,74 @@
    <header class="header">
 
     <div class="menu container">
-    <a href="#">
+        <a href="#">
             <img src="http://localhost/conexionPHPMysql-main/images/logoblahd.png" alt="" class="logo">
         </a>
         <input type="checkbox" id="menu">
         <label for="menu">
-      <img src="http://localhost/conexionPHPMysql-main/images/menu.png" class="menu-icono" alt="">
+            <img src="http://localhost/conexionPHPMysql-main/images/menu.png" class="menu-icono" alt="">
         </label>
         <nav class="navbar">
-       
-
             <ul>
-              <li class="nav-link">
-                <a href="#">Inicio</a>   
-              </li>
-              <li class="nav-link">
-                <a href="perfil-propietario.php">Ver Perfil</a>   
-              </li>
-              <li class="nav-link">
-                <a href="body-carga.php">Cargar Residencia</a>
-              </li>
-              <li class="nav-link">
-                <a href="contacto.php">Contactanos</a>
-              </li>
-              <li class="nav-link">
-                <a href="logout.php">Cerrar Sesion</a>
-              </li>
+              <li class="nav-link"><a href="#">Inicio</a></li>
+              <li class="nav-link"><a href="perfil-propietario.php">Ver Perfil</a></li>
+              <li class="nav-link"><a href="body-carga.php">Cargar Residencia</a></li>
+              <li class="nav-link"><a href="contacto.php">Contactanos</a></li>
+              <li class="nav-link"><a href="logout.php">Cerrar Sesion</a></li>
             </ul>
         </nav>  
- 
     </div>
 
     <div class="header-content container">
+        <div class="header-txt">
+            <h1>Encuentra tu residencia ideal para el éxito académico</h1>
+        </div>
 
-            <div class="header-txt">
-                <h1>Encuentra tu residencia ideal para el exito academico</h1>
-             
-            </div>
-            <div class="content">
-
-<div class="tipo">
-    <label for="universidades">Universidades</label>
-    <select name="universidades" class="form-select form-select-lg mb-3" aria-label="Large select example">
-        <option selected>- Cualquiera -</option>
-        <option value="1">Cenur</option>
-        <option value="2">Udelar</option>
-      </select>
-</div>
-
-  <div class="tipo">
-    <label for="departamentos">Departamentos</label>
-    <select name="departamentos" class="form-select form-select-lg mb-3" aria-label="Large select example">
-        <option selected>- Cualquiera -</option>
-        <option value="1">Paysandú</option>
-      </select>
-  </div>
-  
-  <div class="tipo">
-    <label for="tipos">Tipos</label>
-    <select name="tipos" class="form-select form-select-lg mb-3" aria-label="Large select example">
-        <option selected>- Cualquiera -</option>
-        <option value="1">Mixtas</option>
-        <option value="2">Masculinas</option>
-        <option value="3">Femeninas</option>
-      </select>
-  </div>
-</div>
-        
+        <div class="content">
+            <form method="POST" action="buscar-resi.php">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="universidades">Universidades</label>
+                        <select name="universidades" class="form-select form-select-lg mb-3" aria-label="Large select example">
+                            <option selected>- Cualquiera -</option>
+                            <option value="1">Cenur</option>
+                            <option value="2">Udelar</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="departamentos">Departamentos</label>
+                        <select name="departamentos" class="form-select form-select-lg mb-3" aria-label="Large select example">
+                            <option selected>- Cualquiera -</option>
+                            <option value="1">Paysandú</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="num_habitaciones">Habitaciones</label>
+                        <input type="number" name="num_habitaciones" class="form-control" placeholder="Habitaciones" >
+                    </div>
+                    <div class="col-md-3">
+                        <label for="num_banos">Baños</label>
+                        <input type="number" name="num_banos" class="form-control" placeholder="Baños" >
+                    </div>
+                    <div class="col-md-3">
+                        <label for="max_precio">Precio Máximo</label>
+                        <input type="number" name="max_precio" class="form-control" placeholder="Precio Máximo" >
+                    </div>
+                    <div class="col-md-3">
+                        <label for="tipo_residencia">Tipo de Residencia</label>
+                        <select name="tipo_residencia" class="form-select">
+                            <option value="Masculina">Masculina</option>
+                            <option value="Femenina">Femenina</option>
+                            <option value="Mixta">Mixta</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12">
+                        <input type="submit" value="Buscar" class="btn btn-primary mt-3">
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
    </header> 
-
-   
+</body>
+</html>
