@@ -1,16 +1,36 @@
 <?php 
-require("header-propietario.php");
+session_start(); // Asegúrate de que la sesión está iniciada
 require("conexion.php");
-$con = conectar_bd();
+
+$con = conectar_bd(); // Conectar a la base de datos
+
+// Verificar si hay una sesión activa
+if (isset($_SESSION['id_rol'])) {
+    $rol = $_SESSION['id_rol']; // Obtener el rol del usuario desde la sesión
+
+    // Mostrar el header correspondiente según el rol
+    if ($rol == 1) {
+        require("header-usuario.php");
+    } elseif ($rol == 2) {
+        require("header-propietario.php");
+    } else {
+        // Manejar un rol no reconocido si es necesario
+        echo "Rol de usuario no reconocido.";
+        exit; // Termina el script si el rol no es válido
+    }
+} else {
+    // Si no hay sesión, mostrar el header general
+    require("header.php");
+}
 
 // Obtener el id_residencia desde la URL
 if (isset($_GET['id_residencia'])) {
     $id_residencia = $_GET['id_residencia'];
 
     // Consulta para obtener la residencia y sus habitaciones
-    $consulta_residencia = "SELECT residencia.*, habitaciones.*
-                            FROM residencia
-                            JOIN habitaciones ON residencia.id_residencia = habitaciones.id_residencia
+    $consulta_residencia = "SELECT residencia.*, habitaciones.* 
+                            FROM residencia 
+                            JOIN habitaciones ON residencia.id_residencia = habitaciones.id_residencia 
                             WHERE residencia.id_residencia = ?";
     $stmt_residencia = $con->prepare($consulta_residencia);
     $stmt_residencia->bind_param("i", $id_residencia);

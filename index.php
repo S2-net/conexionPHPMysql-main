@@ -1,12 +1,26 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Título de la Página</title>
-    <link rel="stylesheet" href="path/to/your/styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <style>
+<?php 
+session_start(); 
+require("conexion.php");
+
+$con = conectar_bd(); 
+
+if (isset($_SESSION['id_rol'])) {
+    $rol = $_SESSION['id_rol'];
+
+    if ($rol == 1) {
+        require("header-usuario.php");
+    } elseif ($rol == 2) {
+        require("header-propietario.php");
+    } else {
+        echo "Rol de usuario no reconocido.";
+        exit;
+    }
+} else {
+    require("header.php");
+}
+?>
+
+<style>
 
 .carousel-control-prev {
     left: 10px; /* Ajusta la distancia desde la izquierda */
@@ -47,24 +61,28 @@
     margin-top: 70px;
     flex: 0 0 24%;
 }
-
-
     </style>
 </head>
+
+
 <body>
     
-    <?php require("header.php"); ?>
-    <?php require("conexion.php"); ?>
 
     <div id="residenciasCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
         <?php 
 function consultar_datos($con) {
     // Consulta para obtener las residencias y sus habitaciones
-    $consulta_residencia = "SELECT residencia.*, habitaciones.*
-                            FROM residencia
+    $consulta_residencia = "SELECT residencia.*, habitaciones.* 
+                            FROM residencia 
                             JOIN habitaciones ON residencia.id_residencia = habitaciones.id_residencia";
     $resultado_residencia = mysqli_query($con, $consulta_residencia);
+
+    // Verifica si la consulta fue exitosa
+    if ($resultado_residencia === false) {
+        echo "Error en la consulta: " . mysqli_error($con);
+        return; // Salir de la función en caso de error
+    }
 
     if (mysqli_num_rows($resultado_residencia) > 0) {
         $isFirst = true;
@@ -81,7 +99,6 @@ function consultar_datos($con) {
                 
                 // Verificar si la consulta se ejecutó correctamente
                 if ($resultado_foto === false) {
-                    // Mostrar el error si la consulta falla
                     echo "Error en la consulta de fotos: " . mysqli_error($con);
                     continue; // Saltar al siguiente ciclo en caso de error
                 }
@@ -93,10 +110,8 @@ function consultar_datos($con) {
                 
                 // Verificar si se obtuvo una foto
                 if ($foto) {
-                    // Mostrar la imagen con la ruta obtenida
                     echo '<img src="' . $foto['ruta_foto'] . '" class="card-img-top" alt="Imagen de ' . $resultado['nombreresi'] . '">';
                 } else {
-                    // Mostrar una imagen por defecto si no se encontró foto
                     echo '<img src="ruta/a/imagen_por_defecto.jpg" class="card-img-top" alt="Imagen no disponible">';
                 }
 
@@ -105,7 +120,6 @@ function consultar_datos($con) {
                 echo '<a href="#"><span class="title">' . $resultado['nombreresi'] . '</span></a>';
                 echo '<p class="desc">Descripción: ' . $resultado['descripcion'] . '</p>';
                 echo '<p class="desc">Precio: $' . $resultado['precio'] . '</p>';
-                // Enlace que incluye el ID de la residencia
                 echo '<a class="action" href="residencia.php?id_residencia=' . $resultado['id_residencia'] . '">Acceder<span aria-hidden="true">→</span></a>';
                 echo '</div></div>';
                 $cardCount++;
@@ -119,23 +133,23 @@ function consultar_datos($con) {
     }
 }
 
+
 consultar_datos($con);
 ?>
 
 
 
 
-        </div> <!-- Fin de carousel-inner -->
-
-        <button class="carousel-control-prev" type="button" data-bs-target="#residenciasCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#residenciasCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Siguiente</span>
-        </button>
-    </div> <!-- Fin del carrusel -->
+</div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#residenciasCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#residenciasCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+    </button>
+</div>
 
     <?php require("footer.php"); ?>
 

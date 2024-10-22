@@ -33,20 +33,8 @@ function logear($con, $correo, $contrasenia) {
             $_SESSION["genero"] = $fila["genero"]; // Almacena el género
             $_SESSION["id_rol"] = $fila["id_rol"];
 
-            if($_SESSION['id_rol']==0){ 
-                header("Location: panel_usuario.php");
-            } else
-
-            if($_SESSION['id_rol']==1){ 
-                header("Location: index-usuario.php");
-            } else
-            
-            if($_SESSION['id_rol']==2){ 
-                header("Location: index-propietario.php");
-            }
-
-            
-            exit();
+                header("Location: index.php");
+    
         } else {
             echo "Contraseña incorrecta";
         }
