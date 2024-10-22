@@ -48,7 +48,7 @@ $result_favoritos = $stmt->get_result();
     <section class="perfil-usuario">
         <div class="contendor-perfil">
             <div class="portada-perfil" style="background-image: url(http://localhost/conexionPHPMysql-main/images/resi4.jpeg);">
-                <a href="index-usuario.php" class="botonperfil">
+                <a href="index.php" class="botonperfil">
                     <i class="fas fa-home"></i> Inicio
                 </a>
                 <div class="avatar-perfil">
