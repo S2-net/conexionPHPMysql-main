@@ -41,7 +41,7 @@ if (isset($_SESSION['id_rol'])) {
 
 .carousel-control-next, .carousel-control-prev {
     position: absolute;
-    top: 65%;
+    top: 10%;
     bottom: 0;
     z-index: 1;
     display: flex;
