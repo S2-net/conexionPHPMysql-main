@@ -1,0 +1,4 @@
+   <a href="#"class="cambiar-foto">
+                        <i class="icono-perfil fas fa-camera"></i>
+                        <span>Cambiar foto</span>
+                    </a>
