@@ -12,22 +12,20 @@ require("datos_perfil_propietario.php");
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-
-    </head>
+</head>
 <body>
     <section class="perfil-usuario">
         <div class="contendor-perfil">
             <div class="portada-perfil" style="background-image: url(http://localhost/conexionPHPMysql-main/images/resi4.jpeg);">
-            <a href="index.php" class="botonperfil">
-    <i class="fas fa-home"></i> Inicio
-</a>
+                <a href="index.php" class="botonperfil">
+                    <i class="fas fa-home"></i> Inicio
+                </a>
                 <div class="avatar-perfil">
                     <img src="http://localhost/conexionPHPMysql-main/images/user.png" alt="">
-                    <a href="#" class="cambiar-foto">
+                    <input type="file" id="foto_perfil" name="foto_perfil" accept="image/*" style="display: none;" onchange="subirFoto()">
+                    <button class="cambiar-foto" onclick="document.getElementById('foto_perfil').click();">
                         Cambiar foto
-                    </a>
-                 
+                    </button>
                 </div>
             </div>
         </div>
@@ -112,9 +110,10 @@ require("datos_perfil_propietario.php");
 
     
 
-<script src="alerta_cuenta.js"></script>
-<script src="borrar_residencia.js"></script>
-<script src="modal_cambiar_contrasena.js"></script>
+    <script src="subir_foto.js"></script> 
+    <script src="alerta_cuenta.js"></script>
+    <script src="borrar_residencia.js"></script>
+    <script src="modal_cambiar_contrasena.js"></script>
 
 
 </body>
