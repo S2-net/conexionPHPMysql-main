@@ -56,7 +56,7 @@
         </div>
         <div class="cargardatos">
             <label for="imagen" class="form-label">Cargar Imagenes</label>
-            <input type="file" name="foto" id="imagen" class="form-control" accept="image/*" >
+            <input type="file" name="fotos[]" id="fotos" multiple>
         
         
         <input type="submit" value="Cargar" name="envio" id=envio>
