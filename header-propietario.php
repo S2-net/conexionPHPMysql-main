@@ -35,27 +35,11 @@
 
     <div class="header-content container">
         <div class="header-txt">
-            <h1>Encuentra tu residencia ideal para el éxito académico</h1>
+            <h1>Encuentra tu residencia ideal para el exito academico</h1>
         </div>
-
         <div class="content">
             <form method="POST" action="buscar-resi.php">
                 <div class="row">
-                    <div class="col-md-3">
-                        <label for="universidades">Universidades</label>
-                        <select name="universidades" class="form-select form-select-lg mb-3" aria-label="Large select example">
-                            <option selected>- Cualquiera -</option>
-                            <option value="1">Cenur</option>
-                            <option value="2">Udelar</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <label for="departamentos">Departamentos</label>
-                        <select name="departamentos" class="form-select form-select-lg mb-3" aria-label="Large select example">
-                            <option selected>- Cualquiera -</option>
-                            <option value="1">Paysandú</option>
-                        </select>
-                    </div>
                     <div class="col-md-3">
                         <label for="num_habitaciones">Habitaciones</label>
                         <input type="number" name="num_habitaciones" class="form-control" placeholder="Habitaciones" >
@@ -70,16 +54,20 @@
                     </div>
                     <div class="col-md-3">
                         <label for="tipo_residencia">Tipo de Residencia</label>
-                        <select name="tipo_residencia" class="form-select">
+                        <select name="tipo_residencia" class="form-select" >
                             <option value="Masculina">Masculina</option>
                             <option value="Femenina">Femenina</option>
                             <option value="Mixta">Mixta</option>
+                           
+        
                         </select>
+                      
                     </div>
-                    <div class="col-md-12">
+                  
+                </div>
+                <div class="col-md-12">
                         <input type="submit" value="Buscar" class="btn btn-primary mt-3">
                     </div>
-                </div>
             </form>
         </div>
     </div>
