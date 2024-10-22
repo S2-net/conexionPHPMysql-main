@@ -23,20 +23,22 @@
       <img src="http://localhost/conexionPHPMysql-main/images/menu.png" class="menu-icono" alt="">
         </label>
         <nav class="navbar">
-       
-
-            <ul>
+      
+        <ul>
               <li class="nav-link">
                 <a href="#">Inicio</a>   
               </li>
               <li class="nav-link">
-                <a href="perfil-propietario.php">Ver perfil</a>   
+                <a href="perfil-propietario.php">Ver Perfil</a>   
               </li>
               <li class="nav-link">
-                <a href="index.php">Cerrar Sesión</a>
+                <a href="body-carga.php">Cargar Residencia</a>
               </li>
               <li class="nav-link">
-                <a href="contacto.php">Contactanos</a>   
+                <a href="contacto.php">Contactanos</a>
+              </li>
+              <li class="nav-link">
+                <a href="logout.php">Cerrar Sesion</a>
               </li>
             </ul>
         </nav>  

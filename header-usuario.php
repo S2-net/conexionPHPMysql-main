@@ -36,7 +36,7 @@
                 <a href="contacto.php">Contactanos</a>
               </li>
               <li class="nav-link">
-                <a href="index.php">Cerrar Sesion</a>
+                <a href="logout.php">Cerrar Sesion</a>
               </li>
             </ul>
         </nav>  
