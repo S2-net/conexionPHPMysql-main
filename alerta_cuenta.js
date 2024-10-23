@@ -39,7 +39,7 @@ function borrarCuenta() {
                             icon: "success"
                         }).then(() => {
                             // Redirigir a index.php después de que se cierre la alerta
-                            window.location.href = 'index.php';
+                            window.location.href = 'logout.php';
                         });
                         }
 

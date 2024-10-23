@@ -1,34 +1,41 @@
 <?php
 session_start();
-require("conexion.php");
+require("conexion.php"); // Asegúrate de que este archivo establece la conexión y define $conexion
 
-$id_usuario = $_SESSION['id_usuario']; // Asegúrate de tener esto configurado correctamente
+// Verifica si el usuario ha iniciado sesión correctamente
+if (!isset($_SESSION['id_usuario'])) {
+    die('Error: Usuario no autenticado');
+}
 
-if (isset($_FILES["foto_perfil"])) {
-    $archivo = $_FILES["foto_perfil"];
-    $tipo = $archivo["type"];
-    $ruta_provisional = $archivo["tmp_name"];
-    $size = $archivo["size"];
-    $carpeta = "fotos_perfil/";
-    $src = $carpeta . $nombre_unico;
+$id_usuario = $_SESSION['id_usuario'];
 
-    if (($tipo == 'image/jpg' || $tipo == 'image/jpeg' || $tipo == 'image/png') && $size <= 3 * 1024 * 1024) {
-        if (move_uploaded_file($ruta_provisional, $src)) {
-            $stmt = $con->prepare("UPDATE usuario SET foto_perfil = ? WHERE id_usuario = ?");
-            $stmt->bind_param("si", $src, $id_usuario);
-            if ($stmt->execute()) {
-                echo "Foto de perfil actualizada con éxito.";
-            } else {
-                echo "Error al actualizar en la base de datos: " . $stmt->error;
-            }
-            $stmt->close();
-        } else {
-            echo "Error al mover el archivo.";
-        }
+if (isset($_FILES["foto"])) { // El input del archivo debe coincidir con el nombre que tienes en el formulario
+    $file = $_FILES["foto"];
+    $nombre = $file["name"];
+    $tipo = $file["type"];
+    $ruta_provisional = $file["tmp_name"];
+    $size = $file["size"];
+    $carpeta = "fotos/";
+
+    // Validaciones de tipo de archivo y tamaño
+    if ($tipo != 'image/jpg' && $tipo != 'image/jpeg' && $tipo != 'image/png') {
+        echo "Error: el archivo no es una imagen";
+    } elseif ($size > 3*1024*1024) {
+        echo "Error: el tamaño máximo permitido es 3MB";
     } else {
-        echo "Archivo no válido o demasiado grande.";
+        // Mover el archivo subido a la carpeta de destino
+        $src = $carpeta . $nombre;
+        move_uploaded_file($ruta_provisional, $src);
+
+        // Guarda la ruta de la imagen para almacenar en la base de datos
+        $imagen = "fotos/" . $nombre;
+
+        // Actualiza la foto de perfil del usuario en la base de datos
+        $query = mysqli_query($conexion, "UPDATE usuario SET foto = '$imagen' WHERE id_usuario = '$id_usuario'");
+
+        // Redirigir después de subir la foto
+        header('location: perfil-propietario.php');
+        exit(); // Asegúrate de que el script se detenga aquí
     }
-} else {
-    echo "No se recibió ninguna imagen.";
 }
 ?>

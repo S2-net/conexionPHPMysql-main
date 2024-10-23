@@ -2,3 +2,5 @@
                         <i class="icono-perfil fas fa-camera"></i>
                         <span>Cambiar foto</span>
                     </a>
+
+                    http://localhost/conexionPHPMysql-main/images/user.png

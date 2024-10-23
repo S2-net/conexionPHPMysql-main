@@ -1,5 +1,7 @@
 <?php
 require("datos_perfil_propietario.php"); 
+require_once("conexion.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -20,13 +22,27 @@ require("datos_perfil_propietario.php");
                 <a href="index.php" class="botonperfil">
                     <i class="fas fa-home"></i> Inicio
                 </a>
-                <div class="avatar-perfil">
-                    <img src="http://localhost/conexionPHPMysql-main/images/user.png" alt="">
-                    <input type="file" id="foto_perfil" name="foto_perfil" accept="image/*" style="display: none;" onchange="subirFoto()">
-                    <button class="cambiar-foto" onclick="document.getElementById('foto_perfil').click();">
-                        Cambiar foto
-                    </button>
-                </div>
+
+
+                <?php
+$consulta = mysqli_query($con, "SELECT foto FROM usuario WHERE id_usuario = '{$_SESSION['id_usuario']}'");
+while ($fila = mysqli_fetch_array($consulta)) {
+    // Mostrar la imagen de perfil del usuario
+    echo '<div class="avatar-perfil">
+        <form action="subir_foto_perfil.php" method="POST" enctype="multipart/form-data" id="foto">
+            <img src="' . $fila['foto'] . '" alt="">
+            <input type="file" name="foto" accept="image/*">
+            <button class="cambiar-foto" type="submit">
+                Cambiar foto
+            </button>
+        </form>
+    </div>';
+}
+?>
+                
+                
+
+                
             </div>
         </div>
     </section>
@@ -110,7 +126,6 @@ require("datos_perfil_propietario.php");
 
     
 
-    <script src="subir_foto.js"></script> 
     <script src="alerta_cuenta.js"></script>
     <script src="borrar_residencia.js"></script>
     <script src="modal_cambiar_contrasena.js"></script>

@@ -2,7 +2,7 @@
 session_start();
 
 // Incluir el archivo de conexión
-include 'conexion.php';
+require_once 'conexion.php';
 
 // Verificar si el usuario ha iniciado sesión
 if (!isset($_SESSION['correo'])) {
@@ -67,5 +67,4 @@ if ($resultado->num_rows > 0) {
 }
 
 $stmt->close();
-$con->close();
 ?>
