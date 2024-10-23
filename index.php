@@ -37,6 +37,7 @@ if (isset($_SESSION['id_rol'])) {
 
 .carousel-item {
     padding: 0 50px; /* Espacio adicional para las tarjetas */
+    
 }
 
 .carousel-control-next, .carousel-control-prev {
@@ -59,8 +60,19 @@ if (isset($_SESSION['id_rol'])) {
 }
 .card{
     margin-top: 70px;
-    flex: 0 0 24%;
+    flex: 0 0 30%;
 }
+@media (max-width: 768px) {
+    .card {
+        flex: 0 0 100%; /* 1 tarjeta en pantallas pequeñas */
+    }
+    .carousel-item {
+    padding: 0 50px; /* Espacio adicional para las tarjetas */
+    right: 1px;
+}
+    }
+
+
     </style>
 </head>
 
@@ -157,5 +169,27 @@ consultar_datos($con);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    var carouselItems = document.querySelectorAll('.carousel-item');
+    var carouselSize = window.innerWidth < 768 ? 1 : 3; // 1 para móvil, 3 para escritorio
+
+    // Ajustar las clases de Bootstrap según el tamaño de pantalla
+    carouselItems.forEach(item => {
+        var cards = item.querySelectorAll('.card');
+        cards.forEach((card, index) => {
+            if (index >= carouselSize) {
+                card.style.display = 'none'; // Ocultar tarjetas adicionales
+            }
+        });
+    });
+
+    // Escuchar cambios de tamaño de ventana
+    window.addEventListener('resize', function() {
+        location.reload(); // Recargar la página para aplicar cambios
+    });
+});
+
+    </script>
 </body>
 </html>
