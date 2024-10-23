@@ -38,7 +38,7 @@
                 </div>
                 <input type="email" name="correo" placeholder="Correo Electrónico" required>
                 <input type="password" name="contrasenia" placeholder="Contraseña" required>
-                <a href="#">Olvidaste tu contraseña?</a>
+                <a href="olvidemisena.php">Olvidaste tu contraseña?</a>
                 <button type="submit" name="login">Iniciar Sesión</button>
                 
             </form>
