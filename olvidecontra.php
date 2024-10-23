@@ -17,15 +17,13 @@ $result = $conn->query($sql);
 $mail = new PHPMailer(true);
 
 try {
-    // Configuración del servidor SMTP
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
     $mail->isSMTP();
-    $mail->Host = 'smtp.example.com'; // Cambia esto
+    $mail->Host = 'smtp.gmail.com';  // Cambia esto
     $mail->SMTPAuth = true;
-    $mail->Username = 'user@example.com'; // Cambia esto
-    $mail->Password = 'secret'; // Cambia esto
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-    $mail->Port = 465;
+    $mail->Username = 'alejo011106@gmail.com'; // Cambia esto
+    $mail->Password = 'fsfj elwg ymfa guzx'; // La contraseña de aplicación generada
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Cambia según el método de cifrado
+    $mail->Port = 587; // Cambia esto
 
     while ($row = $result->fetch_assoc()) {
         $mail->clearAddresses();
