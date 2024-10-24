@@ -134,13 +134,13 @@ require_once("conexion.php");
       </div>
      </section>
 
-     <div class="datosresi2">
+    <div class="datosresi2">
 
-    <?php if (isset($mensaje)) : ?>
+      <?php if (isset($mensaje)) : ?>
         <p><?php echo $mensaje; ?></p>
-    <?php else : ?>
+      <?php else : ?>
 
-     <h1>Nombre de la residencia: <?php echo $nombreresi; ?></h1>
+      <h1>Nombre de la residencia: <?php echo $nombreresi; ?></h1>
         <br>
              <p>Numero de baños: <?php echo $banios; ?></p>
              <p>Cantidad de Dormitorios: <?php echo $disponibilidad; ?></p>
@@ -152,8 +152,52 @@ require_once("conexion.php");
              <button onclick="borrarResidencia(<?php echo $id_residencia; ?>)" class="btn btn-success">Editar Residencia</button>
              </div>
 
-    <?php endif; ?>
-     </div>
+      <?php endif; ?>
+
+      <!-- Modal para editar residencia -->
+<div id="editResidenciaModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarModal(2)">&times;</span>
+        <h1 style="color: white;">Editar Residencia</h1>
+        <form id="editResidenciaForm" action="editar_residencia.php" method="POST">
+            <input type="hidden" id="edit_id_residencia" name="id_residencia" value="<?php echo $id_residencia; ?>">
+            <label for="edit_nombreresi" style="color: white;">Nombre de la Residencia:</label>
+            <input type="text" id="edit_nombreresi" name="nombreresi" value="<?php echo $nombreresi; ?>" required>
+            <br>
+            <label for="edit_descripcion" style="color: white;">Descripción:</label>
+            <textarea id="edit_descripcion" name="descripcion" required><?php echo $descripcion; ?></textarea>
+            <br>
+            <label for="edit_precio" style="color: white;">Precio:</label>
+            <input type="number" id="edit_precio" name="precio" value="<?php echo $precio; ?>" required>
+            <br>
+            <label for="edit_normas" style="color: white;">Normas:</label>
+            <textarea id="edit_normas" name="normas" required><?php echo $normas; ?></textarea>
+            <br>
+            <button type="submit">Guardar Cambios</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Función para abrir el modal de edición
+    function abrirModalEdicion() {
+        document.getElementById("editResidenciaModal").style.display = "block";
+    }
+
+    // Función para cerrar el modal
+    function cerrarModal(modalNumber) {
+        if (modalNumber === 2) {
+            document.getElementById("editResidenciaModal").style.display = "none";
+        } else {
+            // Cerrar otros modales si los tienes
+        }
+    }
+
+    // Asigna la función de abrir el modal al botón de editar
+    document.querySelector('.btn-success').addEventListener('click', abrirModalEdicion);
+</script>
+
+    </div>
 
 </div>
 
