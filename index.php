@@ -182,6 +182,12 @@ consultar_datos($con, $id_usuario);
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
+         function guardarResidencia(id_residencia, id_usuario) {
+                    console.log("ID Residencia:", id_residencia, "ID Usuario:", id_usuario); 
+                    if (id_usuario === undefined) {
+                alert("ID de usuario no está definido.");
+                return;
+            }
                 
             fetch('guardar_residencia.php', {
                 method: 'POST',
@@ -201,6 +207,7 @@ consultar_datos($con, $id_usuario);
             .catch((error) => {
                 alert("Error: " + error);
             });
+             }
         
     </script>
     <script>
