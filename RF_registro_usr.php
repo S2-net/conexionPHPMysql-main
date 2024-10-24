@@ -1,54 +1,42 @@
 <?php
-require("conexion.php");
+header('Content-Type: application/json');
 
-$con = conectar_bd();
-
-// Comprobar que se envió un formulario por POST desde carga_datos
-if (isset($_POST["register"])) {
-    $nombre = $_POST["nombre"];
-    $apellido = $_POST["apellido"];
-    $correo = $_POST["correo"];
-    $contrasenia = $_POST["contrasenia"];
-    $fecha_nacimiento = mysqli_real_escape_string($con, $_POST["fecha_nacimiento"]);
-    $genero = trim($_POST["genero"]);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Conectar a la base de datos
+    include 'conexion.php';
+    $conn = conectar_bd();
     
-    // Consultar si el usuario ya existe
-    $existe_usr = consultar_existe_usr($con, $correo);
-
-    // Insertar datos si el usuario no existe
-    insertar_datos($con, $nombre, $apellido, $correo, $contrasenia, $fecha_nacimiento, $genero, $existe_usr);
-}
-
-function consultar_existe_usr($con, $correo) {
-    $correo = mysqli_real_escape_string($con, $correo); // Escapar los campos para evitar inyección SQL
-    $consulta_existe_usr = "SELECT correo FROM usuario WHERE correo = '$correo'";
-    $resultado_existe_usr = mysqli_query($con, $consulta_existe_usr);
-
-    return mysqli_num_rows($resultado_existe_usr) > 0;
-}
-
-function insertar_datos($con, $nombre, $apellido, $correo, $contrasenia, $fecha_nacimiento, $genero, $existe_usr) {
-    if (!$existe_usr) {
-        $correo = mysqli_real_escape_string($con, $correo);
-        
-        // Encripto la contraseña usando la función password_hash
-        $contrasenia = password_hash($contrasenia, PASSWORD_DEFAULT);
-
-        $consulta_insertar = "INSERT INTO usuario (nombre, apellido, correo, contrasenia, fecha_nacimiento, genero) 
-                              VALUES ('$nombre', '$apellido', '$correo', '$contrasenia', '$fecha_nacimiento', '$genero')";
-        
-        // Ejecutar la consulta de inserción
-        if (mysqli_query($con, $consulta_insertar)) {
-            header("Location: iniregi.php");
-            exit();
-        } else {
-            echo "Error: " . $consulta_insertar . "<br>" . mysqli_error($con);
-        }
+    // Obtener datos del formulario
+    $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
+    $correo = $_POST['correo'];
+    $contrasenia = $_POST['contrasenia'];
+    // Hashear la contraseña
+    $hashed_password = password_hash($contrasenia, PASSWORD_DEFAULT);
+    
+    // Comprobar si el correo ya está registrado
+    $stmt = $conn->prepare("SELECT * FROM usuario WHERE correo = ?");
+    $stmt->bind_param("s", $correo);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    if ($result->num_rows > 0) {
+        echo json_encode(['status' => 'error', 'message' => 'El correo ya está registrado.']);
     } else {
-        echo "El usuario ya existe.";
+        // Insertar usuario en la base de datos
+        $stmt = $conn->prepare("INSERT INTO usuario (nombre, apellido, correo, contrasenia) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $nombre, $apellido, $correo, $hashed_password);
+        
+        if ($stmt->execute()) {
+            echo json_encode(['status' => 'success', 'message' => 'Cuenta creada exitosamente.']);
+        } else {
+            echo json_encode(['status' => 'error', 'message' => 'Error al crear la cuenta.']);
+        }
     }
-}
 
-// Cerrar la conexión a la base de datos
-mysqli_close($con);
+    $stmt->close();
+    $conn->close();
+} else {
+    echo json_encode(['status' => 'error', 'message' => 'Método no permitido.']);
+}
 ?>
