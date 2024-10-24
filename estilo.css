@@ -1157,15 +1157,7 @@ margin-left: auto;
 
 }
 
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Ajusta según tus necesidades */
-  display: flex;
-  justify-content: center;
-}
+
 
 .residencia{
     display: flex;
@@ -1406,9 +1398,65 @@ select{
 }
 
 .nombreusu{
-  margin: px;
+  left: 10px;
   margin-top: 50px;
 
+}
+.nombreusu1{
+  margin-left: 310px;
+  margin-top: 10px;
+
+}
+.propi {
+  display: flex; /* Usamos flexbox */
+  justify-content: space-between; /* Espacio entre elementos */
+  align-items: center; /* Alinea verticalmente en el centro */
+  margin-left: 310px; /* Mantén este margen según lo necesites */
+  margin-bottom: 10px;
+}
+
+.propi button {
+  margin-right: 100px; /* Empuja el botón a la derecha */
+  background-color: #007BFF; /* Color de fondo */
+  color: white; /* Color del texto */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 10px 15px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño de fuente */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
+}
+.propi button:hover {
+  background-color: #0056b3; /* Color de fondo al pasar el mouse */
+  transform: translateY(-2px); /* Efecto de elevación */
+}
+
+.propi button:focus {
+  outline: none; /* Elimina el contorno al enfocar */
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Agrega sombra al enfocar */
+}
+
+.propi p {
+  margin: 5px 0; /* Esto da un pequeño margen superior e inferior */
+}
+.propi p:nth-child(2) {
+  color: #004aad;
+
+}
+
+.propietario{
+  color: #004aad;
+  margin-left: 310px; /* Mantén este margen según lo necesites */
+
+}
+
+
+hr{
+  height: 40px;
+  background-color: #000000;
+}
+.nombreusu1 h1{
+  font-size: 25px;
 }
 
 .nombreusu h1{

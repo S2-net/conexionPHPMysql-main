@@ -14,6 +14,25 @@ require_once("conexion.php");
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+<style>
+    .modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 15% auto;
+  width: 50%;
+  pointer-events: auto;
+  background-color: #004aad;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: .3rem;
+  outline: 0;
+  padding: 10px;
+}
+.modal-content h1 label{
+    color: white;
+}
+</style>
 <body>
 <section class="perfil-usuario">
         <div class="contendor-perfil">
@@ -51,15 +70,24 @@ require_once("conexion.php");
             </div>
         </div>
     </section>
+    <div class="nombreusu1">
+    <h1> <?php echo $nombre . ' ' . $apellido; ?></h1>
+    </div>
+    
+    <div class="propi">
+    <p> <?php echo $correo; ?></p>
+        
+        <button type="button" onclick="abrirModal()"><i class="fas fa-user" style="padding: 5px;"></i>Mi perfil</button>
 
+    </div>
+    <div class="propietario">
+    <p><strong>PROPIETARIO</strong></p>
+    </div>
+    <hr>
     <div class="tony">
+      
      <div class="datosresi1">
      <div class="nombreusu">
-        <h1>Nombre de usuario: <?php echo $nombre . ' ' . $apellido; ?></h1>
-        <br>
-        <p>Correo: <?php echo $correo; ?></p>
-        <br>
-        <p>Contraseña: <button type="button" onclick="abrirModal()">Cambiar Contraseña</button></p>
         <br>
         <p>Género: <?php echo $genero; ?></p>
         <br>
@@ -89,15 +117,15 @@ require_once("conexion.php");
      <div id="contrasenaModal" class="modal">
      <div class="modal-content">
         <span class="close" onclick="cerrarModal(1)">&times;</span>
-        <h1>Cambiar Contraseña</h1>
+        <h1 style="color: white;">Cambiar Contraseña</h1>
         <form action="cambiar_contrasena.php" method="POST">
-            <label for="contrasena_actual">Contraseña Actual:</label>
+            <label for="contrasena_actual"style="color: white;">Contraseña Actual:</label>
             <input type="password" id="contrasena_actual" name="contrasena_actual" required>
             <br>
-            <label for="nueva_contrasena">Nueva Contraseña:</label>
+            <label for="nueva_contrasena" style="color: white;">Nueva Contraseña:</label>
             <input type="password" id="nueva_contrasena" name="nueva_contrasena" required minlength="8">
             <br>
-            <label for="confirmar_contrasena">Confirmar Nueva Contraseña:</label>
+            <label for="confirmar_contrasena"style="color: white;">Confirmar Nueva Contraseña:</label>
             <input type="password" id="confirmar_contrasena" name="confirmar_contrasena" required minlength="8">
             <br>
             <button type="submit" name="cambiar_contrasena">Cambiar Contraseña</button>
