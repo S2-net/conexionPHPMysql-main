@@ -150,7 +150,7 @@ require_once("conexion.php");
              <p>Descripción: <?php echo $descripcion; ?></p>
              <div class="boton-container">
              <button onclick="borrarResidencia(<?php echo $id_residencia; ?>)" class="btn btn-danger">Eliminar Residencia</button>
-             <button onclick="borrarResidencia(<?php echo $id_residencia; ?>)" class="btn btn-success">Editar Residencia</button>
+             <button  onclick="abrirModall()" class="btn btn-success">Editar Residencia</button>
              </div>
 
       <?php endif; ?>
@@ -158,7 +158,7 @@ require_once("conexion.php");
       <!-- Modal para editar residencia -->
 <div id="editResidenciaModal" class="modal">
 <div class="modal-content">
-    <span class="close" onclick="cerrarModal(2)">&times;</span>
+    <span class="close" onclick="cerrarModall(1)">&times;</span>
     <h1 style="color: white;">Editar Residencia</h1>
     <form id="editResidenciaForm" action="editar_residencia.php" method="POST">
         <input type="hidden" id="edit_id_residencia" name="id_residencia" value="<?php echo $id_residencia; ?>">
@@ -197,24 +197,7 @@ require_once("conexion.php");
 
 </div>
 
-<script>
-    // Función para abrir el modal de edición
-    function abrirModalEdicion() {
-        document.getElementById("editResidenciaModal").style.display = "block";
-    }
 
-    // Función para cerrar el modal
-    function cerrarModal(modalNumber) {
-        if (modalNumber === 2) {
-            document.getElementById("editResidenciaModal").style.display = "none";
-        } else {
-            // Cerrar otros modales si los tienes
-        }
-    }
-
-    // Asigna la función de abrir el modal al botón de editar
-    document.querySelector('.btn-success').addEventListener('click', abrirModalEdicion);
-</script>
 
     </div>
 
@@ -225,6 +208,7 @@ require_once("conexion.php");
     <script src="alerta_cuenta.js"></script>
     <script src="borrar_residencia.js"></script>
     <script src="modal_cambiar_contrasena.js"></script>
+    <script src="modal_editar_resi.js"></script>
 
 
 </body>
