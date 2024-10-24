@@ -23,7 +23,7 @@ require_once("conexion.php");
                 </a>
                 <div class="avatar-perfil">
     <?php if (!empty($foto)): ?>
-        <img src="<?php echo $foto; ?>" alt="Foto de perfil" style="max-width: 150px; max-height: 150px;">
+        <img src="<?php echo $foto; ?>" alt="Foto de perfil">
     <?php else: ?>
         <img src="http://localhost/conexionPHPMysql-main/images/user.png" alt="Usuario predeterminado" style="max-width: 150px; max-height: 150px;">
     <?php endif; ?>
