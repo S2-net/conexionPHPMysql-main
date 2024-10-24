@@ -77,7 +77,7 @@ require_once("conexion.php");
     <div class="propi">
     <p> <?php echo $correo; ?></p>
         
-        <button type="button" onclick="abrirModal()"><i class="fas fa-user" style="padding: 5px;"></i>Mi perfil</button>
+        <button type="button" onclick="abrirModalll()"><i class="fas fa-user" style="padding: 5px;"></i>Mi perfil</button>
 
     </div>
     <div class="propietario">
@@ -86,14 +86,27 @@ require_once("conexion.php");
     <hr>
     <div class="tony">
       
-     <div class="datosresi1">
-     <div class="nombreusu">
-        <br>
-        <p>Género: <?php echo $genero; ?></p>
-        <br>
-        <p>Fecha de Nacimiento: <?php echo $fecha_nacimiento; ?></p>
-        <p>ID Residencia: <?php echo $id_residencia; ?></p>
+     
+     
+     <section class="cambiar-contrasena" >
+       <!-- Modal para cambiar la contraseña -->
+     <div id="perfilModal" class="modal">
+      <div class="datosresi1">
+      <span class="close" onclick="cerrarModalll(1)">&times;</span>
 
+     <div class="nombreusu">
+     <h1> <?php echo $nombre . ' ' . $apellido; ?></h1>
+<hr>
+     <p> Correo: <?php echo $correo; ?></p>
+     <hr>
+     <p>Contraseña: <button type="button" onclick="abrirModal()">Cambiar Contraseña</button></p>
+        <hr>
+        <p>Género: <?php echo $genero; ?></p>
+        <hr>
+        <p>Fecha de Nacimiento: <?php echo $fecha_nacimiento; ?></p>
+        <hr>
+        <p>ID Residencia: <?php echo $id_residencia; ?></p>
+        <hr>
      </div>
 
      <button class="button" type="button" onclick="borrarCuenta()">
@@ -111,7 +124,9 @@ require_once("conexion.php");
         </span>
      </button>
      </div>
-     
+      </div>
+      </div>
+     </section>
      <section class="cambiar-contrasena" >
        <!-- Modal para cambiar la contraseña -->
      <div id="contrasenaModal" class="modal">
@@ -209,6 +224,8 @@ require_once("conexion.php");
     <script src="borrar_residencia.js"></script>
     <script src="modal_cambiar_contrasena.js"></script>
     <script src="modal_editar_resi.js"></script>
+    <script src="modal_perfil.js"></script>
+
 
 
 </body>

@@ -1385,8 +1385,7 @@ select{
 
 .datosresi1{
   margin: 75px;
-  width: 20%;
-  height: 65%;
+  width: 25%;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.85);
   padding: 10px;
@@ -1394,13 +1393,18 @@ select{
   color: #FFF;
   display: flex;
   flex-direction: column; 
-  justify-content: space-between; /* Cambia a space-between */
+  justify-content: center;
 }
 
 .nombreusu{
   left: 10px;
   margin-top: 50px;
 
+}
+
+.nombreusu hr{
+  background-color: white;
+  width: 100%;
 }
 .nombreusu1{
   margin-left: 310px;
@@ -1517,6 +1521,9 @@ hr{
 .tony{
   display: flex;
   flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  right: 10px;
 }
 
 .datosresi2{
