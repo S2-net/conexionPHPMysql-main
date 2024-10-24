@@ -142,10 +142,11 @@ require_once("conexion.php");
 
       <h1>Nombre de la residencia: <?php echo $nombreresi; ?></h1>
         <br>
-             <p>Numero de baños: <?php echo $banios; ?></p>
+             <p>Precio: $<?php echo $precio; ?></p>
              <p>Cantidad de Dormitorios: <?php echo $disponibilidad; ?></p>
              <p>Normas de convivencia: <?php echo $normas; ?> </p>
-             <p>Tipo: <?php echo $detalles; ?></p>
+             <p>Numero de baños: <?php echo $banios; ?></p>
+             <p>Detalles: <?php echo $detalles; ?></p>
              <p>Descripción: <?php echo $descripcion; ?></p>
              <div class="boton-container">
              <button onclick="borrarResidencia(<?php echo $id_residencia; ?>)" class="btn btn-danger">Eliminar Residencia</button>
@@ -156,26 +157,44 @@ require_once("conexion.php");
 
       <!-- Modal para editar residencia -->
 <div id="editResidenciaModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="cerrarModal(2)">&times;</span>
-        <h1 style="color: white;">Editar Residencia</h1>
-        <form id="editResidenciaForm" action="editar_residencia.php" method="POST">
-            <input type="hidden" id="edit_id_residencia" name="id_residencia" value="<?php echo $id_residencia; ?>">
-            <label for="edit_nombreresi" style="color: white;">Nombre de la Residencia:</label>
-            <input type="text" id="edit_nombreresi" name="nombreresi" value="<?php echo $nombreresi; ?>" required>
-            <br>
-            <label for="edit_descripcion" style="color: white;">Descripción:</label>
-            <textarea id="edit_descripcion" name="descripcion" required><?php echo $descripcion; ?></textarea>
-            <br>
-            <label for="edit_precio" style="color: white;">Precio:</label>
-            <input type="number" id="edit_precio" name="precio" value="<?php echo $precio; ?>" required>
-            <br>
-            <label for="edit_normas" style="color: white;">Normas:</label>
-            <textarea id="edit_normas" name="normas" required><?php echo $normas; ?></textarea>
-            <br>
-            <button type="submit">Guardar Cambios</button>
-        </form>
-    </div>
+<div class="modal-content">
+    <span class="close" onclick="cerrarModal(2)">&times;</span>
+    <h1 style="color: white;">Editar Residencia</h1>
+    <form id="editResidenciaForm" action="editar_residencia.php" method="POST">
+        <input type="hidden" id="edit_id_residencia" name="id_residencia" value="<?php echo $id_residencia; ?>">
+
+        <label for="edit_nombreresi" style="color: white;">Nombre de la Residencia:</label>
+        <input type="text" id="edit_nombreresi" name="nombreresi" value="<?php echo $nombreresi; ?>" required>
+        <br>
+
+        <label for="edit_descripcion" style="color: white;">Descripción:</label>
+        <textarea id="edit_descripcion" name="descripcion" required><?php echo $descripcion; ?></textarea>
+        <br>
+
+        <label for="edit_precio" style="color: white;">Precio:</label>
+        <input type="number" id="edit_precio" name="precio" value="<?php echo $precio; ?>" required>
+        <br>
+
+        <label for="edit_normas" style="color: white;">Normas:</label>
+        <textarea id="edit_normas" name="normas" required><?php echo $normas; ?></textarea>
+        <br>
+
+        <label for="edit_banios" style="color: white;">Número de Baños:</label>
+        <input type="number" id="edit_banios" name="banios" value="<?php echo $banios; ?>" required>
+        <br>
+
+        <label for="edit_detalles" style="color: white;">Detalles de la Habitación:</label>
+        <input type="text" id="edit_detalles" name="detalles" value="<?php echo $detalles; ?>" required>
+        <br>
+
+        <label for="edit_disponibilidad" style="color: white;">Disponibilidad:</label>
+        <input type="number" id="edit_disponibilidad" name="disponibilidad" value="<?php echo $disponibilidad; ?>" required>
+        <br>
+
+        <button type="submit">Guardar Cambios</button>
+    </form>
+</div>
+
 </div>
 
 <script>
