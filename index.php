@@ -1,6 +1,13 @@
 <?php 
 session_start(); 
 require("conexion.php");
+ // Asegúrate de que el ID del usuario esté en la sesión
+ $id_usuario = $_SESSION['id_usuario'] ?? null; 
+ if ($id_usuario === null) {
+     echo "Error: ID de usuario no definido.";
+     exit; // Termina el script si no hay ID de usuario
+ }
+ 
 
 $con = conectar_bd(); 
 
@@ -62,6 +69,14 @@ if (isset($_SESSION['id_rol'])) {
     margin-top: 70px;
     flex: 0 0 30%;
 }
+.star {
+            color: gold;
+            cursor: pointer;
+            font-size: 1.5em; /* Ajusta el tamaño según sea necesario */
+            position: absolute;
+            top: 10px; /* Ajusta la posición vertical */
+            right: 10px; /* Ajusta la posición horizontal */
+        }
 @media (max-width: 768px) {
     .card {
         flex: 0 0 100%; /* 1 tarjeta en pantallas pequeñas */
@@ -83,7 +98,7 @@ if (isset($_SESSION['id_rol'])) {
     <div id="residenciasCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
         <?php 
-function consultar_datos($con) {
+function consultar_datos($con, $id_usuario) {
     // Consulta para obtener las residencias y sus habitaciones
     $consulta_residencia = "SELECT residencia.*, habitaciones.* 
                             FROM residencia 
@@ -133,20 +148,22 @@ function consultar_datos($con) {
                 echo '<p class="desc">Descripción: ' . $resultado['descripcion'] . '</p>';
                 echo '<p class="desc">Precio: $' . $resultado['precio'] . '</p>';
                 echo '<a class="action" href="residencia.php?id_residencia=' . $resultado['id_residencia'] . '">Acceder<span aria-hidden="true">→</span></a>';
+                echo '<span class="star" onclick="guardarResidencia(' . $resultado['id_residencia'] . ', ' . $id_usuario . ')">★</span>'; // Estrella llena
                 echo '</div></div>';
                 $cardCount++;
             } while ($cardCount < 3 && ($resultado = mysqli_fetch_assoc($resultado_residencia)));
 
-            echo '</div></div>';
-            $isFirst = false;
+              echo '</div></div>';
+                    $isFirst = false;
+                }
+            } else {
+                echo "No se encontraron datos de residencia.";
         }
-    } else {
-        echo "No se encontraron datos de residencia.";
-    }
+  
 }
 
 
-consultar_datos($con);
+consultar_datos($con, $id_usuario);
 ?>
 
 
@@ -167,9 +184,35 @@ consultar_datos($con);
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script>
+                function guardarResidencia(id_residencia, id_usuario) {
+                    console.log("ID Residencia:", id_residencia, "ID Usuario:", id_usuario); 
+                    if (id_usuario === undefined) {
+                alert("ID de usuario no está definido.");
+                return;
+            }
+            fetch('guardar_residencia.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id_residencia: id_residencia, id_usuario: id_usuario }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Residencia guardada con éxito.");
+                } else {
+                    alert("Error al guardar la residencia: " + data.error);
+                }
+            })
+            .catch((error) => {
+                alert("Error: " + error);
+            });
+        }
+    </script>
+    <script>
+
     document.addEventListener("DOMContentLoaded", function() {
     var carouselItems = document.querySelectorAll('.carousel-item');
     var carouselSize = window.innerWidth < 768 ? 1 : 3; // 1 para móvil, 3 para escritorio
@@ -189,7 +232,7 @@ consultar_datos($con);
         location.reload(); // Recargar la página para aplicar cambios
     });
 });
-
+ 
     </script>
 </body>
 </html>
