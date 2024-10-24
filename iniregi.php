@@ -42,7 +42,7 @@
                 <input type="email" name="correo" placeholder="Correo Electrónico" required>
 
                 <input type="password" name="contrasenia" id="input" placeholder="Contraseña" required>
-                <div class="fas fa-eye verPassword" onclick="vista()" id="verPassword"></div>
+                <div class="fas fa-eye verPassword" onclick="vista()" id="verPassword" style="color: white;"></div>
                 
                 <a href="olvidemisena.php">Olvidaste tu contraseña?</a>
                 <button type="submit" name="login">Iniciar Sesión</button>
