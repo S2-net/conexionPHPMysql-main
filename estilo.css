@@ -1527,7 +1527,7 @@ hr{
 }
 
 .datosresi2{
-  margin: 75px;
+  margin-inline: 25%;
   width: 50%;
   height: 65%;
   border-radius: 10px;
