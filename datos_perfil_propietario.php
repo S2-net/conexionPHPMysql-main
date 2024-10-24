@@ -17,7 +17,7 @@ $con = conectar_bd();
 $correo = $_SESSION['correo'];
 
 // Consulta para obtener nombre, apellido, género, fecha de nacimiento e id de la residencia
-$sql = "SELECT nombre, apellido, genero, fecha_nacimiento, id_residencia FROM usuario WHERE correo = ?";
+$sql = "SELECT * FROM usuario WHERE correo = ?";
 $stmt = $con->prepare($sql);
 $stmt->bind_param("s", $correo);
 $stmt->execute();
@@ -31,6 +31,7 @@ if ($resultado->num_rows > 0) {
     $genero = htmlspecialchars($fila['genero']);
     $fecha_nacimiento = htmlspecialchars($fila['fecha_nacimiento']);
     $id_residencia = htmlspecialchars($fila['id_residencia']);
+    $foto = htmlspecialchars($fila['foto']);
 
     // Verificar si el usuario tiene una residencia asociada
     if ($id_residencia) {

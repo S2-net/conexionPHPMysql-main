@@ -52,9 +52,30 @@ $result_favoritos = $stmt->get_result();
                     <i class="fas fa-home"></i> Inicio
                 </a>
                 <div class="avatar-perfil">
-                    <img src="http://localhost/conexionPHPMysql-main/images/user.png" alt="">
-                    <a href="#" class="cambiar-foto">Cambiar foto</a>
-                </div>
+    <?php if (!empty($foto)): ?>
+        <img src="<?php echo $foto; ?>" alt="Foto de perfil" style="max-width: 150px; max-height: 150px;">
+    <?php else: ?>
+        <img src="http://localhost/conexionPHPMysql-main/images/user.png" alt="Usuario predeterminado" style="max-width: 150px; max-height: 150px;">
+    <?php endif; ?>
+    
+    <form action="subir_foto.php" method="POST" enctype="multipart/form-data" style="display: inline;">
+        <input type="file" name="foto" accept="image/*" required id="input-foto" style="display: none;">
+        <button type="button" class="cambiar-foto" id="cambiar-foto">Cambiar Foto</button>
+        <button type="submit" style="display: none;" id="submit-foto">Subir Foto</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('cambiar-foto').addEventListener('click', function() {
+        document.getElementById('input-foto').click(); // Abre el explorador de archivos
+    });
+
+    document.getElementById('input-foto').addEventListener('change', function() {
+        if (this.files.length > 0) {
+            document.getElementById('submit-foto').click(); // Simula el clic en el botón de envío
+        }
+    });
+</script>
             </div>
         </div>
     </section>

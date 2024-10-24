@@ -1,7 +1,6 @@
 <?php
 require("datos_perfil_propietario.php"); 
 require_once("conexion.php");
-
 ?>
 
 <!DOCTYPE html>
@@ -16,33 +15,39 @@ require_once("conexion.php");
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <section class="perfil-usuario">
+<section class="perfil-usuario">
         <div class="contendor-perfil">
             <div class="portada-perfil" style="background-image: url(http://localhost/conexionPHPMysql-main/images/resi4.jpeg);">
                 <a href="index.php" class="botonperfil">
                     <i class="fas fa-home"></i> Inicio
                 </a>
+                <div class="avatar-perfil">
+    <?php if (!empty($foto)): ?>
+        <img src="<?php echo $foto; ?>" alt="Foto de perfil" style="max-width: 150px; max-height: 150px;">
+    <?php else: ?>
+        <img src="http://localhost/conexionPHPMysql-main/images/user.png" alt="Usuario predeterminado" style="max-width: 150px; max-height: 150px;">
+    <?php endif; ?>
+    
+    <form action="subir_foto.php" method="POST" enctype="multipart/form-data" style="display: inline;">
+        <input type="file" name="foto" accept="image/*" required id="input-foto" style="display: none;">
+        <button type="button" class="cambiar-foto" id="cambiar-foto">Cambiar Foto</button>
+        <button type="submit" style="display: none;" id="submit-foto">Subir Foto</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('cambiar-foto').addEventListener('click', function() {
+        document.getElementById('input-foto').click(); // Abre el explorador de archivos
+    });
+
+    document.getElementById('input-foto').addEventListener('change', function() {
+        if (this.files.length > 0) {
+            document.getElementById('submit-foto').click(); // Simula el clic en el botón de envío
+        }
+    });
+</script>
 
 
-                <?php
-$consulta = mysqli_query($con, "SELECT foto FROM usuario WHERE id_usuario = '{$_SESSION['id_usuario']}'");
-while ($fila = mysqli_fetch_array($consulta)) {
-    // Mostrar la imagen de perfil del usuario
-    echo '<div class="avatar-perfil">
-        <form action="subir_foto_perfil.php" method="POST" enctype="multipart/form-data" id="foto">
-            <img src="' . $fila['foto'] . '" alt="">
-            <input type="file" name="foto" accept="image/*">
-            <button class="cambiar-foto" type="submit">
-                Cambiar foto
-            </button>
-        </form>
-    </div>';
-}
-?>
-                
-                
-
-                
             </div>
         </div>
     </section>
