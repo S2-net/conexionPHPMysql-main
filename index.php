@@ -2,14 +2,11 @@
 session_start(); 
 require("conexion.php");
  // Asegúrate de que el ID del usuario esté en la sesión
- $id_usuario = $_SESSION['id_usuario'] ?? null; 
- if ($id_usuario === null) {
-     echo "Error: ID de usuario no definido.";
-     exit; // Termina el script si no hay ID de usuario
- }
- 
+
 
 $con = conectar_bd(); 
+$id_usuario = isset($_SESSION['id_usuario']) ? $_SESSION['id_usuario'] : null;
+
 
 if (isset($_SESSION['id_rol'])) {
     $rol = $_SESSION['id_rol'];
@@ -30,11 +27,11 @@ if (isset($_SESSION['id_rol'])) {
 <style>
 
 .carousel-control-prev {
-    left: 10px; /* Ajusta la distancia desde la izquierda */
+    left: 5px; /* Ajusta la distancia desde la izquierda */
 }
 
 .carousel-control-next {
-    right: 10px; /* Ajusta la distancia desde la derecha */
+    right: 100px;
 }
 
 .card .action {
@@ -57,7 +54,7 @@ if (isset($_SESSION['id_rol'])) {
     justify-content: center;
     width: 15%;
     padding: 0;
-    color: #fff;
+    color: #000;
     text-align: center;
     background: 0 0;
     border: 0;
@@ -185,12 +182,7 @@ consultar_datos($con, $id_usuario);
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
-                function guardarResidencia(id_residencia, id_usuario) {
-                    console.log("ID Residencia:", id_residencia, "ID Usuario:", id_usuario); 
-                    if (id_usuario === undefined) {
-                alert("ID de usuario no está definido.");
-                return;
-            }
+                
             fetch('guardar_residencia.php', {
                 method: 'POST',
                 headers: {
@@ -209,7 +201,7 @@ consultar_datos($con, $id_usuario);
             .catch((error) => {
                 alert("Error: " + error);
             });
-        }
+        
     </script>
     <script>
 
