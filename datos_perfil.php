@@ -17,7 +17,7 @@ $con = conectar_bd();
 $correo = $_SESSION['correo'];
 
 // Consulta para obtener nombre, apellido, género y fecha de nacimiento en base al correo
-$sql = "SELECT nombre, apellido, genero, fecha_nacimiento FROM usuario WHERE correo = ?";
+$sql = "SELECT * FROM usuario WHERE correo = ?";
 $stmt = $con->prepare($sql);
 $stmt->bind_param("s", $correo);
 $stmt->execute();
@@ -30,11 +30,11 @@ if ($resultado->num_rows > 0) {
     $apellido = htmlspecialchars($fila['apellido']);
     $genero = htmlspecialchars($fila['genero']);
     $fecha_nacimiento = htmlspecialchars($fila['fecha_nacimiento']);
+    $foto = htmlspecialchars($fila['foto']);
     
 } else {
     echo "No se encontraron datos para el usuario.";
 }
 
 $stmt->close();
-$con->close();
 ?>

@@ -1,31 +1,7 @@
 <?php
-require_once("conexion.php"); // Asegúrate de usar require_once para evitar múltiples inclusiones
+require("datos_perfil.php"); 
+require_once("conexion.php");
 
-$con = conectar_bd(); // Conectar a la base de datos
-
-session_start(); // Asegúrate de que la sesión esté iniciada
-$id_usuario = $_SESSION['id_usuario']; // Asegúrate de que el ID del usuario esté disponible
-
-// Consulta para obtener los datos del usuario
-$stmt = $con->prepare("SELECT nombre, apellido, correo, genero, fecha_nacimiento FROM usuario WHERE id_usuario = ?");
-$stmt->bind_param("i", $id_usuario);
-$stmt->execute();
-$result_usuario = $stmt->get_result();
-
-if ($result_usuario->num_rows > 0) {
-    $usuario = $result_usuario->fetch_assoc();
-    $nombre = $usuario['nombre'];
-    $apellido = $usuario['apellido'];
-    $correo = $usuario['correo'];
-    $genero = $usuario['genero'];
-    $fecha_nacimiento = $usuario['fecha_nacimiento'];
-} else {
-    // Manejar el caso en que no se encontró el usuario
-    echo "Usuario no encontrado.";
-    exit();
-}
-
-// Consulta para obtener las residencias favoritas
 $stmt = $con->prepare("SELECT r.* FROM favoritos f JOIN residencia r ON f.id_residencia = r.id_residencia WHERE f.id_usuario = ?");
 $stmt->bind_param("i", $id_usuario);
 $stmt->execute();
@@ -45,7 +21,7 @@ $result_favoritos = $stmt->get_result();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <section class="perfil-usuario">
+<section class="perfil-usuario">
         <div class="contendor-perfil">
             <div class="portada-perfil" style="background-image: url(http://localhost/conexionPHPMysql-main/images/resi4.jpeg);">
                 <a href="index.php" class="botonperfil">
@@ -76,7 +52,7 @@ $result_favoritos = $stmt->get_result();
         }
     });
 </script>
-            </div>
+</div>
         </div>
     </section>
 
@@ -157,7 +133,3 @@ $result_favoritos = $stmt->get_result();
 
 </body>
 </html>
-
-<?php
-$con->close(); // Cierra la conexión al final
-?>
