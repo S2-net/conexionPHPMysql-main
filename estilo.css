@@ -50,6 +50,23 @@ transition: all 0.3s;
   margin-right: 5px;
   margin-top: 25px;
 }
+
+.cambiar-btn{
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  border-radius: 6px;
+  padding: 5px;
+  cursor: pointer;
+}
+.cambiar-btn:hover{
+  background-color: #0270ff;
+}
+
+.cerrar{
+  cursor: pointer;
+}
+
 .botones-container {
   display: flex;
   justify-content: space-between; /* Espacio entre los botones */
