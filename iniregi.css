@@ -238,3 +238,58 @@
 .containerIR.active .toggle-right{
     transform: translateX(200%);
 }
+
+.input-container {
+    position: relative;
+    width: 100%;
+}
+
+/*.input-container input {
+    width: calc(100% - 40px);
+    padding-right: 40px;
+}*/
+
+.verPassword {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 20px;
+}
+
+
+
+
+
+
+/* Estilos generales para el input */
+input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Contenedor para alinear el input y el icono */
+  .password-container {
+    position: absolute; /* Hacemos el contenedor como un contenedor de posicionamiento */
+  }
+  
+  /* Estilos para el icono */
+  .fa-eye {
+    position: absolute; /* Posicionamos el icono en relación a su contenedor */
+    top: 50%; /* Centramos verticalmente */
+    right: 10px; /* Ajusta este valor para cambiar la distancia al borde derecho */
+    transform: translateY(-50%); /* Compensamos el desplazamiento del top: 50% */
+    cursor: pointer;
+  }
+
+/* 
+.view{
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+*/

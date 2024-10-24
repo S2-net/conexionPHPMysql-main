@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="http://localhost/pruebasrepay/images/ICONO.png" type="icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="fontawesome/fontawesome-free-6.6.0-web/css/all.css">
     <link rel="stylesheet" href="estilo.css">
     <title>Inicio de sesión | Registro</title>
 </head>
+
 <body class="iniregibody">
     <div class="containerIR" id="containerIR">
         <div class="form-containerIR sign-up">
-        <form action="RF_registro_usr.php" method="POST">
+            <form action="RF_registro_usr.php" method="POST">
                 <div class="h1iniregi">
                     <h1>Crear Cuenta</h1>
                 </div>
@@ -27,25 +30,28 @@
                 </select>
                 <button type="submit" name="register">Crear Cuenta</button>
             </form>
-          
+
         </div>
 
         <div class="form-containerIR sign-in">
-        <form action="RF_login_usr.php" method="POST">
+            <form action="RF_login_usr.php" method="POST">
 
                 <div class="h1iniregi">
                     <h1>Iniciar Sesión</h1>
                 </div>
                 <input type="email" name="correo" placeholder="Correo Electrónico" required>
-                <input type="password" name="contrasenia" placeholder="Contraseña" required>
+
+                <input type="password" name="contrasenia" id="input" placeholder="Contraseña" required>
+                <div class="fas fa-eye verPassword" onclick="vista()" id="verPassword"></div>
+                
                 <a href="olvidemisena.php">Olvidaste tu contraseña?</a>
                 <button type="submit" name="login">Iniciar Sesión</button>
-                
+
             </form>
-           
+
         </div>
-    
-        
+
+
 
         <div class="toggle-containerIR">
             <div class="toggle">
@@ -69,4 +75,5 @@
     <script src="app.js"></script>
 
 </body>
+
 </html>
