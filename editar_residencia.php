@@ -18,25 +18,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $banios = $_POST["banios"];
     $detalles = $_POST["detalles"];
     $disponibilidad = $_POST["disponibilidad"];
+    $tipoo = $_POST["tipo"];
 
-    $consulta_actualizar_residencia = "UPDATE residencia SET nombreresi='$nombreresi', descripcion='$descripcion', precio='$precio', normas='$normas' WHERE id_residencia='$id_residencia'";
+    // Consulta para actualizar la residencia
+    $consulta_actualizar_residencia = "UPDATE residencia SET nombreresi='$nombreresi', descripcion='$descripcion', precio='$precio', normas='$normas', tipo='$tipoo' WHERE id_residencia='$id_residencia'";
 
-    $consulta_insertar_habitacion = "UPDATE habitaciones SET detalles='$detalles', disponibilidad='$disponibilidad', banios='$banios' WHERE id_residencia='$id_residencia'";                                        
+    // Consulta para actualizar la habitación
+    $consulta_actualizar_habitacion = "UPDATE habitaciones SET detalles='$detalles', disponibilidad='$disponibilidad', banios='$banios' WHERE id_residencia='$id_residencia'";                                        
         
-        if (mysqli_query($con, $consulta_insertar_habitacion)) {
-            echo "Habitación insertada correctamente.<br>";
-            
+    // Ejecutar la consulta de actualización de residencia
+    if (mysqli_query($con, $consulta_actualizar_residencia)) {
+        // Ejecutar la consulta de actualización de habitación
+        if (mysqli_query($con, $consulta_actualizar_habitacion)) {
+            echo "Residencia y habitación actualizadas correctamente.<br>";
             // Redirigir a otra página o mostrar mensaje de éxito
             header("Location: perfil-propietario.php");
+            exit();
         } else {
-            echo "Error al insertar la habitación: " . mysqli_error($con);
+            echo "Error al actualizar la habitación: " . mysqli_error($con);
         }
-
     } else {
-        echo "Error al insertar la residencia: " . mysqli_error($con);
+        echo "Error al actualizar la residencia: " . mysqli_error($con);
     }
-
+}
 
 mysqli_close($con);
 ?>
-

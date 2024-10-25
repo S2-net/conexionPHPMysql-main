@@ -32,7 +32,6 @@ if ($resultado->num_rows > 0) {
     $fecha_nacimiento = htmlspecialchars($fila['fecha_nacimiento']);
     $id_residencia = htmlspecialchars($fila['id_residencia']);
     $foto = htmlspecialchars($fila['foto']);
-   
 
     // Verificar si el usuario tiene una residencia asociada
     if ($id_residencia) {
@@ -56,6 +55,7 @@ if ($resultado->num_rows > 0) {
             $detalles = htmlspecialchars($residencia['detalles']);
             $descripcion = htmlspecialchars($residencia['descripcion']);
             $precio = htmlspecialchars($residencia['precio']);
+            $tipoo = htmlspecialchars($residencia['tipo']);
             
         } else {
             $mensaje = "Aún no se cargó una residencia.";
