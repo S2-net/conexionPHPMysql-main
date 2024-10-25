@@ -111,7 +111,7 @@ $result_favoritos = $stmt->get_result();
 </div>
 <hr>
 
-<<div class="datosresi3">
+<<div class="datosresi2">
     <h1>Residencias Favoritas</h1>
     <?php if ($result_favoritos && $result_favoritos->num_rows > 0): ?>
         <div class="flex-container">

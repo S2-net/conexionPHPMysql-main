@@ -157,6 +157,7 @@ require_once("conexion.php");
 
       <h1>Nombre de la residencia: <?php echo $nombreresi; ?></h1>
         <br>
+             <p>Tipo de residencia: <?php echo $tipoo; ?></p>
              <p>Precio: $<?php echo $precio; ?></p>
              <p>Cantidad de Dormitorios: <?php echo $disponibilidad; ?></p>
              <p>Normas de convivencia: <?php echo $normas; ?> </p>
@@ -180,6 +181,14 @@ require_once("conexion.php");
 
         <label for="edit_nombreresi" style="color: white;">Nombre de la Residencia:</label>
         <input type="text" id="edit_nombreresi" name="nombreresi" value="<?php echo $nombreresi; ?>" required>
+        <br>
+
+        <label for="edit_tipo" style="color: white;">Tipo de residencia:</label>
+        <select name="tipo" id="tipo" name="tipo" required>
+                <option value="1">Masculina</option>
+                <option value="2">Femenina</option>
+                <option value="3">Mixta</option>
+            </select>
         <br>
 
         <label for="edit_descripcion" style="color: white;">Descripción:</label>

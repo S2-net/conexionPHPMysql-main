@@ -24,8 +24,8 @@
         </div>
 
         <div class="cargadatos">
-            <label for="tipo-residencia" class="form-label">Tipo de residencia</label>
-            <select name="tipo-residencia" id="tipo-residencia">
+            <label for="tipo" class="form-label">Tipo de residencia</label>
+            <select name="tipo" id="tipo">
                 <option value="1">Masculina</option>
                 <option value="2">Femenina</option>
                 <option value="3">Mixta</option>

@@ -86,6 +86,7 @@ if (isset($_GET['id_residencia'])) {
             <h1 class="precio">$<?php echo $residencia['precio']; ?></h1>
             <div class="datosresi">
                 <p>Nombre de la residencia: <?php echo $residencia['nombreresi']; ?> </p>
+                <p>Tipo de residencia: <?php echo $residencia['tipo']; ?> </p>
                 <p>Número de baños: <?php echo $residencia['banios']; ?></p>
                 <p>Cantidad de Dormitorios: <?php echo $residencia['disponibilidad']; ?></p>
                 <p>Normas de convivencia: <?php echo $residencia['normas']; ?> </p>

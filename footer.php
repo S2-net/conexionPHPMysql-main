@@ -25,13 +25,14 @@
 
         </ul>
         <ul class="menu2">
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">|</a></li>
-            <li><a href="contacto.php">Acerca de</a></li>
-            <li><a href="#">|</a></li>
-            <li><a href="#">Residencias</a></li>
-            <li><a href="#">|</a></li>
+            <li><a href="index.php">Inicio</a></li>
+            <li><a href="">|</a></li>
             <li><a href="contacto.php">Contacto</a></li>
+            <li><a href="">|</a></li>
+            <li><a href="contacto.php">Acerca De</a></li>
+
+
+            
             
         </ul>
         <p>©2024 Residencias Estudiantiles | Todos los derechos reservados</p>
