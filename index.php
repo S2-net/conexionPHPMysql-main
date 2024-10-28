@@ -82,6 +82,20 @@ if (isset($_SESSION['id_rol'])) {
     padding: 0 50px; /* Espacio adicional para las tarjetas */
     right: 1px;
 }
+.card-img-top img{
+    width: 100%;
+    object-fit: cover;
+    height: 200px; /* Ajusta la altura según lo necesites */
+
+  }
+  .card-img-top {
+    width: 100%;
+    height: 200px;
+}
+  .image {
+    overflow: hidden; /* Oculta cualquier parte de la imagen que sobresalga */
+    height: 200px; /* Debe coincidir con la altura de la imagen */
+}
     }
 
 
