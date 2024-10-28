@@ -29,7 +29,7 @@
             <li><a href="">|</a></li>
             <li><a href="contacto.php">Contacto</a></li>
             <li><a href="">|</a></li>
-            <li><a href="contacto.php">Acerca De</a></li>
+            <li><a href="acerca_de.php">Acerca De</a></li>
 
 
             
