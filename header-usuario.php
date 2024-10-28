@@ -26,7 +26,6 @@
             <ul>
               <li class="nav-link"><a href="#">Inicio</a></li>
               <li class="nav-link"><a href="perfilusuario.php">Ver Perfil</a></li>
-              <li class="nav-link"><a href="contacto.php">Contactanos</a></li>
               <li class="nav-link"><a href="logout.php">Cerrar Sesion</a></li>
             </ul>
         </nav>  

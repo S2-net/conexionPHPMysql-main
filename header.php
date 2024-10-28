@@ -26,14 +26,14 @@
        
 
             <ul>
+            <li class="nav-link">
+                <a href="iniregi.php">Iniciar Sesión</a>
+              </li>
               <li class="nav-link">
                 <a href="#">Inicio</a>   
               </li>
               <li class="nav-link">
-                <a href="#">Menu</a>
-              </li>
-              <li class="nav-link">
-                <a href="iniregi.php">Iniciar Sesión</a>
+                <a href="acerca_de.php">Acerca De</a>
               </li>
               <li class="nav-link">
                 <a href="contacto.php">Contactanos</a>
