@@ -150,7 +150,28 @@ $result_favoritos = $stmt->get_result();
     </div>
 </section>
 </div>
-
+<section class="cambiar-contrasena">
+        <!-- Modal para cambiar la contraseña -->
+        <div id="contrasenaModal" class="modal">
+            <div class="modal-content">
+                <span class="close cerrar" onclick="cerrarModal(1)">&times;</span>
+                <h2 style="color: white;">Cambiar Contraseña</h2>
+                <hr style="background-color: white;">
+                <form action="cambiar_contrasena.php" method="POST">
+                    <label for="contrasena_actual" style="color: white;">Contraseña Actual:</label>
+                    <input type="password" id="contrasena_actual" name="contrasena_actual" required>
+                    <br>
+                    <label for="nueva_contrasena" style="color: white;">Nueva Contraseña:</label>
+                    <input type="password" id="nueva_contrasena" name="nueva_contrasena" required minlength="8">
+                    <br>
+                    <label for="confirmar_contrasena" style="color: white;">Confirmar Nueva Contraseña:</label>
+                    <input type="password" id="confirmar_contrasena" name="confirmar_contrasena" required minlength="8">
+                    <br>
+                    <button type="submit" name="cambiar_contrasena" class="cambiar-btn">Cambiar Contraseña</button>
+                </form>
+            </div>
+        </div>
+    </section>
 <hr style="background-color: #c4c4c4;">
 
 <<div class="datosresi2">
