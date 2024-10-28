@@ -31,7 +31,8 @@
         </nav>  
     </div>
 
-    <div class="header-content container">
+    <div class="container-filtro">
+    <div class="header-content">
         <div class="header-txt">
             <h1>Encuentra tu residencia ideal para el exito academico</h1>
         </div>
@@ -61,13 +62,14 @@
                         </select>
                       
                     </div>
-                  
-                </div>
-                <div class="col-md-12">
+                    <div class="col-md-3">
                         <input type="submit" value="Buscar" class="btn btn-primary mt-3">
                     </div>
+                </div>
+
             </form>
         </div>
+    </div>
     </div>
    </header> 
 </body>

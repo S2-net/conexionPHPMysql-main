@@ -1654,5 +1654,14 @@ select {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
+.form-select{
+  width: 85%;
+}
 
+.form-control{
+  width: 85%;
+}
 
+.col-md-3{
+  width: 20%;
+}
