@@ -130,9 +130,6 @@ $result_favoritos = $stmt->get_result();
                 <p>Género: <?php echo $genero; ?></p>
                 <hr>
                 <p>Fecha de Nacimiento: <?php echo $fecha_nacimiento; ?></p>
-                <hr>
-                <p>ID Residencia: <?php echo $id_residencia; ?></p>
-                <hr>
             </div>
 
             <button class="button" type="button" onclick="borrarCuenta()">
