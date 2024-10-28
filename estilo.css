@@ -1590,9 +1590,6 @@ hr{
   opacity: 0;
   transition: all ease-in-out 200ms;
 }
-.perfil-usuario .cambiar-foto i{
-
-}
 .perfil-usuario .avatar-perfil:hover .cambiar-foto{
   transform: translateY(0);
   opacity: 1;
@@ -1648,3 +1645,18 @@ hr{
 .datosresi2 h1{
   font-size: 20px;
 }
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+  width: 100%; /* Ancho completo */
+   /* Espaciado interno */
+  margin-bottom: 15px; /* Espaciado inferior */
+  border: none; /* Sin borde */
+  border-radius: 4px; /* Bordes redondeados */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+
+
