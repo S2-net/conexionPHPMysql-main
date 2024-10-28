@@ -109,7 +109,52 @@ $result_favoritos = $stmt->get_result();
 <div class="propietario">
     <p><strong>ESTUDIANTE</strong></p>
 </div>
-<hr>
+
+<div class="tony">
+
+
+
+<section class="cambiar-contrasena">
+    <!-- Modal para cambiar la contraseña -->
+    <div id="perfilModal" class="modal">
+        <div class="datosresi1">
+            <span class="close cerrar" onclick="cerrarModalll(1)">&times;</span>
+
+            <div class="nombreusu">
+                <h1> <?php echo $nombre . ' ' . $apellido; ?></h1>
+                <hr>
+                <p> Correo: <?php echo $correo; ?></p>
+                <hr>
+                <p>Contraseña: <button type="button" onclick="abrirModal()" class="cambiar-btn">Cambiar Contraseña</button></p>
+                <hr>
+                <p>Género: <?php echo $genero; ?></p>
+                <hr>
+                <p>Fecha de Nacimiento: <?php echo $fecha_nacimiento; ?></p>
+                <hr>
+                <p>ID Residencia: <?php echo $id_residencia; ?></p>
+                <hr>
+            </div>
+
+            <button class="button" type="button" onclick="borrarCuenta()">
+                <span class="button__text">Borrar Cuenta</span>
+                <span class="button__icon">
+                    <svg class="svg" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg">
+                        <title></title>
+                        <path d="M112,112l20,320c.95,18.49,14.4,32,32,32H348c17.67,0,30.87-13.51,32-32l20-320" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path>
+                        <line style="stroke:#fff;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" x1="80" x2="432" y1="112" y2="112"></line>
+                        <path d="M192,112V72h0a23.93,23.93,0,0,1,24-24h80a23.93,23.93,0,0,1,24,24h0v40" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path>
+                        <line style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" x1="256" x2="256" y1="176" y2="400"></line>
+                        <line style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" x1="184" x2="192" y1="176" y2="400"></line>
+                        <line style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px" x1="328" x2="320" y1="176" y2="400"></line>
+                    </svg>
+                </span>
+            </button>
+        </div>
+    </div>
+</section>
+</div>
+
+<hr style="background-color: #c4c4c4;">
 
 <<div class="datosresi2">
     <h1>Residencias Favoritas</h1>

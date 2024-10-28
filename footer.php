@@ -19,7 +19,7 @@
             <div class="wave" id="wave4"></div>
         </div>
         <ul class="social-icon">
-            <li><a href="#" style="font-size: 20px;"><ion-icon name="logo-instagram"></ion-icon>repay.uy</a></li>
+            <li><a href="https://www.instagram.com/repay.uy" target="_blank" style="font-size: 20px;"><ion-icon name="logo-instagram"></ion-icon>repay.uy</a></li>
          
             
 
