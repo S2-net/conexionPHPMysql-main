@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-10-2024 a las 17:40:19
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.0.28
+-- Tiempo de generación: 29-10-2024 a las 14:46:59
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -57,7 +57,25 @@ INSERT INTO `cambiar_contra` (`id`, `correo`, `token`, `expiracion`) VALUES
 (6, 'augustodlsr@gmail.com', 'f14baf6f05b778edcf326e345fb214a4', '2024-10-23 23:05:06'),
 (7, 'augustodlsr@gmail.com', '94efa64061e150ad6832d7a3af3a1c1f', '2024-10-25 23:08:39'),
 (8, 'augustodlsr@gmail.com', '3495fcd725c0b71368c721166990c238', '2024-10-25 23:08:55'),
-(9, 'alejo011106@gmail.com', '1af385bf7df6773eab70e8c09b7d5b7e', '2024-10-25 23:12:55');
+(9, 'alejo011106@gmail.com', '1af385bf7df6773eab70e8c09b7d5b7e', '2024-10-25 23:12:55'),
+(10, 'alejo011106@gmail.com', '9fee67f6cd961c5d873b638d0644e0cd', '2024-10-28 23:41:22'),
+(11, 'alejo011106@gmail.com', '2096b96a71a063628ba15be1ca66420b', '2024-10-28 23:42:38'),
+(12, 'alejo011106@gmail.com', 'd45bcf75070ca891fa71ba38141240cf', '2024-10-28 23:44:03'),
+(13, 'alejo011106@gmail.com', 'dd8d2102abf44d1c62a8fb41df82e58b', '2024-10-28 23:44:06'),
+(14, 'alejo011106@gmail.com', 'ea87c1f5f2a15ca11c61cb35db02516d', '2024-10-28 23:44:23'),
+(15, 'alejo011106@gmail.com', 'c4c11fcc1e477d0e4c89df539d9f260a', '2024-10-28 23:46:02'),
+(16, 'alejo011106@gmail.com', '2332531d2a12971e89f191a6535563b3', '2024-10-28 23:46:05'),
+(17, 'alejo011106@gmail.com', '61d56c8519b40452867e07858144801e', '2024-10-28 23:46:15'),
+(18, 'alejo011106@gmail.com', 'f7c7aec10aeb5c280f25e1aee957787c', '2024-10-28 23:46:17'),
+(19, 'alejo011106@gmail.com', '61d846800ca72b8d46712d2aed4c1ed4', '2024-10-28 23:46:20'),
+(20, 'alejo011106@gmail.com', '50c004ab2de63fbc2bf24ad60104fca3', '2024-10-28 23:46:40'),
+(21, 'alejo011106@gmail.com', 'cce44b00c70f99f75ee459ad0100305d', '2024-10-28 23:48:16'),
+(22, 'alejo011106@gmail.com', 'a2207964c1a0a24483f2a3f110326e0b', '2024-10-28 23:49:54'),
+(23, 'alejo011106@gmail.com', '8525b8462b158dea659062b082e6df82', '2024-10-28 23:49:57'),
+(24, 'alejo011106@gmail.com', 'ba8e45a7011581d1094e40736c879308', '2024-10-28 23:50:00'),
+(25, 'alejo011106@gmail.com', '7a90219997cb109031675e8de4757c66', '2024-10-28 23:50:05'),
+(26, 'alejo011106@gmail.com', 'c575ca6fa348460d3a6835e8ee297a58', '2024-10-28 23:50:06'),
+(27, 'alejo011106@gmail.com', '0d147c53bb1a23659d64d5455a7df387', '2024-10-28 23:50:16');
 
 -- --------------------------------------------------------
 
@@ -83,18 +101,6 @@ CREATE TABLE `favoritos` (
   `id_residencia` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `favoritos`
---
-
-INSERT INTO `favoritos` (`id`, `id_usuario`, `id_residencia`) VALUES
-(3, 3, 59),
-(4, 3, 59),
-(5, 3, 58),
-(6, 3, 58),
-(7, 10, 58),
-(8, 10, 59);
-
 -- --------------------------------------------------------
 
 --
@@ -112,11 +118,18 @@ CREATE TABLE `fotos_residencia` (
 --
 
 INSERT INTO `fotos_residencia` (`id_foto`, `id_residencia`, `ruta_foto`) VALUES
-(19, 58, 'fotos/fondo.png.jpeg'),
-(20, 59, 'fotos/IMG_8667.jpg'),
-(21, 60, 'fotos/IMG_8671.jpg'),
-(22, 61, 'fotos/IMG_8675.jpg'),
-(32, 65, 'fotos/Nacionall.png');
+(46, 69, 'fotos/WhatsApp Image 2024-10-29 at 9.28.24 AM.jpeg'),
+(47, 70, 'fotos/WhatsApp Image 2024-10-29 at 9.28.24 AM (1).jpeg'),
+(48, 71, 'fotos/WhatsApp Image 2024-10-29 at 9.28.25 AM (2).jpeg'),
+(49, 72, 'fotos/WhatsApp Image 2024-10-29 at 9.28.26 AM.jpeg'),
+(50, 72, 'fotos/WhatsApp Image 2024-10-29 at 9.28.25 AM (2).jpeg'),
+(51, 72, 'fotos/WhatsApp Image 2024-10-29 at 9.28.25 AM (1).jpeg'),
+(52, 72, 'fotos/WhatsApp Image 2024-10-29 at 9.28.25 AM.jpeg'),
+(53, 72, 'fotos/WhatsApp Image 2024-10-29 at 9.28.24 AM (2).jpeg'),
+(54, 72, 'fotos/WhatsApp Image 2024-10-29 at 9.28.24 AM (1).jpeg'),
+(55, 72, 'fotos/WhatsApp Image 2024-10-29 at 9.28.24 AM.jpeg'),
+(56, 72, 'fotos/WhatsApp Image 2024-10-29 at 9.28.23 AM (1).jpeg'),
+(57, 72, 'fotos/WhatsApp Image 2024-10-29 at 9.28.23 AM.jpeg');
 
 -- --------------------------------------------------------
 
@@ -155,8 +168,12 @@ INSERT INTO `habitaciones` (`id_habitacion`, `id_residencia`, `disponibilidad`, 
 (58, 58, 3, '2', 'a'),
 (59, 59, 3, '2', 'a'),
 (60, 60, 3, '2', 'a'),
-(61, 61, 3, '2', 'a'),
-(67, 65, 2, '2', 'asdasdad');
+(67, 65, 2, '2', 'asdasdad'),
+(70, 68, 6, '2', 'Uno masculino y otro femenino'),
+(71, 69, 4, '2', 'Los aires acondicionados están en  mantenimiento'),
+(72, 70, 5, '2', '1 de los baños se encuentra en reparacion'),
+(73, 71, 6, '2', 'se cuenta con bañera en los 2 baños'),
+(74, 72, 5, '2', 'Un baño masculino y otro femenino');
 
 -- --------------------------------------------------------
 
@@ -227,11 +244,10 @@ CREATE TABLE `residencia` (
 --
 
 INSERT INTO `residencia` (`id_residencia`, `calle`, `numero`, `precio`, `normas`, `nombreresi`, `descripcion`, `id_habitacion`, `id_usuario`, `tipo`) VALUES
-(58, NULL, NULL, 12300, 'hola', 'hola', 'hola', NULL, 11, NULL),
-(59, NULL, NULL, 13000, 'aleee', 'alejo2', 'alejoe', NULL, 11, NULL),
-(60, NULL, NULL, 12000, 'alejo', 'alejo3', 'alejo', NULL, 11, NULL),
-(61, NULL, NULL, 13000, 'asdasd', 'aaasdasd', 'asdasd', NULL, 11, NULL),
-(65, NULL, NULL, 2, 'asdasda', 'asdasd', 'asdasd', NULL, 3, 'Masculina');
+(69, NULL, NULL, 8000, ' mantener el orden de los espacios comunes', 'La bella vida', 'Esta residencia cuenta con salón, comedor y buena conexión a wifi', NULL, 17, 'Masculina'),
+(70, NULL, NULL, 7500, 'No tomar bebidas alcohólicas en el lugar y no hacer mucho ruido después de las 10 de la noche', 'Big House', 'Esta residencia cuenta con salón, además de aire acondicionado en todas las  habitaciones', NULL, 13, 'Masculina'),
+(71, NULL, NULL, 9000, 'No llegar despues de las 12 y mantener el orden de los espacios comunes', 'Las camelias', 'Esta residencia cuenta con salón, además de aire acondicionado en todas las  habitaciones', NULL, 14, 'Masculina'),
+(72, NULL, NULL, 12000, 'No llegar despues de las 12 y mantener el orden de los espacios comunes', 'Repay', 'Esta residencia se caacteriza por una buena convivencia entre sus residentes', NULL, 3, 'Masculina');
 
 -- --------------------------------------------------------
 
@@ -290,12 +306,18 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `contrasenia`, `num_telefono`, `correo`, `genero`, `fecha_nacimiento`, `id_rol`, `id_residencia`, `foto`) VALUES
 (1, 'Ismael', 'Vazquez', 'ismarepay123prueba@', 923347772, 'prueba1@gmail.com', 'Hombre', '2000-03-07', 1, NULL, ''),
-(3, 'Augusto', 'de los Santos', '$2y$10$2GFCkccDYO5bJTLJVD6IR.F6vqzkxx6w3J1By6OsugPRACeVzkjbe', NULL, 'augustodlsr@gmail.com', 'Hombre', '2007-01-30', 2, NULL, 'fotos/671bfef133a10.png'),
+(3, 'Augusto', 'de los Santos', '$2y$10$2GFCkccDYO5bJTLJVD6IR.F6vqzkxx6w3J1By6OsugPRACeVzkjbe', NULL, 'augustodlsr@gmail.com', 'Hombre', '2007-01-30', 2, 72, 'fotos/671bfef133a10.png'),
 (5, 'pepito', 'papa', '$2y$10$6SSsh.1tr20fgkIuf9/T/OO/JD8Ij07p.WTLxkWuZf0mTUOe1NLvW', NULL, '123@gmail.com', 'Hombre', '2024-10-04', 1, NULL, ''),
 (8, 'pepito', 'de los santos', '$2y$10$ekBwUTEN7HXD/KIBhYDqh.lFpAopLI4X96k9fDK0j5Wn3f9xwg0Wq', NULL, '2@gmail.com', 'Hombre', '2024-10-23', 2, NULL, ''),
 (9, 'a', 'a', '$2y$10$YuhIq2gVh9kdzZx77QBZLeQd4.1ObHbu0fOV14KCqZI6BVYNrfPY2', NULL, '3@gmail.com', 'Hombre', '2024-10-16', 2, NULL, ''),
 (10, 'a', 'a', '$2y$10$JigrZTq/FdagqBYy1WeS6eM5wVkjibd2neWKXUf3yjbo4JxN26ccK', NULL, '1@gmail.com', 'Hombre', '2024-10-18', 1, NULL, 'fotos/671a943c3eff8.jpg'),
-(11, 'Alejo', 'Piñeyro', '$2y$10$abe/ffODD1gs4CUi.K8yRuIUF43yanuPFJIascsFMgxrNQIu08Rvu', NULL, 'alejo011106@gmail.com', 'Hombre', '2024-10-31', 2, 61, 'fotos/671a71c063e7e.jpg');
+(11, 'Alejo', 'Piñeyro', '$2y$10$abe/ffODD1gs4CUi.K8yRuIUF43yanuPFJIascsFMgxrNQIu08Rvu', NULL, 'alejo011106@gmail.com', 'Hombre', '2024-10-31', 2, NULL, 'fotos/671a71c063e7e.jpg'),
+(12, 'Augusto de los Santos123', 'irio123', '$2y$10$g61ZCpYcDDkyAvpYtTPVMOv81Qz37Gm6L88Z/uIso6zPqRxd02RRG', NULL, 'alejouwu@gmail.com123', 'Hombre', '2024-10-30', 1, NULL, ''),
+(13, 'elias123', 'irio123', '$2y$10$ShFN0VQHS0EshtxPlQ3Ncu.KYuq2ZjqzkBr2YMxXxGJbOGapVT0Fy', NULL, 'fifi@gmail.cono', 'Hombre', '2024-10-30', 2, 70, ''),
+(14, 'elias', 'irio123', '$2y$10$wiZp2n4g7RzCz9rqV.1wluxChULKMrskbukMwbLL9LDCYdrXBixnC', NULL, 'fifi1@gmail.com', 'Hombre', '2024-10-16', 2, 71, ''),
+(15, 'Martin', 'Fagundez', '$2y$10$wdBLC3r9o7CA4aHhNxCVQOFY7XH87k/s9R37mICsnn2EfIEuIlrBG', NULL, 'martinFG@gmail.com', 'Hombre', '2004-06-16', 2, NULL, 'fotos/6720d9063f751.jpg'),
+(16, 'Pilar', 'Hernández ', '$2y$10$/jynsLOK6p/rS9viG.fqzum/Dq8DsX4Y5Jo2jdHd7xoNrdJb5WL8m', NULL, 'Pilarher@gmail.com', 'Mujer', '2006-01-10', 1, NULL, 'fotos/6720d9c8405ae.jpeg'),
+(17, 'Elias', 'Irigoyem', '$2y$10$koATVjqjpSlAv.mgWGzyv.8UsgO/28P1bTi0xu40Is.Q0ampCKAM.', NULL, 'elias@gmail.com', 'Hombre', '2024-10-15', 2, 69, '');
 
 --
 -- Índices para tablas volcadas
@@ -406,7 +428,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `cambiar_contra`
 --
 ALTER TABLE `cambiar_contra`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `espacios_comunes`
@@ -418,19 +440,19 @@ ALTER TABLE `espacios_comunes`
 -- AUTO_INCREMENT de la tabla `favoritos`
 --
 ALTER TABLE `favoritos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `fotos_residencia`
 --
 ALTER TABLE `fotos_residencia`
-  MODIFY `id_foto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_foto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT de la tabla `habitaciones`
 --
 ALTER TABLE `habitaciones`
-  MODIFY `id_habitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id_habitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT de la tabla `resenia`
@@ -442,13 +464,13 @@ ALTER TABLE `resenia`
 -- AUTO_INCREMENT de la tabla `residencia`
 --
 ALTER TABLE `residencia`
-  MODIFY `id_residencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id_residencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Restricciones para tablas volcadas
@@ -470,8 +492,8 @@ ALTER TABLE `espacios_comunes`
 -- Filtros para la tabla `favoritos`
 --
 ALTER TABLE `favoritos`
-  ADD CONSTRAINT `favoritos_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`),
-  ADD CONSTRAINT `favoritos_ibfk_2` FOREIGN KEY (`id_residencia`) REFERENCES `residencia` (`id_residencia`);
+  ADD CONSTRAINT `favoritos_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `favoritos_ibfk_2` FOREIGN KEY (`id_residencia`) REFERENCES `residencia` (`id_residencia`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `fotos_residencia`
