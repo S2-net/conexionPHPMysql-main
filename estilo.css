@@ -1509,7 +1509,7 @@ select{
   width: 100%;
 }
 .nombreusu1{
-  margin-left: 310px;
+  margin-left: 340px;
   margin-top: 10px;
 
 }
@@ -1517,7 +1517,7 @@ select{
   display: flex; /* Usamos flexbox */
   justify-content: space-between; /* Espacio entre elementos */
   align-items: center; /* Alinea verticalmente en el centro */
-  margin-left: 310px; /* Mantén este margen según lo necesites */
+  margin-left: 340px; /* Mantén este margen según lo necesites */
   margin-bottom: 10px;
 }
 
@@ -1552,7 +1552,7 @@ select{
 
 .propietario{
   color: #004aad;
-  margin-left: 310px; /* Mantén este margen según lo necesites */
+  margin-left: 340px; /* Mantén este margen según lo necesites */
 
 }
 
