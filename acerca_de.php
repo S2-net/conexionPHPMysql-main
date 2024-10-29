@@ -14,12 +14,15 @@
                 </div>
                 <h1>ACERCA DE NOSOTROS</h1>
                 <p class="text1">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur sed blanditiis ducimus ipsa, porro recusandae in obcaecati quia dolorum dolor error nemo! Maiores dignissimos dicta inventore tempora ea, voluptatem vero!
+                    Somos un grupo de estudiantes del Instituto Tecnológico de Paysandú, nuestro proyecto está conformado por 5 alumnos, nos surgió esta idea debido a cuando una persona del exterior necesita una residencia estudiantil que reservar, esta se dificulta a la hora de buscarse, por eso diseñamos esta aplicación web donde puedes encontrarlas
                 </p>
                 <div class="skills">
-                    <span>ITSP</span>
-                    <span>Estudiantes</span>
-                    <span>Paysandú</span>
+                    <span>Augusto De los Santos</span>
+                    <span>Alejo Piñeyro</span>
+                    <span>Ismael Vazquez</span>
+                    <span>Leon Mesia</span>
+                    <span>Elias Irigoyen</span>
+
                 </div>
             </div>
         </div>
