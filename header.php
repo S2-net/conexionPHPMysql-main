@@ -15,73 +15,67 @@
    <header class="header">
 
     <div class="menu container">
-    <a href="#">
+        <a href="#">
             <img src="http://localhost/conexionPHPMysql-main/images/logoblahd.png" alt="" class="logo">
         </a>
         <input type="checkbox" id="menu">
         <label for="menu">
-      <img src="http://localhost/conexionPHPMysql-main/images/menu.png" class="menu-icono" alt="">
+            <img src="http://localhost/conexionPHPMysql-main/images/menu.png" class="menu-icono" alt="">
         </label>
         <nav class="navbar">
-       
-
             <ul>
-            <li class="nav-link">
-                <a href="iniregi.php">Iniciar Sesión</a>
-              </li>
-              <li class="nav-link">
-                <a href="#">Inicio</a>   
-              </li>
-              <li class="nav-link">
-                <a href="acerca_de.php">Acerca De</a>
-              </li>
-              <li class="nav-link">
-                <a href="contacto.php">Contactanos</a>
-              </li>
+                <li class="nav-link">
+                    <a href="iniregi.php">Iniciar Sesión</a>
+                </li>
+                <li class="nav-link">
+                    <a href="index.php">Inicio</a>   
+                </li>
+                <li class="nav-link">
+                    <a href="acerca_de.php">Acerca De</a>
+                </li>
+                <li class="nav-link">
+                    <a href="contacto.php">Contactanos</a>
+                </li>
             </ul>
         </nav>  
- 
     </div>
 
     <div class="container-filtro">
-    <div class="header-content">
-        <div class="header-txt">
-            <h1>Encuentra tu residencia ideal para el exito academico</h1>
+        <div class="header-content">
+            <div class="header-txt">
+                <h1>Encuentra tu residencia ideal para el éxito académico</h1>
+            </div>
+            <div class="content">
+                <form method="POST" action="buscar-resi.php" id="formulario-filtro">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label for="num_habitaciones">Habitaciones</label>
+                            <input type="number" name="num_habitaciones" class="form-control" placeholder="Habitaciones" >
+                        </div>
+                        <div class="col-md-3">
+                            <label for="num_banos">Baños</label>
+                            <input type="number" name="num_banos" class="form-control" placeholder="Baños" >
+                        </div>
+                        <div class="col-md-3">
+                            <label for="max_precio">Precio Máximo</label>
+                            <input type="number" name="max_precio" class="form-control" placeholder="Precio Máximo" >
+                        </div>
+                        <div class="col-md-3">
+                            <label for="tipo">Tipo de Residencia</label>
+                            <select name="tipo" class="form-select" id="tipo">
+                                <option value="">Selecciona un tipo</option> <!-- Opción predeterminada -->
+                                <option value="masculina">Masculina</option>
+                                <option value="femenina">Femenina</option>
+                                <option value="mixta">Mixta</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="submit" value="Buscar" class="btn btn-primary mt-3">
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class="content">
-            <form method="POST" action="buscar-resi.php">
-                <div class="row">
-                    <div class="col-md-3">
-                        <label for="num_habitaciones">Habitaciones</label>
-                        <input type="number" name="num_habitaciones" class="form-control" placeholder="Habitaciones" >
-                    </div>
-                    <div class="col-md-3">
-                        <label for="num_banos">Baños</label>
-                        <input type="number" name="num_banos" class="form-control" placeholder="Baños" >
-                    </div>
-                    <div class="col-md-3">
-                        <label for="max_precio">Precio Máximo</label>
-                        <input type="number" name="max_precio" class="form-control" placeholder="Precio Máximo" >
-                    </div>
-                    <div class="col-md-3">
-                        <label for="tipo_residencia">Tipo de Residencia</label>
-                        <select name="tipo_residencia" class="form-select" >
-                            <option value="Masculina">Masculina</option>
-                            <option value="Femenina">Femenina</option>
-                            <option value="Mixta">Mixta</option>
-                           
-        
-                        </select>
-                      
-                    </div>
-                    <div class="col-md-3">
-                        <input type="submit" value="Buscar" class="btn btn-primary mt-3">
-                    </div>
-                </div>
-
-            </form>
-        </div>
-    </div>
     </div>
    </header> 
 </body>
