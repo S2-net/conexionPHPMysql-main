@@ -44,6 +44,11 @@ require("idrol_usuario.php");
     margin-top: 70px;
     flex: 0 0 30%;
 }
+@media (max-width: 768px) {
+    .card{
+        width: 50px;
+    }
+}
 .star {
             color: gold;
             cursor: pointer;
@@ -52,12 +57,14 @@ require("idrol_usuario.php");
             top: 10px; /* Ajusta la posición vertical */
             right: 10px; /* Ajusta la posición horizontal */
         }
-@media (max-width: 768px) {
-    .card {
-        flex: 0 0 100%; /* 1 tarjeta en pantallas pequeñas */
+        @media (max-width: 768px) {
+            .card {
+        flex: 0 0 100%; /* Cambia a 90% o el valor que desees */
     }
+
+
     .carousel-item {
-    padding: 0 50px; /* Espacio adicional para las tarjetas */
+    padding: 1px; /* Espacio adicional para las tarjetas */
     right: 1px;
 }
 .card-img-top img{
