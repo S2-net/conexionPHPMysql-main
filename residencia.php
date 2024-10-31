@@ -48,6 +48,7 @@ if (isset($_GET['id_residencia'])) {
         $resultado_fotos = $stmt_fotos->get_result();
         
         ?>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <div class="residencia">
             <div id="carouselExampleFade" class="carousel slide carousel-fade">
                 <div class="carousel-inner">
@@ -83,7 +84,15 @@ if (isset($_GET['id_residencia'])) {
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
+            <div class="rating">
             <h1 class="precio">$<?php echo $residencia['precio']; ?></h1>
+            <i class="bi bi-star-fill star"></i>
+            <i class="bi bi-star-fill star"></i>
+            <i class="bi bi-star-fill star"></i>
+            <i class="bi bi-star-fill star"></i>
+            <i class="bi bi-star-fill star"></i>
+
+            </div>
             <div class="datosresi">
                 <p>Nombre de la residencia: <?php echo $residencia['nombreresi']; ?> </p>
                 <p>Tipo de residencia: <?php echo $residencia['tipo']; ?> </p>
