@@ -49,7 +49,7 @@
         <input type="password" name="contrasenia" id="input" placeholder="Contraseña" required>
         <div class="fas fa-eye verPassword" onclick="vista()" id="verPassword" style="color: white;"></div>
         
-        <a href="olvidamisena.php">Olvidaste tu contraseña?</a>
+        <a href="olvidemisena.php">Olvidaste tu contraseña?</a>
         <button type="submit" name="login">Iniciar Sesión</button>
     </form>
 
@@ -61,13 +61,13 @@
             <div class="toggle">
                 <div class="toggle-panel toggle-left">
                     <img src="http://localhost/conexionPHPMysql-main/images/logosinfondohd1.png" alt="">
-                    <h1>Bienvenido!</h1>
+                    <h1 class="bienvenido">Bienvenido!</h1>
                     <p>Ingrese sus datos personales para utilizar todas las funciones del sitio</p>
                     <button class="hidden" id="login">Inicia Sesion</button>
                 </div>
                 <div class="toggle-panel toggle-right">
                     <img src="http://localhost/conexionPHPMysql-main/images/logosinfondohd1.png" alt="">
-                    <h1>Bienvenido!</h1>
+                    <h1 class="bienvenido">Bienvenido!</h1>
                     <p>Regístrese con sus datos personales para utilizar todas las funciones del sitio</p>
                     <button class="hidden" id="register">Registrate</button>
                 </div>

@@ -701,12 +701,14 @@ img{
   .iniregibody{
     background-image: url(http://localhost/conexionPHPMysql-main/images/resi.jpg);
     background-size: cover;
+    background-repeat: no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     height: 100vh;
 }
+
 
 .fuente{
   font-family: 'Montserrat', sans-serif;
@@ -1767,6 +1769,17 @@ select {
 @media (max-width:405px){
   .text1{
     flex-direction: column;
+  }
+}
+
+@media(max-width:415px){
+  .toggle-panel .bienvenido{
+    font-size: 25px;
+  }
+}
+@media(max-width:325px){
+  .toggle-panel .bienvenido{
+    font-size: 22px;
   }
 }
 
