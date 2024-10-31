@@ -34,20 +34,24 @@
         </div>
 
         <div class="form-containerIR sign-in">
-            <form action="RF_login_usr.php" method="POST">
+        <form action="RF_login_usr.php" method="POST">
+        <div class="h1iniregi">
+            <h1>Iniciar Sesión</h1>
+        </div>
+        
+        <?php if (isset($_GET['error'])): ?>
+            <div style="color: red;">
+                <?php echo htmlspecialchars($_GET['error']); ?>
+            </div>
+        <?php endif; ?>
 
-                <div class="h1iniregi">
-                    <h1>Iniciar Sesión</h1>
-                </div>
-                <input type="email" name="correo" placeholder="Correo Electrónico" required>
-
-                <input type="password" name="contrasenia" id="input" placeholder="Contraseña" required>
-                <div class="fas fa-eye verPassword" onclick="vista()" id="verPassword" style="color: white;"></div>
-                
-                <a href="olvidemisena.php">Olvidaste tu contraseña?</a>
-                <button type="submit" name="login">Iniciar Sesión</button>
-
-            </form>
+        <input type="email" name="correo" placeholder="Correo Electrónico" required>
+        <input type="password" name="contrasenia" id="input" placeholder="Contraseña" required>
+        <div class="fas fa-eye verPassword" onclick="vista()" id="verPassword" style="color: white;"></div>
+        
+        <a href="olvidamisena.php">Olvidaste tu contraseña?</a>
+        <button type="submit" name="login">Iniciar Sesión</button>
+    </form>
 
         </div>
 
