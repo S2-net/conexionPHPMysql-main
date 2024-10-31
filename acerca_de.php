@@ -22,7 +22,6 @@
                     <span>Ismael Vazquez</span>
                     <span>Leon Mesia</span>
                     <span>Elias Irigoyen</span>
-
                 </div>
             </div>
         </div>

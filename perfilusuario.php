@@ -98,17 +98,15 @@ $result_favoritos = $stmt->get_result();
 </section>
 
 <div class="nombreusu1">
-    <h1> <?php echo $nombre . ' ' . $apellido; ?></h1>
-</div>
+        <h1> <?php echo $nombre . ' ' . $apellido; ?></h1>
 
-<div class="propi">
-    <p> <?php echo $correo; ?></p>
-    <button type="button" onclick="abrirModalll()"><i class="fas fa-user" style="padding: 5px;"></i>Mi perfil</button>
-</div>
-
-<div class="propietario">
-    <p><strong>ESTUDIANTE</strong></p>
-</div>
+        <p> <?php echo $correo; ?></p>
+    
+        <p><strong>ESTUDIANTE</strong></p>
+    
+        <button type="button" onclick="abrirModalll()"><i class="fas fa-user" style="padding: 5px;"></i>Mi perfil</button>
+    </div>
+    <hr>
 
 <div class="tony">
 

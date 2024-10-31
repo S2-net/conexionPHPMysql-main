@@ -73,20 +73,19 @@ require_once("conexion.php");
             </div>
         </div>
     </section>
+
     <div class="nombreusu1">
         <h1> <?php echo $nombre . ' ' . $apellido; ?></h1>
-    </div>
 
-    <div class="propi">
         <p> <?php echo $correo; ?></p>
-
-        <button type="button" onclick="abrirModalll()"><i class="fas fa-user" style="padding: 5px;"></i>Mi perfil</button>
-
-    </div>
-    <div class="propietario">
+    
         <p><strong>PROPIETARIO</strong></p>
+    
+        <button type="button" onclick="abrirModalll()"><i class="fas fa-user" style="padding: 5px;"></i>Mi perfil</button>
     </div>
     <hr>
+    
+    
     <div class="tony">
 
 

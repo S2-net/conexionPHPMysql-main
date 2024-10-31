@@ -142,11 +142,12 @@ transition: all 0.3s;
 }
 
 .box-info{
+  display: flex;
+  justify-content: center;
   color: #FFF;
   display: flex;
   flex-direction: column;
   gap: 50px;
-  margin: 20px;
 }
 
 .box-info > h1{
@@ -539,10 +540,16 @@ img{
 }
 
 .skills{
+  gap: 5px;
   display: flex;
   justify-content: space-between;
   font-weight: 700;
   font-size: 13px;
+}
+@media (max-width:405px){
+  .skills{
+    flex-direction: column;
+  }
 }
 
 @media screen and (max-width:1200px){
@@ -568,8 +575,7 @@ img{
     padding: 60px;
   }
 }
-@media(max-width:414px){
-}
+
 .inner-container img{
   margin-left: 1px;
 }
@@ -979,7 +985,12 @@ footer .social-icon,
   align-items: center;
   margin: 5px 0;
   flex-wrap: wrap;
-  
+}
+@media(max-width:420px){
+  .menu2{
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 footer .social-icon li,
@@ -1148,6 +1159,12 @@ footer .wave#wave4{
       }
       .perfil-usuario img{
         width: 100%;
+      }
+      @media(max-width:383px){
+        .perfil-usuario .avatar-perfil{
+          left: 0px;
+          
+        }
       }
       
       .perfil-usuario{
@@ -1348,6 +1365,22 @@ background-color:#004aad ;
   justify-content: center;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
+
+@media(max-width:470px){
+  .card_resi{
+    width: 350px;
+  }
+}
+@media(max-width:380px){
+  .card_resi{
+    width: 290px;
+  }
+}
+@media(max-width:320px){
+  .card_resi{
+    width: 240px;
+  }
+}
 .nombre_carga{
   margin: 2px;
 }
@@ -1511,8 +1544,18 @@ select{
 .nombreusu1{
   margin-left: 340px;
   margin-top: 10px;
-
 }
+@media(max-width:685px){
+  .nombreusu1{
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+    margin-inline: 25%;
+    justify-content: center;
+    width: 50%;
+  }
+}
+
 .propi {
   display: flex; /* Usamos flexbox */
   justify-content: space-between; /* Espacio entre elementos */
@@ -1521,8 +1564,8 @@ select{
   margin-bottom: 10px;
 }
 
-.propi button {
-  margin-right: 100px; /* Empuja el botón a la derecha */
+.nombreusu1 button {
+   /* Empuja el botón a la derecha */
   background-color: #007BFF; /* Color de fondo */
   color: white; /* Color del texto */
   border: none; /* Sin borde */
@@ -1638,6 +1681,13 @@ hr{
   flex-direction: column; 
   justify-content: space-between; /* Cambia a space-between */
 }
+@media(max-width:685px){
+  .datosresi2{
+    margin: auto;
+    width: 75%;
+  }
+}
+
 .datosresi2 h1{
   font-size: 20px;
 }
@@ -1671,3 +1721,21 @@ select {
     max-width: 1200px;
     margin: 0 auto;
 }
+
+@media(max-width:512px){
+  .boton-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+  }
+}
+
+@media (max-width:405px){
+  .text1{
+    flex-direction: column;
+  }
+}
+
+
+
