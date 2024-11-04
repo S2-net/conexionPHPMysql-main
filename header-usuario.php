@@ -15,7 +15,7 @@
    <header class="header">
 
     <div class="menu container">
-    <a href="#">
+    <a href="index.php">
             <img src="http://localhost/conexionPHPMysql-main/images/logoblahd.png" alt="" class="logo">
         </a>
         <input type="checkbox" id="menu">
