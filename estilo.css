@@ -351,7 +351,7 @@ gap: 15px;
 
 @media(max-width:991px){
   .navbar{
-    height: 300px;
+    height: 350px;
   }
 }
 
@@ -435,16 +435,7 @@ nav a{
 }
 
 }
-@media (max-width: 768px) {
-  .nombreusu1 {
-      font-size: 5vw; /* Tamaño más pequeño para pantallas medianas */
-      display: flex;
-  }
 
-  p, strong {
-    display: flex;
-  }
-}
 
 
  
