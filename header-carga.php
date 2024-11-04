@@ -35,9 +35,6 @@
                 <a href="body-carga.php">Cargar Residencia</a>
               </li>
               <li class="nav-link">
-                <a href="contacto.php">Contactanos</a>
-              </li>
-              <li class="nav-link">
                 <a href="logout.php">Cerrar Sesion</a>
               </li>
             </ul>
