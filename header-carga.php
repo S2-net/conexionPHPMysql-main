@@ -15,7 +15,7 @@
    <header class="header">
 
     <div class="menu container">
-    <a href="#">
+    <a href="index.php">
             <img src="http://localhost/conexionPHPMysql-main/images/logoblahd.png" alt="" class="logo">
         </a>
         <input type="checkbox" id="menu">
@@ -33,9 +33,6 @@
               </li>
               <li class="nav-link">
                 <a href="body-carga.php">Cargar Residencia</a>
-              </li>
-              <li class="nav-link">
-                <a href="contacto.php">Contactanos</a>
               </li>
               <li class="nav-link">
                 <a href="logout.php">Cerrar Sesion</a>
