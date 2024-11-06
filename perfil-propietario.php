@@ -30,7 +30,12 @@ require_once("conexion.php");
         outline: 0;
         padding: 10px;
     }
-
+    
+    .close:hover{
+        cursor: pointer;
+        color: red;
+    }
+    
     .modal-content h1 label {
         color: white;
     }

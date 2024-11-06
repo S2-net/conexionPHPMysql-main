@@ -59,6 +59,10 @@ $result_favoritos = $stmt->get_result();
         outline: 0;
         padding: 10px;
     }
+
+    .close:hover{
+        color: red;
+    }
     .modal-content h1 label {
         color: white;
     }
@@ -172,7 +176,7 @@ $result_favoritos = $stmt->get_result();
     </section>
 <hr style="background-color: #c4c4c4;">
 
-<<div class="datosresi2">
+<div class="datosresi2">
     <h1>Residencias Favoritas</h1>
     <?php if ($result_favoritos && $result_favoritos->num_rows > 0): ?>
         <div class="flex-container">
