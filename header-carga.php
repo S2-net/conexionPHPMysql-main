@@ -29,7 +29,7 @@
       
         <ul>
               <li class="nav-link">
-                <a href="#">Inicio</a>   
+                <a href="index.php">Inicio</a>   
               </li>
               <li class="nav-link">
                 <a href="perfil-propietario.php">Ver Perfil</a>   
