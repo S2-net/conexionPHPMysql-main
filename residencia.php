@@ -14,9 +14,8 @@ if (isset($_SESSION['id_rol'])) {
     } elseif ($rol == 2) {
         require("header-propietario.php");
     } else {
-        // Manejar un rol no reconocido si es necesario
         echo "Rol de usuario no reconocido.";
-        exit; // Termina el script si el rol no es válido
+        exit; 
     }
 } else {
     // Si no hay sesión, mostrar el header general
@@ -28,10 +27,12 @@ if (isset($_GET['id_residencia'])) {
     $id_residencia = $_GET['id_residencia'];
 
     // Consulta para obtener la residencia y sus habitaciones
-    $consulta_residencia = "SELECT residencia.*, habitaciones.* 
-                            FROM residencia 
+    $consulta_residencia = "SELECT residencia.*, habitaciones.*, AVG(valoracion.puntuacion) AS valoracion_promedio
+                            FROM residencia
                             JOIN habitaciones ON residencia.id_residencia = habitaciones.id_residencia 
-                            WHERE residencia.id_residencia = ?";
+                            LEFT JOIN valoracion ON residencia.id_residencia = valoracion.id_residencia
+                            WHERE residencia.id_residencia = ?
+                            GROUP BY residencia.id_residencia";
     $stmt_residencia = $con->prepare($consulta_residencia);
     $stmt_residencia->bind_param("i", $id_residencia);
     $stmt_residencia->execute();
@@ -46,20 +47,79 @@ if (isset($_GET['id_residencia'])) {
         $stmt_fotos->bind_param("i", $id_residencia);
         $stmt_fotos->execute();
         $resultado_fotos = $stmt_fotos->get_result();
-        
+
+        // Verificar si el usuario ya ha valorado la residencia
+        $usuario_ha_valorado = false;
+        if (isset($_SESSION['id_usuario'])) {
+            $id_usuario = $_SESSION['id_usuario'];
+            $consulta_valoracion = "SELECT id_valoracion FROM valoracion WHERE id_residencia = ? AND id_usuario = ?";
+            $stmt_valoracion = $con->prepare($consulta_valoracion);
+            $stmt_valoracion->bind_param("ii", $id_residencia, $id_usuario);
+            $stmt_valoracion->execute();
+            $resultado_valoracion = $stmt_valoracion->get_result();
+            
+            if ($resultado_valoracion->num_rows > 0) {
+                $usuario_ha_valorado = true;
+            }
+            $stmt_valoracion->close();
+        }
+
         ?>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
         <style>
-    .carousel-item img {
-        max-width: 75%;  /* Ajusta el valor según lo que necesites */
-        
-        margin: 0 auto;
-        display: block;
-    }
-       </style>
-
+            .carousel-item img {
+                max-width: 75%;  
+                margin: 0 auto;
+                display: block;
+            }
+            .precio-estrellas {
+                display: flex;
+                align-items: center;
+                width: 100%; 
+                margin-bottom:10px;
+            }
+            .stars:hover,
+            .stars.selected {
+                color: yellow;
+            }
+            .starss {
+                display: flex;
+                align-items: center;
+                font-size: 1.5rem;
+                color: #ffd700; 
+                margin: 0; 
+            }
+            .stars {
+                color: gray;
+                cursor: pointer;
+                font-size: 1.4rem;
+                margin-left: 5px; 
+                transition: color 0.3s;
+            }
+            .stars:hover {
+                color: yellow;
+            }
+            .precio {
+                font-size: 2.5rem;
+                margin-right: 10px;
+                margin-top:13px;
+            }
+            .alert {
+                color: red;
+                font-size: 1.2rem;
+                margin-top: 20px;
+                padding: 10px;
+                border: 1px solid red;
+                background-color: #f8d7da;
+                border-radius: 5px;
+            }
+            .disabled {
+                color: gray !important;
+                cursor: not-allowed;
+            }
+        </style>
 
         <div class="residencia">
             <div id="carouselExampleFade" class="carousel slide carousel-fade">
@@ -68,7 +128,6 @@ if (isset($_GET['id_residencia'])) {
                     $isFirst = true;
                     if ($resultado_fotos->num_rows > 0) {
                         while ($foto = $resultado_fotos->fetch_assoc()) {
-                            // Agregar clase 'active' solo a la primera imagen
                             $activeClass = $isFirst ? 'active' : '';
                             $isFirst = false;
                             ?>
@@ -78,7 +137,6 @@ if (isset($_GET['id_residencia'])) {
                             <?php
                         }
                     } else {
-                        // Mostrar un placeholder si no hay fotos
                         ?>
                         <div class="carousel-item active">
                             <img src="placeholder.jpg" class="d-block w-100" alt="No hay imágenes disponibles">
@@ -96,26 +154,36 @@ if (isset($_GET['id_residencia'])) {
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
+
             <div class="rating">
-            <h1 class="precio">$<?php echo $residencia['precio']; ?></h1>
-            <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star-fill star"></i>
-
+                <div class="precio-estrellas">
+                    <h1 class="precio">$<?php echo $residencia['precio']; ?></h1>
+                    <div class="starss" id="star-rating">
+                        <?php 
+                            $valoracion = round($residencia['valoracion_promedio']); 
+                            for ($i = 1; $i <= 5; $i++) {
+                                if ($i <= $valoracion) {
+                                    echo '<i class="bi bi-star-fill stars" data-value="' . $i . '"></i>';
+                                } else {
+                                    echo '<i class="bi bi-star stars" data-value="' . $i . '"></i>';
+                                }
+                            }
+                        ?>
+                    </div>
+                </div>
             </div>
-            <div class="datosresi">
-        <p>Nombre de la residencia: <?php echo $residencia['nombreresi']; ?> </p>
-        <p>Tipo de residencia: <?php echo $residencia['tipo']; ?> </p>
-        <p>Número de baños: <?php echo $residencia['banios']; ?></p>
-        <p>Cantidad de Dormitorios: <?php echo $residencia['disponibilidad']; ?></p>
-        <p>Normas de convivencia: <?php echo $residencia['normas']; ?> </p>
-        <p>Tipo: <?php echo $residencia['detalles']; ?></p>
-        <p>Descripción: <?php echo $residencia['descripcion']; ?></p>
-    </div>
 
-    <div class="mapaa">
+            <div class="datosresi">
+                <p>Nombre de la residencia: <?php echo $residencia['nombreresi']; ?> </p>
+                <p>Tipo de residencia: <?php echo $residencia['tipo']; ?> </p>
+                <p>Número de baños: <?php echo $residencia['banios']; ?></p>
+                <p>Cantidad de Dormitorios: <?php echo $residencia['disponibilidad']; ?></p>
+                <p>Normas de convivencia: <?php echo $residencia['normas']; ?> </p>
+                <p>Tipo: <?php echo $residencia['detalles']; ?></p>
+                <p>Descripción: <?php echo $residencia['descripcion']; ?></p>
+            </div>
+
+            <div class="mapaa">
         <!-- Mapa -->
         <div id="map" style="width: 100%; max-width: 65%; height: 400px; margin: 20px;"></div>
 
@@ -137,6 +205,50 @@ if (isset($_GET['id_residencia'])) {
     $latitud = $residencia['latitud'];
     $longitud = $residencia['longitud'];
     ?>
+    <div class="comentarios">
+    <h2>Comentarios</h2>
+    <!-- Formulario para comentar -->
+    <form method="POST" action="procesar_comentario.php">
+        <!-- Campo oculto para id_residencia -->
+        <input type="hidden" name="id_residencia" value="<?php echo $id_residencia; ?>">
+
+        <textarea name="comentario" placeholder="Deja tu comentario aquí..." required></textarea>
+        <button type="submit" name="enviar_comentario">Enviar comentario</button>
+    </form>
+
+    <!-- Mostrar comentarios -->
+    <div class="comentarios-lista">
+        <?php
+        // Consultar los comentarios de esta residencia
+        $consulta_comentarios = "SELECT comentarios.*, usuario.nombre AS nombre_usuario 
+                                 FROM comentarios 
+                                 JOIN usuario ON comentarios.id_usuario = usuario.id_usuario 
+                                 WHERE comentarios.id_residencia = ? 
+                                 ORDER BY comentarios.fecha DESC";
+        $stmt_comentarios = $con->prepare($consulta_comentarios);
+        $stmt_comentarios->bind_param("i", $id_residencia);
+        $stmt_comentarios->execute();
+        $resultado_comentarios = $stmt_comentarios->get_result();
+
+        if ($resultado_comentarios->num_rows > 0) {
+            while ($comentario = $resultado_comentarios->fetch_assoc()) {
+                echo "<div class='comentario'>";
+                echo "<strong>" . htmlspecialchars($comentario['nombre_usuario']) . "</strong><br>";
+                echo "<p>" . nl2br(htmlspecialchars($comentario['comentario'])) . "</p>";
+                echo "<small>" . date("d/m/Y H:i", strtotime($comentario['fecha'])) . "</small>";
+                echo "</div><hr>";
+            }
+        } else {
+            echo "<p>No hay comentarios aún.</p>";
+        }
+
+        $stmt_comentarios->close();
+        ?>
+    </div>
+</div>
+
+</div>
+
 
     <script>
         // Inicializa el mapa en las coordenadas de la residencia
@@ -153,13 +265,83 @@ if (isset($_GET['id_residencia'])) {
             .bindPopup('<?php echo $residencia["nombreresi"]; ?>')
             .openPopup();
     </script>
+        <script>
+      document.addEventListener("DOMContentLoaded", function () {
+    const stars = document.querySelectorAll(".stars");
+    const starRatingContainer = document.getElementById("star-rating");
+    const idResidencia = <?php echo $id_residencia; ?>;  // Id de la residencia desde PHP
+    const userHasRated = <?php echo isset($_SESSION['id_usuario']) && $usuario_ha_valorado ? 'true' : 'false'; ?>;
+
+    let ratingValue = 0; // Valor de la valoración que el usuario selecciona
+
+    // Si el usuario ya ha valorado, deshabilitar las estrellas
+    if (userHasRated) {
+        stars.forEach(star => {
+            star.classList.add('disabled');
+        });
+    }
+
+    // Función para manejar la selección de estrellas
+    stars.forEach(star => {
+        star.addEventListener("mouseover", function () {
+            if (userHasRated) return; // Si ya valoró, no hace nada
+            const value = parseInt(star.getAttribute("data-value"));
+            highlightStars(value);
+        });
+
+        star.addEventListener("mouseout", function () {
+            if (userHasRated) return; // Si ya valoró, no hace nada
+            highlightStars(ratingValue);
+        });
+
+        star.addEventListener("click", function () {
+            if (userHasRated) return; // Si ya valoró, no hace nada
+            ratingValue = parseInt(star.getAttribute("data-value"));
+            highlightStars(ratingValue);
+            sendRating(ratingValue);
+        });
+    });
+
+    // Resalta las estrellas según el valor
+    function highlightStars(value) {
+        stars.forEach(star => {
+            const starValue = parseInt(star.getAttribute("data-value"));
+            if (starValue <= value) {
+                star.classList.add("selected");
+            } else {
+                star.classList.remove("selected");
+            }
+        });
+    }
+
+    // Función para enviar la valoración con AJAX
+    function sendRating(rating) {
+        if (rating === 0) {
+            return;  // No hacemos nada si no se seleccionó una valoración
+        }
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "procesar_valoracion.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                // Ya no mostramos ningún cartel ni mensaje
+            }
+        };
+
+        // Enviar los datos: id_residencia y puntuacion
+        xhr.send("id_residencia=" + idResidencia + "&puntuacion=" + rating);
+    }
+});
 
 
+        </script>
         <?php
     } else {
         echo "No se encontraron datos para la residencia seleccionada.";
     }
-    
+
     $stmt_residencia->close();
     $stmt_fotos->close();
 } else {
@@ -167,7 +349,4 @@ if (isset($_GET['id_residencia'])) {
 }
 
 mysqli_close($con);
-
 ?>
-
-

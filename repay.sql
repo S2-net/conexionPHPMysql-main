@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-11-2024 a las 01:49:08
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.0.30
+-- Tiempo de generación: 07-11-2024 a las 19:14:31
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -327,6 +327,20 @@ INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `contrasenia`, `num_t
 (16, 'Pilar', 'Hernández ', '$2y$10$/jynsLOK6p/rS9viG.fqzum/Dq8DsX4Y5Jo2jdHd7xoNrdJb5WL8m', NULL, 'Pilarher@gmail.com', 'Mujer', '2006-01-10', 1, NULL, 'fotos/6720d9c8405ae.jpeg'),
 (17, 'Elias', 'Irigoyem', '$2y$10$koATVjqjpSlAv.mgWGzyv.8UsgO/28P1bTi0xu40Is.Q0ampCKAM.', NULL, 'elias@gmail.com', 'Hombre', '2024-10-15', 2, 69, '');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `valoracion`
+--
+
+CREATE TABLE `valoracion` (
+  `id_valoracion` int(11) NOT NULL,
+  `id_residencia` int(11) DEFAULT NULL,
+  `id_usuario` int(11) DEFAULT NULL,
+  `puntuacion` int(11) NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Índices para tablas volcadas
 --
@@ -429,6 +443,14 @@ ALTER TABLE `usuario`
   ADD KEY `id_residencia` (`id_residencia`);
 
 --
+-- Indices de la tabla `valoracion`
+--
+ALTER TABLE `valoracion`
+  ADD PRIMARY KEY (`id_valoracion`),
+  ADD KEY `id_residencia` (`id_residencia`),
+  ADD KEY `id_usuario` (`id_usuario`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -479,6 +501,12 @@ ALTER TABLE `residencia`
 --
 ALTER TABLE `usuario`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT de la tabla `valoracion`
+--
+ALTER TABLE `valoracion`
+  MODIFY `id_valoracion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
@@ -548,6 +576,13 @@ ALTER TABLE `tiene`
 ALTER TABLE `usuario`
   ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`id_residencia`) REFERENCES `residencia` (`id_residencia`) ON DELETE SET NULL;
+
+--
+-- Filtros para la tabla `valoracion`
+--
+ALTER TABLE `valoracion`
+  ADD CONSTRAINT `valoracion_ibfk_1` FOREIGN KEY (`id_residencia`) REFERENCES `residencia` (`id_residencia`) ON DELETE CASCADE,
+  ADD CONSTRAINT `valoracion_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
