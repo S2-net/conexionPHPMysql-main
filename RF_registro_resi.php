@@ -32,10 +32,12 @@ if (isset($_POST["envio"])) {
         $precio = $_POST["precio"];
         $normas = $_POST["normas"];
         $tipoo = trim($_POST["tipo"]);
-
-        // Inserción de la residencia en la base de datos (sin foto)
-        $consulta_insertar_residencia = "INSERT INTO residencia (nombreresi, descripcion, precio, normas, id_usuario, tipo) 
-                                         VALUES ('$nombreresi', '$descripcion', '$precio', '$normas', '$id_usuario', '$tipoo')";
+        $latitud = $_POST["latitud"];
+        $longitud = $_POST["longitud"];
+        
+        // Inserción de la residencia en la base de datos (incluyendo latitud y longitud)
+        $consulta_insertar_residencia = "INSERT INTO residencia (nombreresi, descripcion, precio, normas, id_usuario, tipo, latitud, longitud) 
+                                         VALUES ('$nombreresi', '$descripcion', '$precio', '$normas', '$id_usuario', '$tipoo', '$latitud', '$longitud')";
         
         if (mysqli_query($con, $consulta_insertar_residencia)) {
             // Obtener el último id_residencia insertado

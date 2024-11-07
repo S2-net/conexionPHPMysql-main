@@ -49,6 +49,18 @@ if (isset($_GET['id_residencia'])) {
         
         ?>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+        <style>
+    .carousel-item img {
+        max-width: 75%;  /* Ajusta el valor según lo que necesites */
+        
+        margin: 0 auto;
+        display: block;
+    }
+       </style>
+
+
         <div class="residencia">
             <div id="carouselExampleFade" class="carousel slide carousel-fade">
                 <div class="carousel-inner">
@@ -94,15 +106,55 @@ if (isset($_GET['id_residencia'])) {
 
             </div>
             <div class="datosresi">
-                <p>Nombre de la residencia: <?php echo $residencia['nombreresi']; ?> </p>
-                <p>Tipo de residencia: <?php echo $residencia['tipo']; ?> </p>
-                <p>Número de baños: <?php echo $residencia['banios']; ?></p>
-                <p>Cantidad de Dormitorios: <?php echo $residencia['disponibilidad']; ?></p>
-                <p>Normas de convivencia: <?php echo $residencia['normas']; ?> </p>
-                <p>Tipo: <?php echo $residencia['detalles']; ?></p>
-                <p>Descripción: <?php echo $residencia['descripcion']; ?></p>
-            </div>
+        <p>Nombre de la residencia: <?php echo $residencia['nombreresi']; ?> </p>
+        <p>Tipo de residencia: <?php echo $residencia['tipo']; ?> </p>
+        <p>Número de baños: <?php echo $residencia['banios']; ?></p>
+        <p>Cantidad de Dormitorios: <?php echo $residencia['disponibilidad']; ?></p>
+        <p>Normas de convivencia: <?php echo $residencia['normas']; ?> </p>
+        <p>Tipo: <?php echo $residencia['detalles']; ?></p>
+        <p>Descripción: <?php echo $residencia['descripcion']; ?></p>
+    </div>
+
+    <div class="mapaa">
+        <!-- Mapa -->
+        <div id="map" style="width: 100%; max-width: 65%; height: 400px; margin: 20px;"></div>
+
+        <!-- Formulario de contacto al lado del mapa -->
+        <div class="contact-form">
+            <h2>Contactar al propietario</h2>
+            <form method="POST" action="enviar_contacto.php">
+                <input type="text" name="nombre" placeholder="Tu nombre" required>
+                <input type="email" name="correo" placeholder="Tu correo" required>
+                <input type="text" name="numero" placeholder="Tu numero" required>
+                <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+                <button type="submit" name="enviar">Enviar</button>
+            </form>
         </div>
+    </div>
+
+    <?php 
+    // Inicializa el mapa (igual que antes)
+    $latitud = $residencia['latitud'];
+    $longitud = $residencia['longitud'];
+    ?>
+
+    <script>
+        // Inicializa el mapa en las coordenadas de la residencia
+        var map = L.map('map').setView([<?php echo $latitud; ?>, <?php echo $longitud; ?>], 13);
+
+        // Carga el mapa de OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Añade un marcador en la ubicación de la residencia
+        L.marker([<?php echo $latitud; ?>, <?php echo $longitud; ?>]).addTo(map)
+            .bindPopup('<?php echo $residencia["nombreresi"]; ?>')
+            .openPopup();
+    </script>
+
+
         <?php
     } else {
         echo "No se encontraron datos para la residencia seleccionada.";
@@ -115,4 +167,7 @@ if (isset($_GET['id_residencia'])) {
 }
 
 mysqli_close($con);
+
 ?>
+
+

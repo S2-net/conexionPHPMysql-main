@@ -23,16 +23,17 @@ function consultar_datos($con, $id_usuario) {
 
             do {
                 $id_residencia = $resultado['id_residencia'];
+
+                // Verificar si la residencia está guardada en favoritos
+                $consulta_favorito = "SELECT 1 FROM favoritos WHERE id_usuario = $id_usuario AND id_residencia = $id_residencia LIMIT 1";
+                $resultado_favorito = mysqli_query($con, $consulta_favorito);
+                $esFavorito = ($resultado_favorito && mysqli_num_rows($resultado_favorito) > 0);
+
+                // Obtener la foto de la residencia
                 $consulta_foto = "SELECT ruta_foto FROM fotos_residencia WHERE id_residencia = $id_residencia LIMIT 1";
                 $resultado_foto = mysqli_query($con, $consulta_foto);
-                
-                if ($resultado_foto === false) {
-                    echo "Error en la consulta de fotos: " . mysqli_error($con);
-                    continue;
-                }
-
                 $foto = mysqli_fetch_assoc($resultado_foto);
-                
+
                 echo '<div class="card">';
                 echo '<div class="image">';
                 
@@ -48,7 +49,11 @@ function consultar_datos($con, $id_usuario) {
                 echo '<p class="desc">Descripción: ' . $resultado['descripcion'] . '</p>';
                 echo '<p class="desc">Precio: $' . $resultado['precio'] . '</p>';
                 echo '<a class="action" href="residencia.php?id_residencia=' . $resultado['id_residencia'] . '">Acceder<span aria-hidden="true">→</span></a>';
-                echo '<span class="star" onclick="guardarResidencia(' . $resultado['id_residencia'] . ', ' . $id_usuario . ')">★</span>';
+                
+                // Asignar la clase 'saved' si es favorito
+                echo '<span class="star ' . ($esFavorito ? 'saved' : '') . '" onclick="guardarResidencia(' . $id_residencia . ', ' . $id_usuario . ')" data-residencia="' . $id_residencia . '">★</span>';
+
+                
                 echo '</div></div>';
                 $cardCount++;
             } while ($cardCount < 3 && ($resultado = mysqli_fetch_assoc($resultado_residencia)));
