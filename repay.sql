@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-11-2024 a las 19:14:31
+-- Tiempo de generación: 07-11-2024 a las 21:12:31
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -80,6 +80,33 @@ INSERT INTO `cambiar_contra` (`id`, `correo`, `token`, `expiracion`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `comentarios`
+--
+
+CREATE TABLE `comentarios` (
+  `id_comentario` int(11) NOT NULL,
+  `id_residencia` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `comentario` text NOT NULL,
+  `fecha` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `comentarios`
+--
+
+INSERT INTO `comentarios` (`id_comentario`, `id_residencia`, `id_usuario`, `comentario`, `fecha`) VALUES
+(1, 71, 3, 'Hola', '2024-11-07 16:22:31'),
+(2, 71, 3, 'Muy buena residencia', '2024-11-07 16:23:05'),
+(3, 71, 11, 'Excelente residencia', '2024-11-07 16:23:33'),
+(4, 71, 11, 'Hola', '2024-11-07 16:24:42'),
+(5, 74, 3, 'hola', '2024-11-07 16:40:47'),
+(6, 69, 3, 'Hola', '2024-11-07 16:44:59'),
+(7, 69, 3, 'Hola1', '2024-11-07 16:45:04');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `espacios_comunes`
 --
 
@@ -106,7 +133,8 @@ CREATE TABLE `favoritos` (
 --
 
 INSERT INTO `favoritos` (`id`, `id_usuario`, `id_residencia`) VALUES
-(13, 10, 69);
+(13, 10, 69),
+(15, 11, 69);
 
 -- --------------------------------------------------------
 
@@ -342,6 +370,46 @@ CREATE TABLE `valoracion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Volcado de datos para la tabla `valoracion`
+--
+
+INSERT INTO `valoracion` (`id_valoracion`, `id_residencia`, `id_usuario`, `puntuacion`, `fecha`) VALUES
+(1, 69, NULL, 1, '2024-11-07 18:36:54'),
+(2, 69, NULL, 5, '2024-11-07 18:36:57'),
+(3, 69, NULL, 5, '2024-11-07 18:37:03'),
+(4, 69, NULL, 5, '2024-11-07 18:37:06'),
+(5, 69, NULL, 5, '2024-11-07 18:37:09'),
+(6, 69, NULL, 5, '2024-11-07 18:37:11'),
+(7, 69, NULL, 1, '2024-11-07 18:37:28'),
+(8, 69, NULL, 1, '2024-11-07 18:37:30'),
+(9, 69, NULL, 1, '2024-11-07 18:37:32'),
+(10, 69, NULL, 1, '2024-11-07 18:37:36'),
+(11, 69, NULL, 1, '2024-11-07 18:37:38'),
+(12, 69, NULL, 1, '2024-11-07 18:37:41'),
+(13, 69, NULL, 1, '2024-11-07 18:37:43'),
+(14, 69, NULL, 1, '2024-11-07 18:37:45'),
+(15, 69, NULL, 5, '2024-11-07 18:37:49'),
+(16, 69, NULL, 5, '2024-11-07 18:37:53'),
+(17, 69, NULL, 5, '2024-11-07 18:42:52'),
+(18, 69, NULL, 1, '2024-11-07 18:42:56'),
+(19, 69, NULL, 5, '2024-11-07 18:42:58'),
+(20, 69, NULL, 5, '2024-11-07 18:43:02'),
+(21, 69, NULL, 5, '2024-11-07 18:43:03'),
+(22, 69, NULL, 5, '2024-11-07 18:43:06'),
+(23, 69, NULL, 5, '2024-11-07 18:43:08'),
+(24, 69, NULL, 5, '2024-11-07 18:43:10'),
+(25, 69, NULL, 5, '2024-11-07 18:43:12'),
+(26, 69, NULL, 5, '2024-11-07 18:43:14'),
+(27, 69, NULL, 5, '2024-11-07 18:43:16'),
+(28, 69, NULL, 5, '2024-11-07 18:43:17'),
+(29, 69, NULL, 5, '2024-11-07 18:45:04'),
+(30, 70, 11, 4, '2024-11-07 18:50:13'),
+(31, 69, 11, 5, '2024-11-07 19:00:24'),
+(32, 71, 11, 5, '2024-11-07 19:01:06'),
+(33, 74, 3, 4, '2024-11-07 19:03:59'),
+(34, 70, 3, 1, '2024-11-07 19:05:11');
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -356,6 +424,14 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `cambiar_contra`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD PRIMARY KEY (`id_comentario`),
+  ADD KEY `fk_residencia` (`id_residencia`),
+  ADD KEY `fk_usuario` (`id_usuario`);
 
 --
 -- Indices de la tabla `espacios_comunes`
@@ -461,6 +537,12 @@ ALTER TABLE `cambiar_contra`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
+-- AUTO_INCREMENT de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT de la tabla `espacios_comunes`
 --
 ALTER TABLE `espacios_comunes`
@@ -470,7 +552,7 @@ ALTER TABLE `espacios_comunes`
 -- AUTO_INCREMENT de la tabla `favoritos`
 --
 ALTER TABLE `favoritos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `fotos_residencia`
@@ -506,7 +588,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `valoracion`
 --
 ALTER TABLE `valoracion`
-  MODIFY `id_valoracion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_valoracion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- Restricciones para tablas volcadas
@@ -517,6 +599,15 @@ ALTER TABLE `valoracion`
 --
 ALTER TABLE `admin`
   ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`id_admin`) REFERENCES `usuario` (`id_usuario`);
+
+--
+-- Filtros para la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`id_residencia`) REFERENCES `residencia` (`id_residencia`),
+  ADD CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`),
+  ADD CONSTRAINT `fk_residencia` FOREIGN KEY (`id_residencia`) REFERENCES `residencia` (`id_residencia`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `espacios_comunes`
