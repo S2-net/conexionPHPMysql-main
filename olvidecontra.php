@@ -1,7 +1,10 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
+require 'vendor/autoload.php';
+require 'conexion.php'; // Asegúrate de tener tu conexión a la base de datos
 use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+
 
 require 'vendor/autoload.php';
 require 'conexion.php'; // Incluir el archivo de conexión

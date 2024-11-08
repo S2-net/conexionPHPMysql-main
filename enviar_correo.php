@@ -1,11 +1,15 @@
 <?php
+require 'vendor/autoload.php';
+require 'conexion.php'; // Asegúrate de tener tu conexión a la base de datos
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'vendor/autoload.php';
-require 'conexion.php'; // Asegúrate de tener tu conexión a la base de datos
+
 
 $con = conectar_bd();
+
+
+// Configurar PHPMailer
 
 if (isset($_POST["enviar"])) {
     $correo = $_POST["correo"];
@@ -32,7 +36,7 @@ if (isset($_POST["enviar"])) {
 
         // Crear el enlace de restablecimiento
 // Crear el enlace de restablecimiento
-$enlace = "http://localhost/conexionPHPMysql-main/cambiar_sena.php?token=" . $token;
+$enlace = "https://localhost/conexionPHPMysql-main/cambiar_sena.php?token=" . $token;
 
         // Configurar PHPMailer
         $mail = new PHPMailer(true);
