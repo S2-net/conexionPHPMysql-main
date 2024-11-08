@@ -11,7 +11,13 @@ if (isset($_POST["register"])) {
     $contrasenia = $_POST["contrasenia"];
     $fecha_nacimiento = mysqli_real_escape_string($con, $_POST["fecha_nacimiento"]);
     $genero = trim($_POST["genero"]);
-    
+
+    // Validación de longitud para nombre y apellido
+    if (strlen($nombre) > 50 || strlen($apellido) > 50) {
+        header("Location: iniregi.php?error=El nombre y el apellido no pueden tener más de 50 caracteres.");
+        exit(); // Detener la ejecución si hay error
+    }
+
     // Consultar si el usuario ya existe
     $existe_usr = consultar_existe_usr($con, $correo);
 
@@ -39,7 +45,7 @@ function insertar_datos($con, $nombre, $apellido, $correo, $contrasenia, $fecha_
         
         // Ejecutar la consulta de inserción
         if (mysqli_query($con, $consulta_insertar)) {
-            header("Location: iniregi.php");
+            header("Location: iniregi.php"); // Redirigir a la página de registro si se inserta correctamente
             exit();
         } else {
             echo "Error: " . $consulta_insertar . "<br>" . mysqli_error($con);

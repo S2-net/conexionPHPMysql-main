@@ -28,7 +28,7 @@ if (isset($_POST["enviar"])) {
         $token = bin2hex(random_bytes(16));
         $expiracion = date('Y-m-d H:i:s', strtotime('+1 hour'));
 
-        // Guardar el token en la base de datos (puedes crear una tabla `reset_password`)
+        // Guardar el token en la base de datos
         $sql = "INSERT INTO cambiar_contra (correo, token, expiracion) VALUES (?, ?, ?)";
         $stmt = $con->prepare($sql);
         $stmt->bind_param("sss", $correo, $token, $expiracion);
@@ -49,6 +49,15 @@ $enlace = "https://localhost/conexionPHPMysql-main/cambiar_sena.php?token=" . $t
             $mail->Password = 'fsfj elwg ymfa guzx'; // Usa la contraseña de aplicación
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
+
+            // Desactivar la verificación del certificado SSL
+            $mail->SMTPOptions = array(
+                'ssl' => array(
+                    'verify_peer' => false,          // Desactiva la verificación del servidor
+                    'verify_peer_name' => false,     // Desactiva la verificación del nombre del servidor
+                    'allow_self_signed' => true      // Permite certificados auto-firmados
+                )
+            );
 
             // Configurar el correo
             $mail->setFrom('alejo011106@gmail.com', 'Alejo');

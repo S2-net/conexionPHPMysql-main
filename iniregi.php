@@ -14,22 +14,26 @@
 <body class="iniregibody">
     <div class="containerIR" id="containerIR">
         <div class="form-containerIR sign-up">
-            <form action="RF_registro_usr.php" method="POST">
-                <div class="h1iniregi">
-                    <h1>Crear Cuenta</h1>
-                </div>
-                <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
-                <input type="text" id="apellido" name="apellido" placeholder="Apellido" required>
-                <input type="email" id="correo" name="correo" placeholder="Correo Electrónico" required>
-                <input type="password" id="contrasenia" name="contrasenia" placeholder="Contraseña" required minlength="8" maxlength="12">
-                <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
-                <select name="genero" id="genero">
-                    <option value="1">Masculino</option>
-                    <option value="2">Femenino</option>
-                    <option value="0">Otro</option>
-                </select>
-                <button type="submit" name="register">Crear Cuenta</button>
-            </form>
+        <form action="RF_registro_usr.php" method="POST">
+    <div class="h1iniregi">
+        <h1>Crear Cuenta</h1>
+
+        <!-- Contenedor para mostrar errores (vacío al principio) -->
+        <div id="error-message" style="color: red; display: none;"></div>
+
+    </div>
+    <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+    <input type="text" id="apellido" name="apellido" placeholder="Apellido" required>
+    <input type="email" id="correo" name="correo" placeholder="Correo Electrónico" required>
+    <input type="password" id="contrasenia" name="contrasenia" placeholder="Contraseña" required minlength="8" maxlength="12">
+    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+    <select name="genero" id="genero">
+        <option value="1">Masculino</option>
+        <option value="2">Femenino</option>
+        <option value="0">Otro</option>
+    </select>
+    <button type="submit" name="register">Crear Cuenta</button>
+</form>
 
         </div>
 
