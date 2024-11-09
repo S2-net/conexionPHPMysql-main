@@ -1552,6 +1552,32 @@ margin-left: auto;
   margin-left: 340px; /* Mantén este margen según lo necesites */
   margin-bottom: 10px;
 }
+@media (max-width:376px) {
+  .header-txt h1 {
+      font-size: 25px;
+      
+  }
+  .header-content {
+    margin-top: -150px;
+}
+.header{
+  min-height: 135vh;
+}
+.footer1{
+  display: flex;
+}
+}
+@media (max-width:768px) {
+  .carousel-item {
+    padding: 10px;
+    right: 1px;
+}
+.d-flex {
+  display: flex;
+  flex-direction: column;
+}
+}
+
 
 .nombreusu1 button {
    /* Empuja el botón a la derecha */
