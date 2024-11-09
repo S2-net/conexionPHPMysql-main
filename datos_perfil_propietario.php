@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 // Incluir el archivo de conexión
 require_once 'conexion.php';

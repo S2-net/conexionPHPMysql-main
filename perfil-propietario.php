@@ -1,11 +1,27 @@
 <?php
-require("datos_perfil_propietario.php");
-require_once("conexion.php");
+session_start();  // Inicia la sesión
+
+// Verifica si el usuario ha iniciado sesión
+if (!isset($_SESSION['id_usuario'])) {
+    // Redirige a la página de inicio de sesión si no está logueado
+    header("Location: iniregi.php");
+    exit();
+}
+
+require("datos_perfil_propietario.php");  // Incluye los datos del perfil
+require_once("conexion.php");  // Asegúrate de que la conexión a la base de datos se incluya aquí
+
+// Llama a la función de conexión para obtener $conn
+$conn = conectar_bd();  // Establece la conexión a la base de datos
+
+// Verifica que la conexión haya sido exitosa
+if (!$conn) {
+    die("Error de conexión: " . mysqli_connect_error());
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -230,11 +246,61 @@ require_once("conexion.php");
 
         </div>
 
-
-
     </div>
 
-    </div>
+    <div class="datosresi2">
+    <h1>Consultas</h1>
+    <?php
+    // Verifica que la conexión sea válida
+    if ($conn) {
+        // Obtén el ID del propietario desde la sesión
+        $id_usuario = $_SESSION['id_usuario'];
+
+        // Consulta las consultas del propietario
+        $sql = "SELECT id, nombre, email, mensaje, fecha FROM consultas WHERE id_usuario = ?";
+
+        // Intenta preparar la consulta
+        $stmt = $conn->prepare($sql);
+
+        // Si la preparación falla, muestra el error de MySQL
+        if ($stmt === false) {
+            // Muestra el error de la consulta
+            die("Error al preparar la consulta: " . $conn->error);
+        }
+
+        // Vincula el parámetro
+        $stmt->bind_param("i", $id_usuario);  // Asegúrate de que $id_usuario sea un entero
+
+        // Ejecuta la consulta
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        // Mostrar las consultas si existen
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo "<div class='consulta'>";
+                echo "<p><strong>Nombre:</strong> " . htmlspecialchars($row['nombre']) . "</p>";
+                echo "<p><strong>Email:</strong> " . htmlspecialchars($row['email']) . "</p>";
+                echo "<p><strong>Mensaje:</strong> " . nl2br(htmlspecialchars($row['mensaje'])) . "</p>";
+                echo "<p><small><strong>Fecha:</strong> " . htmlspecialchars($row['fecha']) . "</small></p>";
+
+                // Botón para borrar la consulta
+                echo "<form method='POST' action='borrar_consulta.php'>";
+                echo "<input type='hidden' name='id' value='" . $row['id'] . "'>";
+                echo "<button type='submit' class='btn btn-danger'>Cerrar Consulta</button>";
+                echo "</form>";
+
+                echo "</div><hr>";
+            }
+        } else {
+            echo "<p>No hay consultas disponibles.</p>";
+        }
+    } else {
+        echo "<p>Error en la conexión a la base de datos.</p>";
+    }
+    ?>
+</div>
+</div>
 
 
 

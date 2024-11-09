@@ -6,12 +6,6 @@ session_start();
 $conexion = conectar_bd();
 $id_usuario = $_SESSION['id_usuario'] ?? null;
 
-if (!$id_usuario) {
-    echo "Error: Usuario no autenticado.";
-    exit;
-}
-
-
 $num_habitaciones = isset($_POST['num_habitaciones']) && is_numeric($_POST['num_habitaciones']) ? (int)$_POST['num_habitaciones'] : null;
 $num_banos = isset($_POST['num_banos']) && is_numeric($_POST['num_banos']) ? (int)$_POST['num_banos'] : null;
 $max_precio = isset($_POST['max_precio']) && is_numeric($_POST['max_precio']) ? (int)$_POST['max_precio'] : null;

@@ -1659,6 +1659,7 @@ hr{
 
 .datosresi2{
   margin-inline: 25%;
+  margin-bottom: 25px;
   width: 50%;
   height: 65%;
   border-radius: 10px;
@@ -1673,6 +1674,7 @@ hr{
 @media(max-width:685px){
   .datosresi2{
     margin: auto;
+    margin-bottom: 15px;
     width: 75%;
   }
 }

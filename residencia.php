@@ -1,8 +1,49 @@
-<?php 
+<?php
 session_start(); // Asegúrate de que la sesión está iniciada
 require("conexion.php");
 
 $con = conectar_bd(); // Conectar a la base de datos
+
+// Verificar si se envió el formulario
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Verificar si la sesión está activa antes de procesar el formulario
+    if (!isset($_SESSION['id_usuario'])) {
+        // Si no hay sesión activa, redirigir a la página de inicio de sesión
+        header("Location: iniregi.php");
+        exit; // Es importante usar exit después de la redirección
+    }
+    
+    // Si la sesión está activa, continuar con el procesamiento del formulario
+    $id_usuario = $_SESSION['id_usuario']; 
+    $id_residencia = isset($_POST['id_residencia']) ? $_POST['id_residencia'] : null;
+    $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : '';
+    $email = isset($_POST['email']) ? $_POST['email'] : ''; 
+    $mensaje = isset($_POST['mensaje']) ? $_POST['mensaje'] : '';
+
+    // Verificar si el usuario ya ha consultado por esta residencia
+    $consulta_existente = "SELECT * FROM consultas WHERE id_usuario = ? AND id_residencia = ?";
+    $stmt_existente = $con->prepare($consulta_existente);
+    $stmt_existente->bind_param("ii", $id_usuario, $id_residencia);
+    $stmt_existente->execute();
+    $resultado_existente = $stmt_existente->get_result();
+
+    if ($resultado_existente->num_rows > 0) {
+        // Si ya existe una consulta para esta residencia, mostramos un alerta y no procesamos el formulario
+        echo "<script>alert('Ya consultaste por esta residencia.');</script>";
+    } else {
+        // Solo procesar el formulario si no se ha consultado antes
+        if ($id_usuario && $id_residencia && $nombre && $email && $mensaje) {
+            // Inserción en la base de datos
+            $sql = "INSERT INTO consultas (id_usuario, id_residencia, nombre, email, mensaje) VALUES (?, ?, ?, ?, ?)";
+            $stmt = $con->prepare($sql);
+            $stmt->bind_param("iisss", $id_usuario, $id_residencia, $nombre, $email, $mensaje);
+            $stmt->execute();
+        }
+    }
+
+    $stmt_existente->close();
+}
+
 
 // Verificar si hay una sesión activa
 if (isset($_SESSION['id_rol'])) {
@@ -48,26 +89,11 @@ if (isset($_GET['id_residencia'])) {
         $stmt_fotos->execute();
         $resultado_fotos = $stmt_fotos->get_result();
 
-        // Verificar si el usuario ya ha valorado la residencia
-        $usuario_ha_valorado = false;
-        if (isset($_SESSION['id_usuario'])) {
-            $id_usuario = $_SESSION['id_usuario'];
-            $consulta_valoracion = "SELECT id_valoracion FROM valoracion WHERE id_residencia = ? AND id_usuario = ?";
-            $stmt_valoracion = $con->prepare($consulta_valoracion);
-            $stmt_valoracion->bind_param("ii", $id_residencia, $id_usuario);
-            $stmt_valoracion->execute();
-            $resultado_valoracion = $stmt_valoracion->get_result();
-            
-            if ($resultado_valoracion->num_rows > 0) {
-                $usuario_ha_valorado = true;
-            }
-            $stmt_valoracion->close();
-        }
-
         ?>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+        
         <style>
             .carousel-item img {
                 max-width: 75%;  
@@ -190,13 +216,20 @@ if (isset($_GET['id_residencia'])) {
         <!-- Formulario de contacto al lado del mapa -->
         <div class="contact-form">
             <h2>Contactar al propietario</h2>
-            <form method="POST" action="enviar_contacto.php">
-                <input type="text" name="nombre" placeholder="Tu nombre" required>
-                <input type="email" name="correo" placeholder="Tu correo" required>
-                <input type="text" name="numero" placeholder="Tu numero" required>
-                <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
-                <button type="submit" name="enviar">Enviar</button>
-            </form>
+            <form method="POST">
+    <!-- Solo agregar el campo oculto para id_usuario si la sesión está iniciada -->
+    <?php if (isset($_SESSION['id_usuario'])): ?>
+        <input type="hidden" name="id_usuario" value="<?php echo $_SESSION['id_usuario']; ?>">
+    <?php endif; ?>
+
+    <input type="hidden" name="id_residencia" value="<?php echo $id_residencia; ?>">
+
+    <input type="text" name="nombre" placeholder="Tu nombre" required>
+    <input type="email" name="email" placeholder="Tu correo" required>
+    <input type="text" name="numero" placeholder="Tu número" required>
+    <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+    <button type="submit" name="enviar">Enviar</button>
+</form>
         </div>
     </div>
 

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-11-2024 a las 21:12:31
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Tiempo de generación: 09-11-2024 a las 20:24:19
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -107,6 +107,30 @@ INSERT INTO `comentarios` (`id_comentario`, `id_residencia`, `id_usuario`, `come
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `consultas`
+--
+
+CREATE TABLE `consultas` (
+  `id` int(11) NOT NULL,
+  `id_usuario` int(11) DEFAULT NULL,
+  `id_residencia` int(11) DEFAULT NULL,
+  `nombre` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `mensaje` text DEFAULT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `consultas`
+--
+
+INSERT INTO `consultas` (`id`, `id_usuario`, `id_residencia`, `nombre`, `email`, `mensaje`, `fecha`) VALUES
+(6, 3, 74, 'Augusto', 'augustodlsr@gmail.com', 'asdasdasd', '2024-11-09 19:01:54'),
+(8, 3, 75, 'pepe', 'pepe@gmail.com', 'asdasda', '2024-11-09 19:11:30');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `espacios_comunes`
 --
 
@@ -163,7 +187,9 @@ INSERT INTO `fotos_residencia` (`id_foto`, `id_residencia`, `ruta_foto`) VALUES
 (64, 74, 'fotos/IMG_8671.jpg'),
 (65, 74, 'fotos/IMG_8674.jpg'),
 (66, 74, 'fotos/IMG_8675.jpg'),
-(67, 74, 'fotos/IMG_8676.jpg');
+(67, 74, 'fotos/IMG_8676.jpg'),
+(68, 75, 'fotos/IMG_8674.jpg'),
+(69, 75, 'fotos/IMG_8676.jpg');
 
 -- --------------------------------------------------------
 
@@ -207,7 +233,8 @@ INSERT INTO `habitaciones` (`id_habitacion`, `id_residencia`, `disponibilidad`, 
 (71, 69, 4, '2', 'Los aires acondicionados están en  mantenimiento'),
 (72, 70, 5, '2', '1 de los baños se encuentra en reparacion'),
 (73, 71, 6, '2', 'se cuenta con bañera en los 2 baños'),
-(76, 74, 2, '2', 'asdadsad');
+(76, 74, 2, '2', 'asdadsad'),
+(77, 75, 2, '2', 'asdasdasd');
 
 -- --------------------------------------------------------
 
@@ -283,7 +310,8 @@ INSERT INTO `residencia` (`id_residencia`, `calle`, `numero`, `precio`, `normas`
 (69, NULL, NULL, 8000, ' mantener el orden de los espacios comunes', 'La bella vida', 'Esta residencia cuenta con salón, comedor y buena conexión a wifi', NULL, 17, 'Masculina', '', ''),
 (70, NULL, NULL, 7500, 'No tomar bebidas alcohólicas en el lugar y no hacer mucho ruido después de las 10 de la noche', 'Big House', 'Esta residencia cuenta con salón, además de aire acondicionado en todas las  habitaciones', NULL, 13, 'Masculina', '', ''),
 (71, NULL, NULL, 9000, 'No llegar despues de las 12 y mantener el orden de los espacios comunes', 'Las camelias', 'Esta residencia cuenta con salón, además de aire acondicionado en todas las  habitaciones', NULL, 14, 'Masculina', '', ''),
-(74, NULL, NULL, 12000, 'No pelearse', 'La tacoma', 'muy buena', NULL, 3, 'Masculina', '-32.318582172130874', '-58.07091937590149');
+(74, NULL, NULL, 12000, 'No pelearse', 'La tacoma', 'muy buena', NULL, 3, 'Masculina', '-32.318582172130874', '-58.07091937590149'),
+(75, NULL, NULL, 12333, 'sadasda', 'Motel tiros', 'muy buena', NULL, 8, 'Masculina', '-32.3145229468657', '-58.06767158895657');
 
 -- --------------------------------------------------------
 
@@ -344,7 +372,7 @@ INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `contrasenia`, `num_t
 (1, 'Ismael', 'Vazquez', 'ismarepay123prueba@', 923347772, 'prueba1@gmail.com', 'Hombre', '2000-03-07', 1, NULL, ''),
 (3, 'Augusto', 'de los Santos', '$2y$10$2GFCkccDYO5bJTLJVD6IR.F6vqzkxx6w3J1By6OsugPRACeVzkjbe', NULL, 'augustodlsr@gmail.com', 'Hombre', '2007-01-30', 2, 74, 'fotos/671bfef133a10.png'),
 (5, 'pepito', 'papa', '$2y$10$6SSsh.1tr20fgkIuf9/T/OO/JD8Ij07p.WTLxkWuZf0mTUOe1NLvW', NULL, '123@gmail.com', 'Hombre', '2024-10-04', 1, NULL, ''),
-(8, 'pepito', 'de los santos', '$2y$10$ekBwUTEN7HXD/KIBhYDqh.lFpAopLI4X96k9fDK0j5Wn3f9xwg0Wq', NULL, '2@gmail.com', 'Hombre', '2024-10-23', 2, NULL, ''),
+(8, 'pepito', 'de los santos', '$2y$10$ekBwUTEN7HXD/KIBhYDqh.lFpAopLI4X96k9fDK0j5Wn3f9xwg0Wq', NULL, '2@gmail.com', 'Hombre', '2024-10-23', 2, 75, ''),
 (9, 'a', 'a', '$2y$10$YuhIq2gVh9kdzZx77QBZLeQd4.1ObHbu0fOV14KCqZI6BVYNrfPY2', NULL, '3@gmail.com', 'Hombre', '2024-10-16', 2, NULL, ''),
 (10, 'a', 'a', '$2y$10$JigrZTq/FdagqBYy1WeS6eM5wVkjibd2neWKXUf3yjbo4JxN26ccK', NULL, '1@gmail.com', 'Hombre', '2024-10-18', 1, NULL, 'fotos/671a943c3eff8.jpg'),
 (11, 'Alejo', 'Piñeyro', '$2y$10$abe/ffODD1gs4CUi.K8yRuIUF43yanuPFJIascsFMgxrNQIu08Rvu', NULL, 'alejo011106@gmail.com', 'Hombre', '2024-10-31', 2, NULL, 'fotos/671a71c063e7e.jpg'),
@@ -432,6 +460,14 @@ ALTER TABLE `comentarios`
   ADD PRIMARY KEY (`id_comentario`),
   ADD KEY `fk_residencia` (`id_residencia`),
   ADD KEY `fk_usuario` (`id_usuario`);
+
+--
+-- Indices de la tabla `consultas`
+--
+ALTER TABLE `consultas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_usuario` (`id_usuario`),
+  ADD KEY `id_residencia` (`id_residencia`);
 
 --
 -- Indices de la tabla `espacios_comunes`
@@ -543,6 +579,12 @@ ALTER TABLE `comentarios`
   MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT de la tabla `consultas`
+--
+ALTER TABLE `consultas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT de la tabla `espacios_comunes`
 --
 ALTER TABLE `espacios_comunes`
@@ -558,13 +600,13 @@ ALTER TABLE `favoritos`
 -- AUTO_INCREMENT de la tabla `fotos_residencia`
 --
 ALTER TABLE `fotos_residencia`
-  MODIFY `id_foto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id_foto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT de la tabla `habitaciones`
 --
 ALTER TABLE `habitaciones`
-  MODIFY `id_habitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id_habitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT de la tabla `resenia`
@@ -576,7 +618,7 @@ ALTER TABLE `resenia`
 -- AUTO_INCREMENT de la tabla `residencia`
 --
 ALTER TABLE `residencia`
-  MODIFY `id_residencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id_residencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -608,6 +650,13 @@ ALTER TABLE `comentarios`
   ADD CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`),
   ADD CONSTRAINT `fk_residencia` FOREIGN KEY (`id_residencia`) REFERENCES `residencia` (`id_residencia`) ON DELETE CASCADE,
   ADD CONSTRAINT `fk_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `consultas`
+--
+ALTER TABLE `consultas`
+  ADD CONSTRAINT `consultas_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `consultas_ibfk_2` FOREIGN KEY (`id_residencia`) REFERENCES `residencia` (`id_residencia`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `espacios_comunes`
