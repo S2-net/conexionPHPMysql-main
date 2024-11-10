@@ -43,11 +43,11 @@ require("idrol_usuario.php");
 .card{
     margin-top: 70px;
     flex: 0 0 30%;
+    
 }
 @media (max-width: 768px) {
     .card{
         flex: 0 0 100%; /* Cambia a 90% o el valor que desees */
-
     }
     .carousel-item {
     padding: 10px;

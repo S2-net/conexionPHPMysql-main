@@ -55,6 +55,10 @@ if (!$conn) {
     .modal-content h1 label {
         color: white;
     }
+    .consupadre{
+        gap: 10px;
+        
+}
 </style>
 
 <body>
@@ -173,7 +177,7 @@ if (!$conn) {
             </div>
         </div>
     </section>
-
+    <div class="consupadre">
     <div class="datosresi2">
 
         <?php if (isset($mensaje)) : ?>
@@ -248,8 +252,8 @@ if (!$conn) {
 
     </div>
 
-    <div class="datosresi2">
-    <h1>Consultas</h1>
+    <div class="datosresi4">
+    <p>Consultas</p>
     <?php
     // Verifica que la conexión sea válida
     if ($conn) {
@@ -301,7 +305,7 @@ if (!$conn) {
     ?>
 </div>
 </div>
-
+</div>
 
 
     <script src="alerta_cuenta.js"></script>

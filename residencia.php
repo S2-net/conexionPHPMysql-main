@@ -198,7 +198,25 @@ if (isset($_GET['id_residencia'])) {
                     </div>
                 </div>
             </div>
+            <?php
 
+            // Verificar si el usuario ya ha valorado la residencia
+        $usuario_ha_valorado = false;
+        if (isset($_SESSION['id_usuario'])) {
+            $id_usuario = $_SESSION['id_usuario'];
+            $consulta_valoracion = "SELECT id_valoracion FROM valoracion WHERE id_residencia = ? AND id_usuario = ?";
+            $stmt_valoracion = $con->prepare($consulta_valoracion);
+            $stmt_valoracion->bind_param("ii", $id_residencia, $id_usuario);
+            $stmt_valoracion->execute();
+            $resultado_valoracion = $stmt_valoracion->get_result();
+            
+            if ($resultado_valoracion->num_rows > 0) {
+                $usuario_ha_valorado = true;
+            }
+            $stmt_valoracion->close();
+        }
+
+        ?>
             <div class="datosresi">
                 <p>Nombre de la residencia: <?php echo $residencia['nombreresi']; ?> </p>
                 <p>Tipo de residencia: <?php echo $residencia['tipo']; ?> </p>

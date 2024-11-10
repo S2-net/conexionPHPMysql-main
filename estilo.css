@@ -335,7 +335,7 @@ gap: 15px;
 
 @media(max-width:991px){
   .navbar{
-    height: 350px;
+    height: 270px;
   }
 }
 
@@ -1361,6 +1361,21 @@ input{
   border-style: none;
   
 }
+
+.datosresi4{
+  margin-inline: 25%;
+  margin-bottom: 25px;
+  width: 50%;
+  height: 65%;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.85);
+  padding: 10px;
+  background-color: #004aad;
+  color: #FFF;
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-between; /* Cambia a space-between */
+}
 .card_resi h1{
   text-align: center;
   justify-content: center;
@@ -1590,23 +1605,20 @@ margin-left: auto;
   cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
   transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
 }
-.propi button:hover {
+.nombreusu1 button:hover {
   background-color: #0056b3; /* Color de fondo al pasar el mouse */
   transform: translateY(-2px); /* Efecto de elevación */
 }
 
-.propi button:focus {
+.nombreusu1 button:focus {
   outline: none; /* Elimina el contorno al enfocar */
   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Agrega sombra al enfocar */
 }
 
-.propi p {
+.nombreusu1 x x p {
   margin: 5px 0; /* Esto da un pequeño margen superior e inferior */
 }
-.propi p:nth-child(2) {
-  color: #004aad;
 
-}
 
 .propietario{
   color: #004aad;
@@ -1699,6 +1711,11 @@ hr{
 }
 @media(max-width:685px){
   .datosresi2{
+    margin: auto;
+    margin-bottom: 15px;
+    width: 75%;
+  }
+  .datosresi4{
     margin: auto;
     margin-bottom: 15px;
     width: 75%;
@@ -1918,6 +1935,9 @@ select {
 .comentarios-lista .comentario strong {
   font-size: 16px;
   color: #003366; /* Nombre del usuario en azul oscuro */
+}
+strong{
+  color: #004aad;
 }
 
 .comentarios-lista .comentario p {
