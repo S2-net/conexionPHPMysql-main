@@ -28,32 +28,78 @@ function vista() {
     }
 }
 
-document.querySelector("form").addEventListener("submit", function(event) {
-    var nombre = document.getElementById("nombre").value;
-    var apellido = document.getElementById("apellido").value;
-    var errorMessage = "";
-    var errorDiv = document.getElementById("error-message"); // El div donde se mostrará el error
+document.getElementById("registroForm").addEventListener("submit", function(event) {
+    event.preventDefault();  // Evitar que el formulario se envíe de forma tradicional
 
-    // Limpiar cualquier error anterior
-    errorDiv.style.display = "none"; // Asegurarnos de ocultar cualquier mensaje anterior
-    errorDiv.textContent = ""; // Limpiar el mensaje de error
+    // Obtener los valores del formulario
+    const nombre = document.getElementById("nombre").value;
+    const apellido = document.getElementById("apellido").value;
+    const correo = document.getElementById("correo").value;
+    const contrasenia = document.getElementById("contrasenia").value;
+    const fecha_nacimiento = document.getElementById("fecha_nacimiento").value;
+    const genero = document.getElementById("genero").value;
+
+    // Limpiar cualquier mensaje de error anterior
+    const errorMessage = document.getElementById("error-message");
+    errorMessage.style.display = "none";  // Ocultar el contenedor de error
+    errorMessage.textContent = "";  // Limpiar el mensaje
+
+    let errors = [];
 
     // Validación del nombre
     if (nombre.length > 50) {
-        errorMessage += "El nombre no puede tener más de 50 caracteres.\n";
+        errors.push("El nombre no puede tener más de 50 caracteres.");
     }
 
     // Validación del apellido
     if (apellido.length > 50) {
-        errorMessage += "El apellido no puede tener más de 50 caracteres.\n";
+        errors.push("El apellido no puede tener más de 50 caracteres.");
     }
 
-    // Si hay errores, prevenir el envío del formulario y mostrar el mensaje
-    if (errorMessage) {
-        event.preventDefault(); // Detener el envío del formulario
-        errorDiv.textContent = errorMessage; // Mostrar el mensaje de error
-        errorDiv.style.display = "block"; // Asegurarnos de que el mensaje sea visible
+    // Si hay errores, mostrar y detener el envío del formulario
+    if (errors.length > 0) {
+        errorMessage.style.color = "red";
+        errorMessage.textContent = errors.join("\n");
+        errorMessage.style.display = "block";
+        return;
     }
+
+    // Enviar los datos del formulario mediante fetch
+    fetch("RF_registro_usr.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: new URLSearchParams({
+            nombre: nombre,
+            apellido: apellido,
+            correo: correo,
+            contrasenia: contrasenia,
+            fecha_nacimiento: fecha_nacimiento,
+            genero: genero,
+            register: true  // Indicar que es un registro
+        })
+    })
+    .then(response => response.json())  // Esperamos respuesta JSON
+    .then(data => {
+        if (data.error) {
+            // Mostrar el mensaje de error
+            errorMessage.style.color = "red";
+            errorMessage.textContent = data.error;
+            errorMessage.style.display = "block";  // Mostrar el error
+        } else if (data.success) {
+            // Si el registro es exitoso, mostrar mensaje de éxito
+            errorMessage.style.color = "green";
+            errorMessage.textContent = "Registro exitoso!";
+            errorMessage.style.display = "block";
+            
+            window.location.href = "iniregi.php"; 
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        errorMessage.style.color = "red";
+        errorMessage.textContent = "Hubo un error en la comunicación con el servidor.";
+        errorMessage.style.display = "block";
+    });
 });
-
-

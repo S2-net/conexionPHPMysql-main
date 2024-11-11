@@ -14,14 +14,13 @@
 <body class="iniregibody">
     <div class="containerIR" id="containerIR">
         <div class="form-containerIR sign-up">
-        <form action="RF_registro_usr.php" method="POST">
+        <form id="registroForm">
     <div class="h1iniregi">
         <h1>Crear Cuenta</h1>
-
-        <!-- Contenedor para mostrar errores (vacío al principio) -->
+        <!-- Contenedor para mostrar errores -->
         <div id="error-message" style="color: red; display: none;"></div>
-
     </div>
+
     <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
     <input type="text" id="apellido" name="apellido" placeholder="Apellido" required>
     <input type="email" id="correo" name="correo" placeholder="Correo Electrónico" required>
@@ -32,8 +31,9 @@
         <option value="2">Femenino</option>
         <option value="0">Otro</option>
     </select>
-    <button type="submit" name="register">Crear Cuenta</button>
+    <button type="submit">Crear Cuenta</button>
 </form>
+
 
         </div>
 
