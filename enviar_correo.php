@@ -36,7 +36,7 @@ if (isset($_POST["enviar"])) {
 
         // Crear el enlace de restablecimiento
 // Crear el enlace de restablecimiento
-$enlace = "https://localhost/conexionPHPMysql-main/cambiar_sena.php?token=" . $token;
+$enlace = "http://localhost/conexionPHPMysql-main/cambiar_sena.php?token=" . $token;
 
         // Configurar PHPMailer
         $mail = new PHPMailer(true);
@@ -67,15 +67,21 @@ $enlace = "https://localhost/conexionPHPMysql-main/cambiar_sena.php?token=" . $t
             $mail->Body = "Hola $nombre,<br>Haz clic en el siguiente enlace para restablecer tu contraseña: <a href='$enlace'>$enlace</a>";
             $mail->AltBody = "Hola $nombre, haz clic en el siguiente enlace para restablecer tu contraseña: $enlace";
 
-            // Enviar el correo
-            $mail->send();
-            echo "Se ha enviado un enlace para restablecer tu contraseña a $correo.";
-        } catch (Exception $e) {
-            echo "Mensaje no pudo ser enviado. Error: {$mail->ErrorInfo}";
-        }
-    } else {
-        echo "El correo no está registrado.";
-    }
+             // Enviar el correo
+             $mail->send();
+             // Redirigir con el parámetro de éxito
+             header("Location: olvidemisena.php?status=success");
+             exit();
+         } catch (Exception $e) {
+             // Redirigir con el parámetro de error
+             header("Location: olvidemisena.php?status=error");
+             exit();
+         }
+     } else {
+         // Redirigir con el parámetro de error si el correo no está registrado
+         header("Location: olvidemisena.php?status=email_not_found");
+         exit();
+     }
 
     // Cerrar la conexión
     $stmt->close();

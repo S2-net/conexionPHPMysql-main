@@ -56,7 +56,7 @@
             margin-bottom: 8px;
         }
 
-        input[type="email"], input[type="password"] {
+        button[type="email"], button[type="password"] {
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
@@ -65,7 +65,7 @@
             font-size: 14px;
         }
 
-        input[type="submit"] {
+        button[type="submit"] {
             width: 100%;
             padding: 12px;
             background-color: #0066cc;
@@ -77,7 +77,7 @@
             transition: background-color 0.3s;
         }
 
-        input[type="submit"]:hover {
+        button[type="submit"]:hover {
             background-color: #005bb5;
         }
 
@@ -109,19 +109,21 @@
 <body>
   
 
-    <div class="container">
-    <img src="http://localhost/conexionPHPMysql-main/images/logosinfondohd1.png" alt="">
-        <h1>Cambiar Contraseña</h1>
-        <form action="cambiar_sena.php" method="POST">
-            <label for="correo">Correo electrónico:</label>
-            <input type="email" name="correo" required>
-
-            <label for="nueva_contraseña">Nueva contraseña:</label>
-            <input type="password" name="nueva_contraseña" required>
-
-            <input type="submit" value="Cambiar contraseña">
-        </form>
-    </div>
+<div class="container">
+                <img src="http://localhost/conexionPHPMysql-main/images/logosinfondohd1.png" alt="">
+                <h2 style="color: white;">Cambiar Contraseña</h2>
+                <hr style="background-color: white;">
+                <form action="cambiarcontra.php" method="POST">
+               
+                    <br>
+                    <label for="nueva_contrasena" style="color: black;">Nueva Contraseña:</label>
+                    <input type="password" id="nueva_contrasena" name="nueva_contrasena" required minlength="8">
+                    <br>
+                    <label for="confirmar_contrasena" style="color: black;">Confirmar Nueva Contraseña:</label>
+                    <input type="password" id="confirmar_contrasena" name="confirmar_contrasena" required minlength="8">
+                    <br>
+                    <button type="submit" name="cambiar_contrasena" class="cambiar-btn">Cambiar Contraseña</button>
+                </form>
 
 </body>
 </html>

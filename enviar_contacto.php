@@ -33,14 +33,19 @@ if (isset($_POST["enviar"])) {
         $mail->Body = "Nombre: $nombre<br>Email: $correoUsuario<br>Mensaje: $mensaje";
         $mail->AltBody = "Nombre: $nombre\nEmail: $correoUsuario\nMensaje: $mensaje";
 
-        // Enviar el correo
-        $mail->send();
-        echo "Mensaje enviado correctamente.";
-    } catch (Exception $e) {
-        echo "Mensaje no pudo ser enviado. Error: {$mail->ErrorInfo}";
-    }
+             // Enviar el correo
+             $mail->send();
+             // Redirigir con el parámetro de éxito
+             header("Location: contacto.php?status=success");
+             exit();
+         } catch (Exception $e) {
+             // Redirigir con el parámetro de error
+             header("Location: contacto.php?status=error");
+             exit();
+         }
+     }
 
     // Cerrar la conexión
     $con->close();
-}
+
 ?>

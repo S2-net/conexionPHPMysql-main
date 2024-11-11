@@ -174,7 +174,6 @@ $result_favoritos = $stmt->get_result();
             </div>
         </div>
     </section>
-<hr style="background-color: #c4c4c4;">
 
 <div class="datosresi2">
     <h1>Residencias Favoritas</h1>
