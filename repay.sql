@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-11-2024 a las 20:24:19
+-- Tiempo de generación: 11-11-2024 a las 04:20:38
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -107,30 +107,6 @@ INSERT INTO `comentarios` (`id_comentario`, `id_residencia`, `id_usuario`, `come
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `consultas`
---
-
-CREATE TABLE `consultas` (
-  `id` int(11) NOT NULL,
-  `id_usuario` int(11) DEFAULT NULL,
-  `id_residencia` int(11) DEFAULT NULL,
-  `nombre` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `mensaje` text DEFAULT NULL,
-  `fecha` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `consultas`
---
-
-INSERT INTO `consultas` (`id`, `id_usuario`, `id_residencia`, `nombre`, `email`, `mensaje`, `fecha`) VALUES
-(6, 3, 74, 'Augusto', 'augustodlsr@gmail.com', 'asdasdasd', '2024-11-09 19:01:54'),
-(8, 3, 75, 'pepe', 'pepe@gmail.com', 'asdasda', '2024-11-09 19:11:30');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `espacios_comunes`
 --
 
@@ -158,7 +134,8 @@ CREATE TABLE `favoritos` (
 
 INSERT INTO `favoritos` (`id`, `id_usuario`, `id_residencia`) VALUES
 (13, 10, 69),
-(15, 11, 69);
+(15, 11, 69),
+(16, 19, 74);
 
 -- --------------------------------------------------------
 
@@ -187,9 +164,7 @@ INSERT INTO `fotos_residencia` (`id_foto`, `id_residencia`, `ruta_foto`) VALUES
 (64, 74, 'fotos/IMG_8671.jpg'),
 (65, 74, 'fotos/IMG_8674.jpg'),
 (66, 74, 'fotos/IMG_8675.jpg'),
-(67, 74, 'fotos/IMG_8676.jpg'),
-(68, 75, 'fotos/IMG_8674.jpg'),
-(69, 75, 'fotos/IMG_8676.jpg');
+(67, 74, 'fotos/IMG_8676.jpg');
 
 -- --------------------------------------------------------
 
@@ -233,19 +208,7 @@ INSERT INTO `habitaciones` (`id_habitacion`, `id_residencia`, `disponibilidad`, 
 (71, 69, 4, '2', 'Los aires acondicionados están en  mantenimiento'),
 (72, 70, 5, '2', '1 de los baños se encuentra en reparacion'),
 (73, 71, 6, '2', 'se cuenta con bañera en los 2 baños'),
-(76, 74, 2, '2', 'asdadsad'),
-(77, 75, 2, '2', 'asdasdasd');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `hace`
---
-
-CREATE TABLE `hace` (
-  `id_resenia` int(11) DEFAULT NULL,
-  `fecha` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+(76, 74, 2, '2', 'asdadsad');
 
 -- --------------------------------------------------------
 
@@ -257,28 +220,6 @@ CREATE TABLE `propietario` (
   `id_propietario` int(11) NOT NULL,
   `id_residencia` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `resenia`
---
-
-CREATE TABLE `resenia` (
-  `id_resenia` int(11) NOT NULL,
-  `puntuacion` int(11) DEFAULT NULL,
-  `comentario` varchar(200) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `reside`
---
-
-CREATE TABLE `reside` (
-  `id_residencia` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -310,8 +251,7 @@ INSERT INTO `residencia` (`id_residencia`, `calle`, `numero`, `precio`, `normas`
 (69, NULL, NULL, 8000, ' mantener el orden de los espacios comunes', 'La bella vida', 'Esta residencia cuenta con salón, comedor y buena conexión a wifi', NULL, 17, 'Masculina', '', ''),
 (70, NULL, NULL, 7500, 'No tomar bebidas alcohólicas en el lugar y no hacer mucho ruido después de las 10 de la noche', 'Big House', 'Esta residencia cuenta con salón, además de aire acondicionado en todas las  habitaciones', NULL, 13, 'Masculina', '', ''),
 (71, NULL, NULL, 9000, 'No llegar despues de las 12 y mantener el orden de los espacios comunes', 'Las camelias', 'Esta residencia cuenta con salón, además de aire acondicionado en todas las  habitaciones', NULL, 14, 'Masculina', '', ''),
-(74, NULL, NULL, 12000, 'No pelearse', 'La tacoma', 'muy buena', NULL, 3, 'Masculina', '-32.318582172130874', '-58.07091937590149'),
-(75, NULL, NULL, 12333, 'sadasda', 'Motel tiros', 'muy buena', NULL, 8, 'Masculina', '-32.3145229468657', '-58.06767158895657');
+(74, NULL, NULL, 12000, 'No pelearse', 'La tacoma', 'muy buena', NULL, 3, 'Masculina', '-32.318582172130874', '-58.07091937590149');
 
 -- --------------------------------------------------------
 
@@ -332,17 +272,6 @@ INSERT INTO `rol` (`id_rol`, `descripcion`) VALUES
 (0, 'Admin'),
 (1, 'Estudiante'),
 (2, 'Propietario');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tiene`
---
-
-CREATE TABLE `tiene` (
-  `id_resenia` int(11) DEFAULT NULL,
-  `id_residencia` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -372,7 +301,7 @@ INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `contrasenia`, `num_t
 (1, 'Ismael', 'Vazquez', 'ismarepay123prueba@', 923347772, 'prueba1@gmail.com', 'Hombre', '2000-03-07', 1, NULL, ''),
 (3, 'Augusto', 'de los Santos', '$2y$10$2GFCkccDYO5bJTLJVD6IR.F6vqzkxx6w3J1By6OsugPRACeVzkjbe', NULL, 'augustodlsr@gmail.com', 'Hombre', '2007-01-30', 2, 74, 'fotos/671bfef133a10.png'),
 (5, 'pepito', 'papa', '$2y$10$6SSsh.1tr20fgkIuf9/T/OO/JD8Ij07p.WTLxkWuZf0mTUOe1NLvW', NULL, '123@gmail.com', 'Hombre', '2024-10-04', 1, NULL, ''),
-(8, 'pepito', 'de los santos', '$2y$10$ekBwUTEN7HXD/KIBhYDqh.lFpAopLI4X96k9fDK0j5Wn3f9xwg0Wq', NULL, '2@gmail.com', 'Hombre', '2024-10-23', 2, 75, ''),
+(8, 'pepito', 'de los santos', '$2y$10$ekBwUTEN7HXD/KIBhYDqh.lFpAopLI4X96k9fDK0j5Wn3f9xwg0Wq', NULL, '2@gmail.com', 'Hombre', '2024-10-23', 2, NULL, ''),
 (9, 'a', 'a', '$2y$10$YuhIq2gVh9kdzZx77QBZLeQd4.1ObHbu0fOV14KCqZI6BVYNrfPY2', NULL, '3@gmail.com', 'Hombre', '2024-10-16', 2, NULL, ''),
 (10, 'a', 'a', '$2y$10$JigrZTq/FdagqBYy1WeS6eM5wVkjibd2neWKXUf3yjbo4JxN26ccK', NULL, '1@gmail.com', 'Hombre', '2024-10-18', 1, NULL, 'fotos/671a943c3eff8.jpg'),
 (11, 'Alejo', 'Piñeyro', '$2y$10$abe/ffODD1gs4CUi.K8yRuIUF43yanuPFJIascsFMgxrNQIu08Rvu', NULL, 'alejo011106@gmail.com', 'Hombre', '2024-10-31', 2, NULL, 'fotos/671a71c063e7e.jpg'),
@@ -381,7 +310,9 @@ INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `contrasenia`, `num_t
 (14, 'elias', 'irio123', '$2y$10$wiZp2n4g7RzCz9rqV.1wluxChULKMrskbukMwbLL9LDCYdrXBixnC', NULL, 'fifi1@gmail.com', 'Hombre', '2024-10-16', 2, 71, ''),
 (15, 'Martin', 'Fagundez', '$2y$10$wdBLC3r9o7CA4aHhNxCVQOFY7XH87k/s9R37mICsnn2EfIEuIlrBG', NULL, 'martinFG@gmail.com', 'Hombre', '2004-06-16', 2, NULL, 'fotos/6720d9063f751.jpg'),
 (16, 'Pilar', 'Hernández ', '$2y$10$/jynsLOK6p/rS9viG.fqzum/Dq8DsX4Y5Jo2jdHd7xoNrdJb5WL8m', NULL, 'Pilarher@gmail.com', 'Mujer', '2006-01-10', 1, NULL, 'fotos/6720d9c8405ae.jpeg'),
-(17, 'Elias', 'Irigoyem', '$2y$10$koATVjqjpSlAv.mgWGzyv.8UsgO/28P1bTi0xu40Is.Q0ampCKAM.', NULL, 'elias@gmail.com', 'Hombre', '2024-10-15', 2, 69, '');
+(17, 'Elias', 'Irigoyem', '$2y$10$koATVjqjpSlAv.mgWGzyv.8UsgO/28P1bTi0xu40Is.Q0ampCKAM.', NULL, 'elias@gmail.com', 'Hombre', '2024-10-15', 2, 69, ''),
+(18, 'Leon', 'Messi', '$2y$10$k2tT4kvaffMDv2D43IBSY.E0L.eSAtHUCdphE0EV3cX4ZYSKsV/vK', NULL, 'leomessi8@gmail.com', 'Hombre', '2023-10-23', 2, NULL, 'fotos/672f64601c79a.jpg'),
+(19, 'Leon', 'Mesia', '$2y$10$UQ8x24GrQbpxJ3vg93AlJulG8Ih6L3DRasnPVY5LVLtQFD4/AqHRy', NULL, 'mesialeon1@gmail.com', 'Hombre', '2007-01-23', 1, NULL, 'fotos/672f64e01e034.jpg');
 
 -- --------------------------------------------------------
 
@@ -462,14 +393,6 @@ ALTER TABLE `comentarios`
   ADD KEY `fk_usuario` (`id_usuario`);
 
 --
--- Indices de la tabla `consultas`
---
-ALTER TABLE `consultas`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_usuario` (`id_usuario`),
-  ADD KEY `id_residencia` (`id_residencia`);
-
---
 -- Indices de la tabla `espacios_comunes`
 --
 ALTER TABLE `espacios_comunes`
@@ -499,30 +422,12 @@ ALTER TABLE `habitaciones`
   ADD KEY `id_residencia` (`id_residencia`);
 
 --
--- Indices de la tabla `hace`
---
-ALTER TABLE `hace`
-  ADD KEY `id_resenia` (`id_resenia`);
-
---
 -- Indices de la tabla `propietario`
 --
 ALTER TABLE `propietario`
   ADD PRIMARY KEY (`id_propietario`),
   ADD UNIQUE KEY `id_residencia` (`id_residencia`),
   ADD UNIQUE KEY `id_usuario` (`id_usuario`);
-
---
--- Indices de la tabla `resenia`
---
-ALTER TABLE `resenia`
-  ADD PRIMARY KEY (`id_resenia`);
-
---
--- Indices de la tabla `reside`
---
-ALTER TABLE `reside`
-  ADD KEY `id_residencia` (`id_residencia`);
 
 --
 -- Indices de la tabla `residencia`
@@ -538,13 +443,6 @@ ALTER TABLE `rol`
   ADD PRIMARY KEY (`id_rol`),
   ADD KEY `id_rol` (`id_rol`),
   ADD KEY `id_rol_2` (`id_rol`);
-
---
--- Indices de la tabla `tiene`
---
-ALTER TABLE `tiene`
-  ADD KEY `id_resenia` (`id_resenia`),
-  ADD KEY `id_residencia` (`id_residencia`);
 
 --
 -- Indices de la tabla `usuario`
@@ -579,12 +477,6 @@ ALTER TABLE `comentarios`
   MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT de la tabla `consultas`
---
-ALTER TABLE `consultas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
 -- AUTO_INCREMENT de la tabla `espacios_comunes`
 --
 ALTER TABLE `espacios_comunes`
@@ -594,37 +486,31 @@ ALTER TABLE `espacios_comunes`
 -- AUTO_INCREMENT de la tabla `favoritos`
 --
 ALTER TABLE `favoritos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `fotos_residencia`
 --
 ALTER TABLE `fotos_residencia`
-  MODIFY `id_foto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id_foto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT de la tabla `habitaciones`
 --
 ALTER TABLE `habitaciones`
-  MODIFY `id_habitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
-
---
--- AUTO_INCREMENT de la tabla `resenia`
---
-ALTER TABLE `resenia`
-  MODIFY `id_resenia` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_habitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT de la tabla `residencia`
 --
 ALTER TABLE `residencia`
-  MODIFY `id_residencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id_residencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `valoracion`
@@ -652,13 +538,6 @@ ALTER TABLE `comentarios`
   ADD CONSTRAINT `fk_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `consultas`
---
-ALTER TABLE `consultas`
-  ADD CONSTRAINT `consultas_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `consultas_ibfk_2` FOREIGN KEY (`id_residencia`) REFERENCES `residencia` (`id_residencia`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Filtros para la tabla `espacios_comunes`
 --
 ALTER TABLE `espacios_comunes`
@@ -678,12 +557,6 @@ ALTER TABLE `fotos_residencia`
   ADD CONSTRAINT `fotos_residencia_ibfk_1` FOREIGN KEY (`id_residencia`) REFERENCES `residencia` (`id_residencia`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `hace`
---
-ALTER TABLE `hace`
-  ADD CONSTRAINT `hace_ibfk_2` FOREIGN KEY (`id_resenia`) REFERENCES `resenia` (`id_resenia`);
-
---
 -- Filtros para la tabla `propietario`
 --
 ALTER TABLE `propietario`
@@ -692,23 +565,10 @@ ALTER TABLE `propietario`
   ADD CONSTRAINT `propietario_ibfk_3` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
 
 --
--- Filtros para la tabla `reside`
---
-ALTER TABLE `reside`
-  ADD CONSTRAINT `reside_ibfk_2` FOREIGN KEY (`id_residencia`) REFERENCES `residencia` (`id_residencia`);
-
---
 -- Filtros para la tabla `residencia`
 --
 ALTER TABLE `residencia`
   ADD CONSTRAINT `residencia_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `tiene`
---
-ALTER TABLE `tiene`
-  ADD CONSTRAINT `tiene_ibfk_1` FOREIGN KEY (`id_resenia`) REFERENCES `resenia` (`id_resenia`),
-  ADD CONSTRAINT `tiene_ibfk_2` FOREIGN KEY (`id_residencia`) REFERENCES `residencia` (`id_residencia`);
 
 --
 -- Filtros para la tabla `usuario`
