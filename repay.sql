@@ -104,6 +104,24 @@ INSERT INTO `comentarios` (`id_comentario`, `id_residencia`, `id_usuario`, `come
 (6, 69, 3, 'Hola', '2024-11-07 16:44:59'),
 (7, 69, 3, 'Hola1', '2024-11-07 16:45:04');
 
+CREATE TABLE `consultas` (
+  `id` int(11) NOT NULL,
+  `id_usuario` int(11) DEFAULT NULL,
+  `id_residencia` int(11) DEFAULT NULL,
+  `nombre` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `mensaje` text DEFAULT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `consultas`
+--
+
+INSERT INTO `consultas` (`id`, `id_usuario`, `id_residencia`, `nombre`, `email`, `mensaje`, `fecha`) VALUES
+(6, 3, 74, 'Augusto', 'augustodlsr@gmail.com', 'asdasdasd', '2024-11-09 19:01:54'),
+(8, 3, 75, 'pepe', 'pepe@gmail.com', 'asdasda', '2024-11-09 19:11:30');
+
 -- --------------------------------------------------------
 
 --
