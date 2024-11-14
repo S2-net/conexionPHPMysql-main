@@ -45,16 +45,6 @@ require("idrol_usuario.php");
     flex: 0 0 30%;
     
 }
-@media (max-width:768px) {
-  .carousel-item {
-    padding: 10px;
-    right: 1px;
-}
-.d-flex {
-  display: flex;
-  flex-direction: column;
-}
-}
 @media (max-width: 768px) {
     .card{
         flex: 0 0 100%; /* Cambia a 90% o el valor que desees */
