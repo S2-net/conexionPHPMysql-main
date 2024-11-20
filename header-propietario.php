@@ -38,7 +38,7 @@
                 <h1>Encuentra tu residencia ideal para el éxito académico</h1>
             </div>
             <div class="content">
-                <form method="POST" action="buscar-resi.php" id="formulario-filtro">
+                <form method="POST" action="index.php" id="formulario-filtro">
                     <div class="row">
                         <div class="col-md-3">
                             <label for="num_habitaciones">Habitaciones</label>
