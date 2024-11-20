@@ -107,6 +107,7 @@ document.getElementById('longitud').addEventListener('input', function() {
 
         <div class="cargardatos">
             <label for="imagen" class="form-label">Cargar Imagenes</label>
+            <label for="imagen">Solo cargar imagenes JPG</label>
             <input type="file" name="fotos[]" id="fotos" multiple>
 
             <input type="submit" value="Cargar" name="envio" id=envio>
